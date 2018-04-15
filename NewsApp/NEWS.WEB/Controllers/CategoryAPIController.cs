@@ -8,6 +8,7 @@ using NEWS.DATA;
 using NEWS.DATA.Interface;
 using NEWS.DATA.UnitOfWork;
 using NEWS.SERVICES.Business;
+using System.Web.Http;
 
 namespace NEWS.WEB.Controllers
 {
@@ -26,6 +27,27 @@ namespace NEWS.WEB.Controllers
         public HttpResponseMessage Get()
         {
             return ToJson(_categoryServices.GetAll().ToList());
+        }
+
+        public HttpResponseMessage Post([FromBody]Category category)
+        {
+            return ToJson(_categoryServices.Add(category));
+        }
+
+        public HttpResponseMessage Put(int id, [FromBody]Category category)
+        {
+            var cate = new Category();
+            cate.CategoryId = category.CategoryId;
+            cate.CategoryName = category.CategoryName;
+            cate.ParentId = category.ParentId;
+            cate.Status = category.Status;
+            return ToJson(_categoryServices.Add(cate));
+        }
+
+        public HttpResponseMessage Delete(int id)
+        {
+            var cate = _categoryServices.GetById(id);
+            return ToJson(_categoryServices.Delete(cate));
         }
     }
 }
