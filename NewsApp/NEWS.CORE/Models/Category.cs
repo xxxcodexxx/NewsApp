@@ -8,6 +8,6 @@
 
 	    public int ParentId { get; set; }
 
-	    CommonDisplay Status { get; set; }
+	    public int Status { get; set; }
     }
 }

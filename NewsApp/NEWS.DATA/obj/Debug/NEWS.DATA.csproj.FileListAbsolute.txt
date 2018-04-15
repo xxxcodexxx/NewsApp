@@ -1,5 +1,3 @@
-D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NewsApp.mdf
-D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NewsApp_log.ldf
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\EntityFramework.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\EntityFramework.SqlServer.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.COMMON.dll

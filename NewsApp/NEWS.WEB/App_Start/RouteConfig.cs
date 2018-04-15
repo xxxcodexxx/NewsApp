@@ -14,9 +14,14 @@ namespace NEWS.WEB
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                            name: "Default",
+                            url: "",
+                            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                        );
+            routes.MapRoute(
+                name: "News App",
+                url: "home/{*anything}",
+                defaults: new { controller = "Home", action = "Home", id = UrlParameter.Optional }
             );
         }
     }

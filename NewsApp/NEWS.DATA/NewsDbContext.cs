@@ -1,12 +1,11 @@
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using NEWS.CORE.Models;
+using NEWS.DATA.Interface;
+
 namespace NEWS.DATA
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using NEWS.DATA.Interface;
-    using System.Data.Entity.Infrastructure;
-    using NEWS.CORE.Models;
 
     public partial class NewsDbContext : DbContext, IDataContext
     {
@@ -14,6 +13,7 @@ namespace NEWS.DATA
             : base("name=NewsDbContext")
         {
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }

@@ -10,8 +10,11 @@ namespace NEWS.WEB.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            return View();
+        }
 
+        public ActionResult Home()
+        {
             return View();
         }
     }
