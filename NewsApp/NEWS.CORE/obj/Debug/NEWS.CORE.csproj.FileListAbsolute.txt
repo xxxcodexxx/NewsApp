@@ -1,0 +1,6 @@
+D:\DATH\NewsApp\NewsApp\NEWS.CORE\bin\Debug\NEWS.CORE.dll
+D:\DATH\NewsApp\NewsApp\NEWS.CORE\bin\Debug\NEWS.CORE.pdb
+D:\DATH\NewsApp\NewsApp\NEWS.CORE\obj\Debug\NEWS.CORE.csprojResolveAssemblyReference.cache
+D:\DATH\NewsApp\NewsApp\NEWS.CORE\obj\Debug\NEWS.CORE.csproj.CoreCompileInputs.cache
+D:\DATH\NewsApp\NewsApp\NEWS.CORE\obj\Debug\NEWS.CORE.dll
+D:\DATH\NewsApp\NewsApp\NEWS.CORE\obj\Debug\NEWS.CORE.pdb
