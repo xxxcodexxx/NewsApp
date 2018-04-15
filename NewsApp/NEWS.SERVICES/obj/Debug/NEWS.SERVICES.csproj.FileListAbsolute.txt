@@ -7,3 +7,4 @@ D:\DATH\NewsApp\NewsApp\NEWS.SERVICES\obj\Debug\NEWS.SERVICES.csproj.CoreCompile
 D:\DATH\NewsApp\NewsApp\NEWS.SERVICES\obj\Debug\NEWS.SERVICES.csproj.CopyComplete
 D:\DATH\NewsApp\NewsApp\NEWS.SERVICES\obj\Debug\NEWS.SERVICES.dll
 D:\DATH\NewsApp\NewsApp\NEWS.SERVICES\obj\Debug\NEWS.SERVICES.pdb
+D:\DATH\NewsApp\NewsApp\NEWS.SERVICES\bin\Debug\NEWS.CORE.dll.config

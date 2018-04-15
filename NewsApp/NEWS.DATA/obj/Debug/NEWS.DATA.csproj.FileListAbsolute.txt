@@ -14,3 +14,4 @@ D:\DATH\NewsApp\NewsApp\NEWS.DATA\obj\Debug\NEWS.DATA.pdb
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.dll.config
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.pdb
+D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.CORE.dll.config

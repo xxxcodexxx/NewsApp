@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseServices.cs" />
+    <Compile Include="Business\AccountServices.cs" />
+    <Compile Include="Business\CommentServices.cs" />
+    <Compile Include="Business\NewsServices.cs" />
+    <Compile Include="Business\PermissionServices.cs" />
+    <Compile Include="Business\FeedbackServices.cs" />
     <Compile Include="Business\CategoryServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
