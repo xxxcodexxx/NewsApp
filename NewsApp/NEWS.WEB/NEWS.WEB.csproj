@@ -219,7 +219,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.component.html" />
-    <Content Include="App\Components\category.component.html" />
+    <Content Include="App\Components\admin\app-footer\app-footer.component.html" />
+    <Content Include="App\Components\admin\aside-right\aside-right.component.html" />
+    <Content Include="App\Components\admin\aside\aside.component.html" />
+    <Content Include="App\Components\admin\main-header\main-header.component.html" />
+    <Content Include="App\Components\admin\category\category.component.html" />
     <Content Include="Content\adminLTE\AdminLTE.css" />
     <Content Include="Content\adminLTE\AdminLTE.min.css" />
     <Content Include="Content\adminLTE\img\avatar.png" />
@@ -7422,6 +7426,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Components\user\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
   </ItemGroup>
@@ -7442,8 +7447,18 @@
     <TypeScriptCompile Include="App\app.component.ts" />
     <TypeScriptCompile Include="App\app.module.ts" />
     <TypeScriptCompile Include="App\app.routing.ts" />
+    <TypeScriptCompile Include="App\Components\admin\app-footer\app-footer.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\app-footer\app-footer.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\aside-right\aside-right.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\aside-right\aside-right.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\aside\aside-routing.ts" />
+    <TypeScriptCompile Include="App\Components\admin\aside\aside.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\aside\aside.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\category\category.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\category\category.module.ts" />
     <TypeScriptCompile Include="App\Components\home.component.ts" />
-    <TypeScriptCompile Include="App\Components\category.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\main-header\main-header.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\main-header\main-header.module.ts" />
     <TypeScriptCompile Include="App\main.ts" />
     <TypeScriptCompile Include="App\Models\category.ts" />
     <TypeScriptCompile Include="App\Service\category.service.ts" />

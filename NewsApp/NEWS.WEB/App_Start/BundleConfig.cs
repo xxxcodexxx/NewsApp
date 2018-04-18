@@ -27,10 +27,15 @@ namespace NEWS.WEB
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/AdminLTE").Include(
+                     "~/Scripts/adminLTE/js/adminlte.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                       "~/node_modules/font-awesome/css/font-awesome.css"));
+                       "~/node_modules/font-awesome/css/font-awesome.css",
+                       "~/Content/adminLTE/AdminLTE.min.css",
+                       "~/Content/adminLTE/skins/_all-skins.min.css",
+                      "~/Content/site.css"));
         }
     }
 }
