@@ -6519,9 +6519,6 @@ td.visible-lg {
   }
 }
 
-.hidden-xs {
-  display: block !important;
-}
 
 tr.hidden-xs {
   display: table-row !important;
