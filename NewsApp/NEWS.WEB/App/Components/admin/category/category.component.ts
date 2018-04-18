@@ -17,6 +17,7 @@ export class CategoryComponent implements OnInit {
 
     categories: ICategory[];
     msg: string;
+    indLoading: boolean = false;
 
     constructor(private _categoryService: CategoryService) { }
 
@@ -24,6 +25,7 @@ export class CategoryComponent implements OnInit {
         this.LoadCategories();
     }
     LoadCategories() {
+        this.indLoading = true;   
         this._categoryService.get(Global.BASE_CATEGORY_ENDPOINT)
             .subscribe(res => { this.categories = res, console.log(res) },
             error => this.msg = <any>error);

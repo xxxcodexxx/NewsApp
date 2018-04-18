@@ -219,11 +219,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.component.html" />
+    <Content Include="App\Components\admin\account\account.component.html" />
     <Content Include="App\Components\admin\app-footer\app-footer.component.html" />
     <Content Include="App\Components\admin\aside-right\aside-right.component.html" />
     <Content Include="App\Components\admin\aside\aside.component.html" />
+    <Content Include="App\Components\admin\comment\comment.component.html" />
+    <Content Include="App\Components\admin\feedback\feedback.component.html" />
     <Content Include="App\Components\admin\main-header\main-header.component.html" />
     <Content Include="App\Components\admin\category\category.component.html" />
+    <Content Include="App\Components\admin\news\news.component.html" />
+    <Content Include="App\Components\admin\permission\permission.component.html" />
     <Content Include="Content\adminLTE\AdminLTE.css" />
     <Content Include="Content\adminLTE\AdminLTE.min.css" />
     <Content Include="Content\adminLTE\img\avatar.png" />
@@ -7447,6 +7452,8 @@
     <TypeScriptCompile Include="App\app.component.ts" />
     <TypeScriptCompile Include="App\app.module.ts" />
     <TypeScriptCompile Include="App\app.routing.ts" />
+    <TypeScriptCompile Include="App\Components\admin\account\account.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\account\account.module.ts" />
     <TypeScriptCompile Include="App\Components\admin\app-footer\app-footer.component.ts" />
     <TypeScriptCompile Include="App\Components\admin\app-footer\app-footer.module.ts" />
     <TypeScriptCompile Include="App\Components\admin\aside-right\aside-right.component.ts" />
@@ -7456,6 +7463,14 @@
     <TypeScriptCompile Include="App\Components\admin\aside\aside.module.ts" />
     <TypeScriptCompile Include="App\Components\admin\category\category.component.ts" />
     <TypeScriptCompile Include="App\Components\admin\category\category.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\comment\comment.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\comment\comment.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\feedback\feedback.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\feedback\feedback.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\news\news.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\news\news.module.ts" />
+    <TypeScriptCompile Include="App\Components\admin\permission\permission.component.ts" />
+    <TypeScriptCompile Include="App\Components\admin\permission\permission.module.ts" />
     <TypeScriptCompile Include="App\Components\home.component.ts" />
     <TypeScriptCompile Include="App\Components\admin\main-header\main-header.component.ts" />
     <TypeScriptCompile Include="App\Components\admin\main-header\main-header.module.ts" />

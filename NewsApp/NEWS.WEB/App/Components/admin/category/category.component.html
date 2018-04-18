@@ -1,11 +1,14 @@
 ﻿<div class='table-responsive'>
+    <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
     <div *ngIf='categories && categories.length==0' class="alert alert-info" role="alert">No record found!</div>
+
     <table class='table table-striped' *ngIf='categories && categories.length'>
         <thead>
             <tr>
                 <th>Category Name</th>
                 <th>Category Parent</th>
                 <th>Status</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +16,10 @@
                 <td>{{category.CategoryName}}</td>
                 <td>{{category.ParentId}}</td>
                 <td>{{category.Status}}</td>
+                <td>
+                    <button title="Edit" class="btn btn-primary" (click)="editUser(user.Id)">Edit</button>
+                    <button title="Delete" class="btn btn-danger" (click)="deleteUser(user.Id)">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>

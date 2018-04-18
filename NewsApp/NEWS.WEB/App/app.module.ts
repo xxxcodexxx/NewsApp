@@ -17,6 +17,11 @@ import { AsideModule } from './Components/admin/aside/aside.module';
 import { RightAsideModule } from './Components/admin/aside-right/aside-right.module';
 import { FooterModule } from './Components/admin/app-footer/app-footer.module';
 import { CategoryModule } from './Components/admin/category/category.module';
+import { NewsModule } from './Components/admin/news/news.module';
+import { AccountModule } from './Components/admin/account/account.module';
+import { PermissionModule} from './Components/admin/permission/permission.module';
+import { CommentModule } from './Components/admin/comment/comment.module';
+import { FeedbackModule } from './Components/admin/feedback/feedback.module';
 @NgModule({
     imports: [
         BrowserModule,
@@ -28,7 +33,12 @@ import { CategoryModule } from './Components/admin/category/category.module';
         AsideModule,
         RightAsideModule,
         FooterModule,
-        CategoryModule
+        CategoryModule,
+        NewsModule,
+        AccountModule,
+        PermissionModule,
+        CommentModule,
+        FeedbackModule
     ],
     declarations: [AppComponent, HomeComponent],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' }, CategoryService],
