@@ -18,13 +18,7 @@ import { HomeComponent } from './components/home.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            { path: '', component: HomeComponent },
-            { path: 'home/category', component: CategoryComponent },
-            { path: 'home/news', component: NewsComponent },
-            { path: 'home/account', component: AccountComponent },
-            { path: 'home/permission', component: PermissionComponent },
-            { path: 'home/comment', component: CommentComponent },
-            { path: 'home/feedback', component: FeedbackComponent },
+            { path: '', component: HomeComponent }
         ])
     ],
     exports: [RouterModule]
