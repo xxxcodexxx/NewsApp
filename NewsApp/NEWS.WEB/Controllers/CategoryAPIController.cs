@@ -47,22 +47,6 @@ namespace NEWS.WEB.Controllers
         {
             return ToJson(_categoryServices.Delete(_categoryServices.GetById(id)));
         }
-
-
-        public HttpResponseMessage Post([FromBody]Category category)
-        {
-            return ToJson(_categoryServices.Add(category));
-        }
-
-        public HttpResponseMessage Put([FromBody]Category category)
-        {
-            return ToJson(_categoryServices.Add(category));
-        }
-
-        public HttpResponseMessage Delete(int id)
-        {
-            var cate = _categoryServices.GetById(id);
-            return ToJson(_categoryServices.Delete(cate));
-        }
+        
     }
 }
