@@ -20,7 +20,6 @@ namespace NEWS.WEB.Controllers
             IDatabaseFactory databaseFactory = new DatabaseFactory();
             IRepository<Category> repositoryCategory = new Repository<Category>(databaseFactory);
             IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-
             this._categoryServices = new CategoryServices(repositoryCategory, unitOfWork);
         }
 
@@ -34,14 +33,9 @@ namespace NEWS.WEB.Controllers
             return ToJson(_categoryServices.Add(category));
         }
 
-        public HttpResponseMessage Put(int id, [FromBody]Category category)
+        public HttpResponseMessage Put([FromBody]Category category)
         {
-            var cate = new Category();
-            cate.CategoryId = category.CategoryId;
-            cate.CategoryName = category.CategoryName;
-            cate.ParentId = category.ParentId;
-            cate.Status = category.Status;
-            return ToJson(_categoryServices.Add(cate));
+            return ToJson(_categoryServices.Add(category));
         }
 
         public HttpResponseMessage Delete(int id)

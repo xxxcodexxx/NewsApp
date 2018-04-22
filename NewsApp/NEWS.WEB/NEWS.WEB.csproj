@@ -209,6 +209,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804221556045_Donnt.cs" />
+    <Compile Include="Migrations\201804221556045_Donnt.Designer.cs">
+      <DependentUpon>201804221556045_Donnt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAction.cs" />
@@ -310,6 +315,11 @@
       <Project>{F9C05FEF-4CFB-4B33-84F9-93289F90F799}</Project>
       <Name>NEWS.SERVICES</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804221556045_Donnt.resx">
+      <DependentUpon>201804221556045_Donnt.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

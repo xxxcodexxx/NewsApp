@@ -136,3 +136,5 @@ D:\DATH\NewsApp\NewsApp\NEWS.WEB\bin\NEWS.SERVICES.pdb
 D:\DATH\NewsApp\NewsApp\NEWS.WEB\bin\roslyn\System.IO.FileSystem.dll
 D:\DATH\NewsApp\NewsApp\NEWS.WEB\bin\roslyn\System.Collections.Immutable.dll
 D:\DATH\NewsApp\NewsApp\NEWS.WEB\bin\NEWS.CORE.dll.config
+D:\DATH\NewsApp\NewsApp\NEWS.WEB\obj\Debug\NEWS.WEB.Migrations.Donnt.resources
+D:\DATH\NewsApp\NewsApp\NEWS.WEB\obj\Debug\NEWS.WEB.csproj.GenerateResource.cache

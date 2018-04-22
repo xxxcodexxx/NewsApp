@@ -6,19 +6,23 @@ using NEWS.DATA.Interface;
 
 namespace NEWS.DATA
 {
-
     public partial class NewsDbContext : DbContext, IDataContext
     {
         public NewsDbContext()
             : base("name=NewsDbContext")
         {
         }
+        
+        public DbSet<Category> categories { get; set; }
+        public DbSet<Account> accounts { get; set; }
+        public DbSet<Permission> permissions { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<Comment> comments { get; set; }
+        public DbSet<Feedback> feedbacks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
-
-        public DbSet<Category> categories { get; set; }
 
         public IDbSet<T> DbSet<T>() where T : class
         {
