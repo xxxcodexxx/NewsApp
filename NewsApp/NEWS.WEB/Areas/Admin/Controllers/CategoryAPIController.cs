@@ -11,7 +11,7 @@ using NEWS.SERVICES.Business;
 using System.Web.Http;
 
 
-namespace NEWS.WEB.Controllers
+namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class CategoryAPIController : BaseAPIController
     {

@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { CategoryService } from '../../../Service/category.service';
+import { AdminService } from '../../../Service/admin.service';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { ICategory } from '../../../Models/category';
 import { BsModalComponent } from 'ng2-bs3-modal';
@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
     modalTitle: string;
     modalBtnTitle: string;
 
-    constructor(private fb: FormBuilder,private _categoryService: CategoryService) { }
+    constructor(private fb: FormBuilder, private _adminService: AdminService) { }
 
     ngOnInit(): void {
         this.categoryFrm = this.fb.group({
@@ -36,7 +36,7 @@ export class CategoryComponent implements OnInit {
     }
     LoadCategories() {
         this.indLoading = true;   
-        this._categoryService.get(Global.BASE_CATEGORY_ENDPOINT)
+        this._adminService.get(Global.BASE_CATEGORY_ENDPOINT)
             .subscribe(res => { this.categories = res, this.indLoading = false; },
             error => this.msg = <any>error);
     }
@@ -74,7 +74,7 @@ export class CategoryComponent implements OnInit {
 
         switch (this.dbops) {
             case DBOperation.create:
-                this._categoryService.post(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
+                this._adminService.post(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
@@ -99,7 +99,7 @@ export class CategoryComponent implements OnInit {
                 );
                 break;
             case DBOperation.update:
-                this._categoryService.put(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
+                this._adminService.put(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
@@ -124,7 +124,7 @@ export class CategoryComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._categoryService.delete(Global.BASE_CATEGORY_ENDPOINT, formData.value.CategoryId).subscribe(
+                this._adminService.delete(Global.BASE_CATEGORY_ENDPOINT, formData.value.CategoryId).subscribe(
                     data => {
                         if (data == 1) //Success
                         {

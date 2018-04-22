@@ -15,7 +15,7 @@ var app_component_1 = require("./app.component");
 var http_1 = require("@angular/http");
 var app_routing_1 = require("./app.routing");
 var home_component_1 = require("./components/home.component");
-var category_service_1 = require("./Service/category.service");
+var admin_service_1 = require("./Service/admin.service");
 var main_header_module_1 = require("./Components/admin/main-header/main-header.module");
 var aside_module_1 = require("./Components/admin/aside/aside.module");
 var aside_right_module_1 = require("./Components/admin/aside-right/aside-right.module");
@@ -49,7 +49,7 @@ var AppModule = /** @class */ (function () {
                 feedback_module_1.FeedbackModule
             ],
             declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
-            providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, category_service_1.CategoryService],
+            providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/admin' }, admin_service_1.AdminService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

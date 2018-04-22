@@ -201,9 +201,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseAPIController.cs" />
-    <Compile Include="Controllers\CategoryAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -7410,6 +7412,10 @@
     <Content Include="Scripts\adminLTE\bower_components\select2\src\scss\_dropdown.scss" />
     <Content Include="Scripts\adminLTE\bower_components\select2\src\scss\_multiple.scss" />
     <Content Include="Scripts\adminLTE\bower_components\select2\src\scss\_single.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -7437,13 +7443,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="tsconfig.json" />
-    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\user\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -7486,7 +7491,7 @@
     <TypeScriptCompile Include="App\Components\admin\main-header\main-header.module.ts" />
     <TypeScriptCompile Include="App\main.ts" />
     <TypeScriptCompile Include="App\Models\category.ts" />
-    <TypeScriptCompile Include="App\Service\category.service.ts" />
+    <TypeScriptCompile Include="App\Service\admin.service.ts" />
     <TypeScriptCompile Include="App\Shared\commondisplay.ts" />
     <TypeScriptCompile Include="App\Shared\enum.ts" />
     <TypeScriptCompile Include="App\Shared\global.ts" />

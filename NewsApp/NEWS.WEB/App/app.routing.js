@@ -21,7 +21,7 @@ var AppRoutingModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [
                 router_1.RouterModule.forRoot([
-                    { path: '', component: home_component_1.HomeComponent }
+                    { path: 'Admin', component: home_component_1.HomeComponent }
                 ])
             ],
             exports: [router_1.RouterModule]

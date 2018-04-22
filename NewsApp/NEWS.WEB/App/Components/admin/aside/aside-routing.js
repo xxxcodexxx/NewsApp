@@ -23,12 +23,12 @@ var AsideRoutingModule = /** @class */ (function () {
             imports: [
                 router_1.RouterModule.forChild([
                     { path: '', component: aside_component_1.AsideComponent },
-                    { path: 'home/category', component: category_component_1.CategoryComponent },
-                    { path: 'home/news', component: news_component_1.NewsComponent },
-                    { path: 'home/account', component: account_component_1.AccountComponent },
-                    { path: 'home/permission', component: permission_component_1.PermissionComponent },
-                    { path: 'home/comment', component: comment_component_1.CommentComponent },
-                    { path: 'home/feedback', component: feedback_component_1.FeedbackComponent },
+                    { path: 'category', component: category_component_1.CategoryComponent },
+                    { path: 'news', component: news_component_1.NewsComponent },
+                    { path: 'account', component: account_component_1.AccountComponent },
+                    { path: 'permission', component: permission_component_1.PermissionComponent },
+                    { path: 'comment', component: comment_component_1.CommentComponent },
+                    { path: 'feedback', component: feedback_component_1.FeedbackComponent },
                 ])
             ],
             exports: [router_1.RouterModule]

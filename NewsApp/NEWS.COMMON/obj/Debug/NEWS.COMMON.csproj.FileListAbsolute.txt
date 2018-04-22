@@ -3,3 +3,4 @@ D:\DATH\NewsApp\NewsApp\NEWS.COMMON\bin\Debug\NEWS.COMMON.pdb
 D:\DATH\NewsApp\NewsApp\NEWS.COMMON\obj\Debug\NEWS.COMMON.csproj.CoreCompileInputs.cache
 D:\DATH\NewsApp\NewsApp\NEWS.COMMON\obj\Debug\NEWS.COMMON.dll
 D:\DATH\NewsApp\NewsApp\NEWS.COMMON\obj\Debug\NEWS.COMMON.pdb
+D:\DATH\NewsApp\NewsApp\NEWS.COMMON\obj\Debug\NEWS.COMMON.csprojResolveAssemblyReference.cache

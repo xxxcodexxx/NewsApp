@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace NEWS.WEB.Controllers
+namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class BaseAPIController : ApiController
     {

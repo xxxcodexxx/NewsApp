@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Global = /** @class */ (function () {
     function Global() {
     }
-    Global.BASE_CATEGORY_ENDPOINT = '/api/CategoryAPI/';
+    Global.BASE_CATEGORY_ENDPOINT = '/admin/api/CategoryAPI/';
     return Global;
 }());
 exports.Global = Global;

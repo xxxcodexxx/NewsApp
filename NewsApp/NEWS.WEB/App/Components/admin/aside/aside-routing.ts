@@ -12,12 +12,12 @@ import { FeedbackComponent } from '../feedback/feedback.component';
     imports: [
         RouterModule.forChild([
             { path: '', component: AsideComponent },
-            { path: 'home/category', component: CategoryComponent },
-            { path: 'home/news', component: NewsComponent },
-            { path: 'home/account', component: AccountComponent },
-            { path: 'home/permission', component: PermissionComponent },
-            { path: 'home/comment', component: CommentComponent },
-            { path: 'home/feedback', component: FeedbackComponent },
+            { path: 'category', component: CategoryComponent },
+            { path: 'news', component: NewsComponent },
+            { path: 'account', component: AccountComponent },
+            { path: 'permission', component: PermissionComponent },
+            { path: 'comment', component: CommentComponent },
+            { path: 'feedback', component: FeedbackComponent },
 
         ])
     ],

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './components/home.component';
-import { CategoryService } from './Service/category.service';
+import { AdminService } from './Service/admin.service';
 import { MainHeaderModule } from './Components/admin/main-header/main-header.module';
 import { AsideModule } from './Components/admin/aside/aside.module';
 import { RightAsideModule } from './Components/admin/aside-right/aside-right.module';
@@ -37,7 +37,7 @@ import { FeedbackModule } from './Components/admin/feedback/feedback.module';
         FeedbackModule
     ],
     declarations: [AppComponent, HomeComponent],
-    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, CategoryService],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/admin' }, AdminService],
     bootstrap: [AppComponent]
 
 })

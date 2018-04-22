@@ -10,15 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var category_service_1 = require("../../../Service/category.service");
+var admin_service_1 = require("../../../Service/admin.service");
 var forms_1 = require("@angular/forms");
 var ng2_bs3_modal_1 = require("ng2-bs3-modal");
 var enum_1 = require("../../../Shared/enum");
 var global_1 = require("../../../Shared/global");
 var CategoryComponent = /** @class */ (function () {
-    function CategoryComponent(fb, _categoryService) {
+    function CategoryComponent(fb, _adminService) {
         this.fb = fb;
-        this._categoryService = _categoryService;
+        this._adminService = _adminService;
         this.indLoading = false;
     }
     CategoryComponent.prototype.ngOnInit = function () {
@@ -33,7 +33,7 @@ var CategoryComponent = /** @class */ (function () {
     CategoryComponent.prototype.LoadCategories = function () {
         var _this = this;
         this.indLoading = true;
-        this._categoryService.get(global_1.Global.BASE_CATEGORY_ENDPOINT)
+        this._adminService.get(global_1.Global.BASE_CATEGORY_ENDPOINT)
             .subscribe(function (res) { _this.categories = res, _this.indLoading = false; }, function (error) { return _this.msg = error; });
     };
     CategoryComponent.prototype.addCategory = function () {
@@ -67,7 +67,7 @@ var CategoryComponent = /** @class */ (function () {
         this.msg = "";
         switch (this.dbops) {
             case enum_1.DBOperation.create:
-                this._categoryService.post(global_1.Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(function (data) {
+                this._adminService.post(global_1.Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(function (data) {
                     if (data == 1) {
                         _this.msg = "Data successfully added.";
                         setTimeout(function () {
@@ -87,7 +87,7 @@ var CategoryComponent = /** @class */ (function () {
                 });
                 break;
             case enum_1.DBOperation.update:
-                this._categoryService.put(global_1.Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(function (data) {
+                this._adminService.put(global_1.Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(function (data) {
                     if (data == 1) {
                         _this.msg = "Data successfully updated.";
                         setTimeout(function () {
@@ -107,7 +107,7 @@ var CategoryComponent = /** @class */ (function () {
                 });
                 break;
             case enum_1.DBOperation.delete:
-                this._categoryService.delete(global_1.Global.BASE_CATEGORY_ENDPOINT, formData.value.CategoryId).subscribe(function (data) {
+                this._adminService.delete(global_1.Global.BASE_CATEGORY_ENDPOINT, formData.value.CategoryId).subscribe(function (data) {
                     if (data == 1) {
                         _this.msg = "Data successfully deleted.";
                         setTimeout(function () {
@@ -139,7 +139,7 @@ var CategoryComponent = /** @class */ (function () {
         core_1.Component({
             templateUrl: '/App/Components/admin/category/category.component.html'
         }),
-        __metadata("design:paramtypes", [forms_1.FormBuilder, category_service_1.CategoryService])
+        __metadata("design:paramtypes", [forms_1.FormBuilder, admin_service_1.AdminService])
     ], CategoryComponent);
     return CategoryComponent;
 }());
