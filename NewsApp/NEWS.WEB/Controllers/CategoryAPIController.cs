@@ -9,6 +9,7 @@ using NEWS.DATA.Interface;
 using NEWS.DATA.UnitOfWork;
 using NEWS.SERVICES.Business;
 
+
 namespace NEWS.WEB.Controllers
 {
     public class CategoryAPIController : BaseAPIController
@@ -27,5 +28,6 @@ namespace NEWS.WEB.Controllers
         {
             return ToJson(_categoryServices.GetAll().ToList());
         }
+       
     }
 }
