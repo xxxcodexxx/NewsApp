@@ -22,7 +22,7 @@
 		//Number - The backdrop padding to the side of the label in pixels
 		scaleBackdropPaddingX : 2,
 
-		//Boolean - Show line for each value in the scale
+		//Boolean - Show line for each _value in the scale
 		scaleShowLine : true,
 
 		//Boolean - Stroke a line around each segment in the chart
@@ -31,7 +31,7 @@
 		//String - The colour of the stroke on each segement.
 		segmentStrokeColor : "#fff",
 
-		//Number - The width of the stroke value in pixels
+		//Number - The width of the stroke _value in pixels
 		segmentStrokeWidth : 2,
 
 		//Number - Amount of animation steps
@@ -90,7 +90,7 @@
 				yCenter: this.chart.height/2,
 				ctx : this.chart.ctx,
 				templateString: this.options.scaleLabel,
-				valuesCount: data.length
+				_valuesCount: data.length
 			});
 
 			this.updateScaleRange(data);
@@ -134,8 +134,8 @@
 				fillColor: segment.color,
 				highlightColor: segment.highlight || segment.color,
 				label: segment.label,
-				value: segment.value,
-				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
+				_value: segment._value,
+				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment._value),
 				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
 				startAngle: Math.PI * 1.5
 			}));
@@ -153,25 +153,25 @@
 		calculateTotal: function(data){
 			this.total = 0;
 			helpers.each(data,function(segment){
-				this.total += segment.value;
+				this.total += segment._value;
 			},this);
-			this.scale.valuesCount = this.segments.length;
+			this.scale._valuesCount = this.segments.length;
 		},
 		updateScaleRange: function(datapoints){
-			var valuesArray = [];
+			var _valuesArray = [];
 			helpers.each(datapoints,function(segment){
-				valuesArray.push(segment.value);
+				_valuesArray.push(segment._value);
 			});
 
 			var scaleSizes = (this.options.scaleOverride) ?
 				{
 					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+					step_value: this.options.scaleStepWidth,
+					min: this.options.scaleStart_value,
+					max: this.options.scaleStart_value + (this.options.scaleSteps * this.options.scaleStepWidth)
 				} :
 				helpers.calculateScaleRange(
-					valuesArray,
+					_valuesArray,
 					helpers.min([this.chart.width, this.chart.height])/2,
 					this.options.scaleFontSize,
 					this.options.scaleBeginAtZero,
@@ -214,7 +214,7 @@
 
 			helpers.each(this.segments, function(segment){
 				segment.update({
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
+					outerRadius : this.scale.calculateCenterOffset(segment._value)
 				});
 			}, this);
 
@@ -226,7 +226,7 @@
 			helpers.each(this.segments,function(segment, index){
 				segment.transition({
 					circumference : this.scale.getCircumference(),
-					outerRadius : this.scale.calculateCenterOffset(segment.value)
+					outerRadius : this.scale.calculateCenterOffset(segment._value)
 				},easingDecimal);
 
 				segment.endAngle = segment.startAngle + segment.circumference;

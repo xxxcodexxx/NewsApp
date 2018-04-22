@@ -88,7 +88,7 @@ Most options may be provided as data-attributes on the target element:
         startDate: '-3d'
     });
 
-Defaults for all options can be modified directly by changing values in the ``$.fn.datepicker.defaults`` hash::
+Defaults for all options can be modified directly by changing _values in the ``$.fn.datepicker.defaults`` hash::
 
     $.fn.datepicker.defaults.format = "mm/dd/yyyy";
     $('.datepicker').datepicker({
@@ -109,7 +109,7 @@ No Conflict mode
 
 ``$.fn.datepicker.noConflict`` provides a way to avoid conflict with other jQuery datepicker plugins::
 
-    var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned value
+    var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned _value
     $.fn.bootstrapDP = datepicker;                 // give $().bootstrapDP the bootstrap-datepicker functionality
 
 

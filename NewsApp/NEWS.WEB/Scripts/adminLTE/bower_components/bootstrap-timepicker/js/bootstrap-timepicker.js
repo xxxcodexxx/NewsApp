@@ -259,7 +259,7 @@
         var sel = document.selection.createRange(),
           selLen = document.selection.createRange().text.length;
 
-        sel.moveStart('character', - input.value.length);
+        sel.moveStart('character', - input._value.length);
 
         return sel.text.length - selLen;
       }
@@ -366,7 +366,7 @@
       this.$element.trigger({
         'type': 'hide.timepicker',
         'time': {
-          'value': this.getTime(),
+          '_value': this.getTime(),
           'hours': this.hour,
           'minutes': this.minute,
           'seconds': this.second,
@@ -639,7 +639,7 @@
     },
 
     /**
-     * Given a segment value like 43, will round and snap the segment
+     * Given a segment _value like 43, will round and snap the segment
      * to the nearest "step", like 45 if step is 15. Segment will
      * "overflow" to 0 if it's larger than 59 or would otherwise
      * round up to 60.
@@ -924,7 +924,7 @@
       this.$element.trigger({
         'type': 'show.timepicker',
         'time': {
-          'value': this.getTime(),
+          '_value': this.getTime(),
           'hours': this.hour,
           'minutes': this.minute,
           'seconds': this.second,
@@ -970,7 +970,7 @@
       this.$element.trigger({
         'type': 'changeTime.timepicker',
         'time': {
-          'value': this.getTime(),
+          '_value': this.getTime(),
           'hours': this.hour,
           'minutes': this.minute,
           'seconds': this.second,

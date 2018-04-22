@@ -10,11 +10,11 @@
  */
 var Color = function(
   val, predefinedColors, fallbackColor, fallbackFormat, hexNumberSignPrefix) {
-  this.fallbackValue = fallbackColor ?
+  this.fallback_value = fallbackColor ?
     (
       fallbackColor && (typeof fallbackColor.h !== 'undefined') ?
       fallbackColor :
-      this.value = {
+      this._value = {
         h: 0,
         s: 0,
         b: 0,
@@ -27,7 +27,7 @@ var Color = function(
 
   this.hexNumberSignPrefix = hexNumberSignPrefix === true;
 
-  this.value = this.fallbackValue;
+  this._value = this.fallback_value;
 
   this.origFormat = null; // original string format
 
@@ -38,15 +38,15 @@ var Color = function(
 
   if (val) {
     if (typeof val.h !== 'undefined') {
-      this.value = val;
+      this._value = val;
     } else {
       this.setColor(String(val));
     }
   }
 
-  if (!this.value) {
-    // Initial value is always black if no arguments are passed or val is empty
-    this.value = {
+  if (!this._value) {
+    // Initial _value is always black if no arguments are passed or val is empty
+    this._value = {
       h: 0,
       s: 0,
       b: 0,
@@ -206,14 +206,14 @@ Color.prototype = {
   /**
    * @return {Object}
    */
-  getValue: function() {
-    return this.value;
+  get_value: function() {
+    return this._value;
   },
   /**
    * @param {Object} val
    */
-  setValue: function(val) {
-    this.value = val;
+  set_value: function(val) {
+    this._value = val;
   },
   _sanitizeNumber: function(val) {
     if (typeof val === 'number') {
@@ -253,7 +253,7 @@ Color.prototype = {
     strVal = strVal.toLowerCase().trim();
     if (strVal) {
       if (this.isTransparent(strVal)) {
-        this.value = {
+        this._value = {
           h: 0,
           s: 0,
           b: 0,
@@ -263,7 +263,7 @@ Color.prototype = {
       } else {
         var parsedColor = this.parse(strVal);
         if (parsedColor) {
-          this.value = this.value = {
+          this._value = this._value = {
             h: parsedColor.h,
             s: parsedColor.s,
             b: parsedColor.b,
@@ -272,32 +272,32 @@ Color.prototype = {
           if (!this.origFormat) {
             this.origFormat = parsedColor.format;
           }
-        } else if (this.fallbackValue) {
-          // if parser fails, defaults to fallbackValue if defined, otherwise the value won't be changed
-          this.value = this.fallbackValue;
+        } else if (this.fallback_value) {
+          // if parser fails, defaults to fallback_value if defined, otherwise the _value won't be changed
+          this._value = this.fallback_value;
         }
       }
     }
     return false;
   },
   setHue: function(h) {
-    this.value.h = 1 - h;
+    this._value.h = 1 - h;
   },
   setSaturation: function(s) {
-    this.value.s = s;
+    this._value.s = s;
   },
   setBrightness: function(b) {
-    this.value.b = 1 - b;
+    this._value.b = 1 - b;
   },
   setAlpha: function(a) {
-    this.value.a = Math.round((parseInt((1 - a) * 100, 10) / 100) * 100) / 100;
+    this._value.a = Math.round((parseInt((1 - a) * 100, 10) / 100) * 100) / 100;
   },
   toRGB: function(h, s, b, a) {
     if (arguments.length === 0) {
-      h = this.value.h;
-      s = this.value.s;
-      b = this.value.b;
-      a = this.value.a;
+      h = this._value.h;
+      s = this._value.s;
+      b = this._value.b;
+      a = this._value.a;
     }
 
     h *= 360;
@@ -321,10 +321,10 @@ Color.prototype = {
   },
   toHex: function(h, s, b, a) {
     if (arguments.length === 0) {
-      h = this.value.h;
-      s = this.value.s;
-      b = this.value.b;
-      a = this.value.a;
+      h = this._value.h;
+      s = this._value.s;
+      b = this._value.b;
+      a = this._value.a;
     }
 
     var rgb = this.toRGB(h, s, b, a);
@@ -345,10 +345,10 @@ Color.prototype = {
   },
   toHSL: function(h, s, b, a) {
     if (arguments.length === 0) {
-      h = this.value.h;
-      s = this.value.s;
-      b = this.value.b;
-      a = this.value.a;
+      h = this._value.h;
+      s = this._value.s;
+      b = this._value.b;
+      a = this._value.a;
     }
 
     var H = h,
@@ -456,7 +456,7 @@ Color.prototype = {
     var that = this,
       result = false,
       isAlias = (typeof this.colors[strVal] !== 'undefined'),
-      values, format;
+      _values, format;
 
     if (isAlias) {
       strVal = this.colors[strVal].toLowerCase().trim();
@@ -464,14 +464,14 @@ Color.prototype = {
 
     $.each(this.stringParsers, function(i, parser) {
       var match = parser.re.exec(strVal);
-      values = match && parser.parse.apply(that, [match]);
-      if (values) {
+      _values = match && parser.parse.apply(that, [match]);
+      if (_values) {
         result = {};
         format = (isAlias ? 'alias' : (parser.format ? parser.format : that.getValidFallbackFormat()));
         if (format.match(/hsla?/)) {
-          result = that.RGBtoHSB.apply(that, that.HSLtoRGB.apply(that, values));
+          result = that.RGBtoHSB.apply(that, that.HSLtoRGB.apply(that, _values));
         } else {
-          result = that.RGBtoHSB.apply(that, values);
+          result = that.RGBtoHSB.apply(that, _values);
         }
         if (result instanceof Object) {
           result.format = format;

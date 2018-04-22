@@ -11,7 +11,7 @@ The simplest case: focusing the input (clicking or tabbing into it) will show th
 
 .. code-block:: html
 
-    <input type="text" class="form-control" value="02-16-2012">
+    <input type="text" class="form-control" _value="02-16-2012">
 
 .. figure:: _static/screenshots/markup_input.png
     :align: center
@@ -24,7 +24,7 @@ Adding the ``date`` class to an ``input-group`` bootstrap component will allow t
 .. code-block:: html
 
     <div class="input-group date">
-        <input type="text" class="form-control" value="12-02-2012">
+        <input type="text" class="form-control" _value="12-02-2012">
         <div class="input-group-addon">
             <span class="glyphicon glyphicon-th"></span>
         </div>
@@ -43,9 +43,9 @@ Using the ``input-daterange`` construct with multiple child inputs will instanti
 .. code-block:: html
 
     <div class="input-group input-daterange">
-        <input type="text" class="form-control" value="2012-04-05">
+        <input type="text" class="form-control" _value="2012-04-05">
         <div class="input-group-addon">to</div>
-        <input type="text" class="form-control" value="2012-04-19">
+        <input type="text" class="form-control" _value="2012-04-19">
     </div>
 
 .. figure:: _static/screenshots/markup_daterange.png
@@ -72,7 +72,7 @@ Instantiating the datepicker on a simple div will give an embedded picker that i
     :align: center
 
 
-Example to save the embedded datepicker value to a hidden field
+Example to save the embedded datepicker _value to a hidden field
 
 .. code-block:: html
 

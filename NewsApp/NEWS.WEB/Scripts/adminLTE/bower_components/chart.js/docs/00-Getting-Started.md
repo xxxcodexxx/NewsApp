@@ -88,10 +88,10 @@ Chart.defaults.global = {
 	// ** Required if scaleOverride is true **
 	// Number - The number of steps in a hard coded scale
 	scaleSteps: null,
-	// Number - The value jump in the hard coded scale
+	// Number - The _value jump in the hard coded scale
 	scaleStepWidth: null,
-	// Number - The scale starting value
-	scaleStartValue: null,
+	// Number - The scale starting _value
+	scaleStart_value: null,
 
 	// String - Colour of the scale line
 	scaleLineColor: "rgba(0,0,0,.1)",
@@ -102,13 +102,13 @@ Chart.defaults.global = {
 	// Boolean - Whether to show labels on the scale
 	scaleShowLabels: true,
 
-	// Interpolated JS string - can access value
-	scaleLabel: "<%=value%>",
+	// Interpolated JS string - can access _value
+	scaleLabel: "<%=_value%>",
 
 	// Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
 	scaleIntegersOnly: true,
 
-	// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+	// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest _value
 	scaleBeginAtZero: false,
 
 	// String - Scale label font declaration for the scale label
@@ -181,10 +181,10 @@ Chart.defaults.global = {
 	tooltipXOffset: 10,
 	{% raw %}
 	// String - Template string for single tooltips
-	tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+	tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= _value %>",
 	{% endraw %}
 	// String - Template string for multiple tooltips
-	multiTooltipTemplate: "<%= value %>",
+	multiTooltipTemplate: "<%= _value %>",
 
 	// Function - Will fire on animation progression.
 	onAnimationProgress: function(){},

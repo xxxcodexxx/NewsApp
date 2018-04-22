@@ -6,11 +6,11 @@ Changelog
 
 ## Features
  * Adding dateCells option (#1723)
- * Added keepEmptyValues option (#1558 + #1901)
+ * Added keepEmpty_values option (#1558 + #1901)
  * added "changeViewMode" event; also adds the current `viewMode` to events (#1953)
  * adds `updateViewDate` option (#1982)
  * Added hiding week day names functionality (#2087)
- * Allow customizing day cell value (#2043)
+ * Allow customizing day cell _value (#2043)
 
 ## Bugfixes
  * originalEvent object needs preventDefault fn (#1824)
@@ -34,7 +34,7 @@ Changelog
  * Use display:table-cell instead of display:block for today, clear and title (#2121)
  * moved assumeNearbyYear to correct location (#2140)
  * move `jquery` to `peerDependencies` from `dependencies` (#2163)
- * Use default arrow values (#2176)
+ * Use default arrow _values (#2176)
 
 ## Locales
 ### New
@@ -274,7 +274,7 @@ Bugfixes:
 * Removed comment from compiled CSS.
 * Don't clear input after typing date and hitting Enter when keyboard nav is disabled
 * Fixing the ui displaying 'undefined nan' when typing dates in Firefox & IE 
-* Reset tooltip to a default empty value 
+* Reset tooltip to a default empty _value 
 * Fix colspan if calendarWeeks & clearBtn are true 
 * Removed fixed width and height in large and small group addon
 * z-index calculation should not stop at first element
@@ -295,10 +295,10 @@ Updated languages:
 * Ukrainian translation fixes
 * Add spanish clear, week start and format
 * Added galician clear, week start and format
-* Added missing clear localization value for polish translation
+* Added missing clear localization _value for polish translation
 * Add clear zh-CN translation
 * Fixed Albanian translation typo's
-* Add missing clear and format localization value for Russian translation
+* Add missing clear and format localization _value for Russian translation
 * Updated Serbian translation
 * Fixed Ukrainian iso code to uk instead of ua 
 * Updated greek translation
@@ -368,7 +368,7 @@ Bug squashed:
 * Fix for large years causing an infinite loop in date parsing
 * Fixed cases where `changeYear` and `changeMonth` events were not being triggered
 * `component.js` moved to `bower.js`
-* Falsey values for `startDate` and `endDate` translate to `-Infinity` and `Infinity`, respectively (effectively, falsey values mean "no bounds")
+* Falsey _values for `startDate` and `endDate` translate to `-Infinity` and `Infinity`, respectively (effectively, falsey _values mean "no bounds")
 * Fixed `autoclose` for non-input, non-component elements
 * Fixed 50% param in `mix()` less function -- expands compatibility with less compilers
 * Fixed `update` method to update the selected date
@@ -377,7 +377,7 @@ Bug squashed:
 * Fixed selected date not being automatically constrained to the specified range when `setStartDate` and `setEndDate` were called.
 * No longer uses jQuery's `.size()` (deprecated in favor of `.length`)
 * `changeDate` triggered during manual user input
-* `change` event fired when input value changed, it wasn't in some cases
+* `change` event fired when input _value changed, it wasn't in some cases
 
 Locale changes:
 * Added Arabic, Norwegian, Georgian
@@ -423,11 +423,11 @@ New features:
   * `clearBtn`, a button for resetting the picker.
 
 Internal changes:
-* Cleaner and more reliable method for extracting options from all potential sources (defaults, locale overrides, data-attrs, and instantiation options, in that order).  This also populates `$.fn.datepicker.defaults` with the default values, and uses this hash as the actual source of defaults, meaning you can globally change the default value for a given option.
+* Cleaner and more reliable method for extracting options from all potential sources (defaults, locale overrides, data-attrs, and instantiation options, in that order).  This also populates `$.fn.datepicker.defaults` with the default _values, and uses this hash as the actual source of defaults, meaning you can globally change the default _value for a given option.
 
 Bugs squashed:
 * Resolved a conflict with bootstrap's native `.switch` class.
-* Fixed a bug with components where they would be stuck with a stale value when editing the value manually.
+* Fixed a bug with components where they would be stuck with a stale _value when editing the _value manually.
 * The `date` attributes on events are now local dates instead of internal UTC dates.
 * Separate `Date` objects for internal selected and view date references.
 * Clicking multiple times inside inputs no longer hides the picker.

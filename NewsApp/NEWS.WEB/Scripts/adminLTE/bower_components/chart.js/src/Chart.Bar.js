@@ -7,7 +7,7 @@
 
 
 	var defaultConfig = {
-		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest _value
 		scaleBeginAtZero : true,
 
 		//Boolean - Whether grid lines are shown across the chart
@@ -31,10 +31,10 @@
 		//Number - Pixel width of the bar stroke
 		barStrokeWidth : 2,
 
-		//Number - Spacing between each of the X value sets
-		barValueSpacing : 5,
+		//Number - Spacing between each of the X _value sets
+		bar_valueSpacing : 5,
 
-		//Number - Spacing between data sets within X values
+		//Number - Spacing between data sets within X _values
 		barDatasetSpacing : 1,
 
 		//String - A legend template
@@ -62,7 +62,7 @@
 					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
 				},
 				calculateBaseWidth : function(){
-					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
+					return (this.calculateX(1) - this.calculateX(0)) - (2*options.bar_valueSpacing);
 				},
 				calculateBarWidth : function(datasetCount){
 					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
@@ -112,7 +112,7 @@
 				helpers.each(dataset.data,function(dataPoint,index){
 					//Add a new point for each piece of data, passing any required data to draw.
 					datasetObject.bars.push(new this.BarClass({
-						value : dataPoint,
+						_value : dataPoint,
 						label : data.labels[index],
 						datasetLabel: dataset.label,
 						strokeColor : dataset.strokeColor,
@@ -179,11 +179,11 @@
 			var self = this;
 
 			var dataTotal = function(){
-				var values = [];
+				var _values = [];
 				self.eachBars(function(bar){
-					values.push(bar.value);
+					_values.push(bar._value);
 				});
-				return values;
+				return _values;
 			};
 
 			var scaleOptions = {
@@ -195,7 +195,7 @@
 				fontSize : this.options.scaleFontSize,
 				fontStyle : this.options.scaleFontStyle,
 				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
+				_valuesCount : labels.length,
 				beginAtZero : this.options.scaleBeginAtZero,
 				integersOnly : this.options.scaleIntegersOnly,
 				calculateYRange: function(currentHeight){
@@ -225,22 +225,22 @@
 				helpers.extend(scaleOptions, {
 					calculateYRange: helpers.noop,
 					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+					step_value: this.options.scaleStepWidth,
+					min: this.options.scaleStart_value,
+					max: this.options.scaleStart_value + (this.options.scaleSteps * this.options.scaleStepWidth)
 				});
 			}
 
 			this.scale = new this.ScaleClass(scaleOptions);
 		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			helpers.each(valuesArray,function(value,datasetIndex){
+		addData : function(_valuesArray,label){
+			//Map the _values array for each of the datasets
+			helpers.each(_valuesArray,function(_value,datasetIndex){
 				//Add a new point for each piece of data, passing any required data to draw.
 				this.datasets[datasetIndex].bars.push(new this.BarClass({
-					value : value,
+					_value : _value,
 					label : label,
-					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale._valuesCount+1),
 					y: this.scale.endPoint,
 					width : this.scale.calculateBarWidth(this.datasets.length),
 					base : this.scale.endPoint,
@@ -283,12 +283,12 @@
 			//Draw all the bars for each dataset
 			helpers.each(this.datasets,function(dataset,datasetIndex){
 				helpers.each(dataset.bars,function(bar,index){
-					if (bar.hasValue()){
+					if (bar.has_value()){
 						bar.base = this.scale.endPoint;
 						//Transition then draw
 						bar.transition({
 							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
-							y : this.scale.calculateY(bar.value),
+							y : this.scale.calculateY(bar._value),
 							width : this.scale.calculateBarWidth(this.datasets.length)
 						}, easingDecimal).draw();
 					}

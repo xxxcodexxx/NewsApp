@@ -6,7 +6,7 @@ There are also aliases for the relative timedelta's: "yesterday" equals "-1d", "
 
 Most options can be provided via data-attributes.  An option can be converted to a data-attribute by taking its name, replacing each uppercase letter with its lowercase equivalent preceded by a dash, and prepending "data-date-" to the result.  For example, ``startDate`` would be ``data-date-start-date``, ``format`` would be ``data-date-format``, and ``daysOfWeekDisabled`` would be ``data-date-days-of-week-disabled``.
 
-See the `quick reference`_ for an overview of all options and their default values
+See the `quick reference`_ for an overview of all options and their default _values
 
 autoclose
 ---------
@@ -31,15 +31,15 @@ beforeShowDay
 
 Function(Date).  Default: $.noop
 
-A function that takes a date as a parameter and returns one of the following values:
+A function that takes a date as a parameter and returns one of the following _values:
 
  * undefined to have no effect
  * A Boolean, indicating whether or not this date is selectable
  * A String representing additional CSS classes to apply to the date's cell
  * An object with the following properties:
 
-   * ``enabled``: same as the Boolean value above
-   * ``classes``: same as the String value above
+   * ``enabled``: same as the Boolean _value above
+   * ``classes``: same as the String _value above
    * ``tooltip``: a tooltip to apply to this date, via the ``title`` HTML attribute
    * ``content``: the content to display in the day cell, rather than the default (day of month as text)
 
@@ -49,15 +49,15 @@ beforeShowMonth
 
 Function(Date).  Default: $.noop
 
-A function that takes a date as a parameter and returns one of the following values:
+A function that takes a date as a parameter and returns one of the following _values:
 
  * undefined to have no effect
  * A Boolean, indicating whether or not this month is selectable
  * A String representing additional CSS classes to apply to the month's cell
  * An object with the following properties:
 
-   * ``enabled``: same as the Boolean value above
-   * ``classes``: same as the String value above
+   * ``enabled``: same as the Boolean _value above
+   * ``classes``: same as the String _value above
    * ``tooltip``: a tooltip to apply to this date, via the ``title`` HTML attribute
 
 
@@ -66,15 +66,15 @@ beforeShowYear
 
 Function(Date).  Default: $.noop
 
-A function that takes a date as a parameter and returns one of the following values:
+A function that takes a date as a parameter and returns one of the following _values:
 
  * undefined to have no effect
  * A Boolean, indicating whether or not this year is selectable
  * A String representing additional CSS classes to apply to the year's cell
  * An object with the following properties:
 
-   * ``enabled``: same as the Boolean value above
-   * ``classes``: same as the String value above
+   * ``enabled``: same as the Boolean _value above
+   * ``classes``: same as the String _value above
    * ``tooltip``: a tooltip to apply to this year, via the ``title`` HTML attribute
 
 
@@ -83,15 +83,15 @@ beforeShowDecade
 
 Function(Date).  Default: $.noop
 
-A function that takes a date as a parameter and returns one of the following values:
+A function that takes a date as a parameter and returns one of the following _values:
 
  * undefined to have no effect
  * A Boolean, indicating whether or not this year is selectable
  * A String representing additional CSS classes to apply to the year's cell
  * An object with the following properties:
 
-   * ``enabled``: same as the Boolean value above
-   * ``classes``: same as the String value above
+   * ``enabled``: same as the Boolean _value above
+   * ``classes``: same as the String _value above
    * ``tooltip``: a tooltip to apply to this year, via the ``title`` HTML attribute
 
 
@@ -100,15 +100,15 @@ beforeShowCentury
 
 Function(Date).  Default: $.noop
 
-A function that takes a date as a parameter and returns one of the following values:
+A function that takes a date as a parameter and returns one of the following _values:
 
  * undefined to have no effect
  * A Boolean, indicating whether or not this year is selectable
  * A String representing additional CSS classes to apply to the year's cell
  * An object with the following properties:
 
-   * ``enabled``: same as the Boolean value above
-   * ``classes``: same as the String value above
+   * ``enabled``: same as the Boolean _value above
+   * ``classes``: same as the String _value above
    * ``tooltip``: a tooltip to apply to this year, via the ``title`` HTML attribute
 
 
@@ -128,7 +128,7 @@ clearBtn
 
 Boolean.  Default: false
 
-If true, displays a "Clear" button at the bottom of the datepicker to clear the input value. If "autoclose" is also set to true, this button will also close the datepicker.
+If true, displays a "Clear" button at the bottom of the datepicker to clear the input _value. If "autoclose" is also set to true, this button will also close the datepicker.
 
 .. figure:: _static/screenshots/option_clearbtn.png
     :align: center
@@ -159,7 +159,7 @@ daysOfWeekDisabled
 
 String, Array.  Default: []
 
-Days of the week that should be disabled. Values are 0 (Sunday) to 6 (Saturday). Multiple values should be comma-separated. Example: disable weekends: ``'06'`` or ``'0,6'`` or ``[0,6]``.
+Days of the week that should be disabled. _values are 0 (Sunday) to 6 (Saturday). Multiple _values should be comma-separated. Example: disable weekends: ``'06'`` or ``'0,6'`` or ``[0,6]``.
 
 .. figure:: _static/screenshots/option_daysofweekdisabled.png
     :align: center
@@ -172,7 +172,7 @@ daysOfWeekHighlighted
 
 String, Array.  Default: []
 
-Days of the week that should be highlighted. Values are 0 (Sunday) to 6 (Saturday). Multiple values should be comma-separated. Example: highlight weekends: ``'06'`` or ``'0,6'`` or ``[0,6]``.
+Days of the week that should be highlighted. _values are 0 (Sunday) to 6 (Saturday). Multiple _values should be comma-separated. Example: highlight weekends: ``'06'`` or ``'0,6'`` or ``[0,6]``.
 
 
 defaultViewDate
@@ -180,7 +180,7 @@ defaultViewDate
 
 Date, String or Object with keys ``year``, ``month``, and ``day``. Default: today
 
-Date to view when initially opening the calendar. The internal value of the date remains today as default, but when the datepicker is first opened the calendar will open to ``defaultViewDate`` rather than today. If this option is not used, "today" remains the default view date.
+Date to view when initially opening the calendar. The internal _value of the date remains today as default, but when the datepicker is first opened the calendar will open to ``defaultViewDate`` rather than today. If this option is not used, "today" remains the default view date.
 
 This option can be:
  * A date, which should be in local timezone.
@@ -233,7 +233,7 @@ forceParse
 
 Boolean.  Default: true
 
-Whether or not to force parsing of the input value when the picker is closed.  That is, when an invalid date is left in the input field by the user, the picker will forcibly parse that value, and set the input's value to the new, valid date, conforming to the given `format`.
+Whether or not to force parsing of the input _value when the picker is closed.  That is, when an invalid date is left in the input field by the user, the picker will forcibly parse that _value, and set the input's _value to the new, valid date, conforming to the given `format`.
 
 
 format
@@ -254,7 +254,7 @@ Object.
 Custom formatting options
 
 * toDisplay: function (date, format, language) to convert date object to string, that will be stored in input field
-* toValue: function (date, format, language) to convert string object to date, that will be used in date selection
+* to_value: function (date, format, language) to convert string object to date, that will be used in date selection
 
 ::
 
@@ -271,7 +271,7 @@ Custom formatting options
                 d.setDate(d.getDate() - 7);
                 return d.toISOString();
             },
-            toValue: function (date, format, language) {
+            to_value: function (date, format, language) {
                 var d = new Date(date);
                 d.setDate(d.getDate() + 7);
                 return new Date(d);
@@ -285,7 +285,7 @@ immediateUpdates
 
 Boolean. Default: false
 
-If true, selecting a year or month in the datepicker will update the input value immediately. Otherwise, only selecting a day of the month will update the input value immediately.
+If true, selecting a year or month in the datepicker will update the input _value immediately. Otherwise, only selecting a day of the month will update the input _value immediately.
 
 
 inputs
@@ -309,12 +309,12 @@ A list of inputs to be used in a range picker, which will be attached to the sel
     });
 
 
-keepEmptyValues
+keepEmpty_values
 ---------------
 
 Boolean. Default: false
 
-Only effective in a range picker. If true, the selected value does not get propagated to other, currently empty, pickers in the range.
+Only effective in a range picker. If true, the selected _value does not get propagated to other, currently empty, pickers in the range.
 
 
 keyboardNavigation
@@ -332,7 +332,7 @@ language
 
 String.  Default: "en"
 
-The IETF code (eg  "en" for English, "pt-BR" for Brazilian Portuguese) of the language to use for month and day names.  These will also be used as the input's value (and subsequently sent to the server in the case of form submissions).  If a full code (eg "de-DE") is supplied the picker will first check for an "de-DE" language and if not found will fallback and check for a "de" language.  If an unknown language code is given, English will be used.  See :doc:`i18n`.
+The IETF code (eg  "en" for English, "pt-BR" for Brazilian Portuguese) of the language to use for month and day names.  These will also be used as the input's _value (and subsequently sent to the server in the case of form submissions).  If a full code (eg "de-DE") is supplied the picker will first check for an "de-DE" language and if not found will fallback and check for a "de" language.  If an unknown language code is given, English will be used.  See :doc:`i18n`.
 
 .. figure:: _static/screenshots/option_language.png
     :align: center
@@ -361,7 +361,7 @@ multidate
 
 Boolean, Number.  Default: false
 
-Enable multidate picking.  Each date in month view acts as a toggle button, keeping track of which dates the user has selected in order.  If a number is given, the picker will limit how many dates can be selected to that number, dropping the oldest dates from the list when the number is exceeded.  ``true`` equates to no limit.  The input's value (if present) is set to a string generated by joining the dates, formatted, with ``multidateSeparator``.
+Enable multidate picking.  Each date in month view acts as a toggle button, keeping track of which dates the user has selected in order.  If a number is given, the picker will limit how many dates can be selected to that number, dropping the oldest dates from the list when the number is exceeded.  ``true`` equates to no limit.  The input's _value (if present) is set to a string generated by joining the dates, formatted, with ``multidateSeparator``.
 
 For selecting 2 dates as a range please see :ref:`daterange`
 
@@ -374,7 +374,7 @@ multidateSeparator
 
 String.  Default: ","
 
-The string that will appear between dates when generating the input's value.  When parsing the input's value for a multidate picker, this will also be used to split the incoming string to separate multiple formatted dates; as such, it is highly recommended that you not use a string that could be a substring of a formatted date (eg, using '-' to separate dates when your format is 'yyyy-mm-dd').
+The string that will appear between dates when generating the input's _value.  When parsing the input's _value for a multidate picker, this will also be used to split the incoming string to separate multiple formatted dates; as such, it is highly recommended that you not use a string that could be a substring of a formatted date (eg, using '-' to separate dates when your format is 'yyyy-mm-dd').
 
 
 orientation
@@ -493,7 +493,7 @@ updateViewDate
 
 Boolean. Default: true
 
-If false viewDate is set according to `value` on initialization and updated
+If false viewDate is set according to `_value` on initialization and updated
 * if a day in last oder next month is selected or
 * if dates are changed by `setDate`, `setDates`, `setUTCDate` and `setUTCDates` methods.
 If `multidate` option is `true` the last selected date or the last date in array
@@ -520,10 +520,10 @@ The CSS z-index of the open datepicker is the maximum z-index of the input and a
 Quick reference
 ===============
 
-This is a quick overview of all the options and their default values
+This is a quick overview of all the options and their default _values
 
 =====================        =============
-Option                       Default value
+Option                       Default _value
 =====================        =============
 autoclose                    false
 assumeNearbyYear             false
@@ -546,7 +546,7 @@ forceParse                   true
 format                       'mm/dd/yyyy'
 immediateUpdates             false
 inputs
-keepEmptyValues              false
+keepEmpty_values              false
 keyboardNavigation           true
 language                     'en'
 maxViewMode                  4 'centuries'

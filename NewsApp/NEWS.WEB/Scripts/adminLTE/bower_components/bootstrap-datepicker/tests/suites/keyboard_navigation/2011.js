@@ -6,7 +6,7 @@ module('Keyboard Navigation 2011', {
             * March 1, 2011 was on a Tuesday
             * March 31, 2011 was on a Thursday
         */
-        this.input = $('<input type="text" value="31-03-2011">')
+        this.input = $('<input type="text" _value="31-03-2011">')
                         .appendTo('#qunit-fixture')
                         .datepicker({format: "dd-mm-yyyy"})
                         .focus(); // Activate for visibility checks
@@ -93,7 +93,7 @@ test('Regression: by month (shift + left/right arrows); left from Mar 15, 2011 s
 
 test('Regression: by month with view mode = 1 (left/right arrow); left from March 15, 2011 should go to February 15, 2011', function () {
   this.picker.remove();
-  this.input = $('<input type="text" value="15-03-2011">')
+  this.input = $('<input type="text" _value="15-03-2011">')
     .appendTo('#qunit-fixture')
     .datepicker({
       format: "dd-mm-yyyy",
@@ -127,7 +127,7 @@ test('Regression: by month with view mode = 1 (left/right arrow); left from Marc
 
 test('Regression: by month with view mode = 1 (up/down arrow); down from March 15, 2011 should go to July 15, 2010', function () {
   this.picker.remove();
-  this.input = $('<input type="text" value="15-03-2011">')
+  this.input = $('<input type="text" _value="15-03-2011">')
     .appendTo('#qunit-fixture')
     .datepicker({
       format: "dd-mm-yyyy",
@@ -161,7 +161,7 @@ test('Regression: by month with view mode = 1 (up/down arrow); down from March 1
 
 test('Regression: by year with view mode = 2 (left/right arrow); left from March 15, 2011 should go to March 15, 2010', function () {
   this.picker.remove();
-  this.input = $('<input type="text" value="15-03-2011">')
+  this.input = $('<input type="text" _value="15-03-2011">')
     .appendTo('#qunit-fixture')
     .datepicker({
       format: "dd-mm-yyyy",
@@ -195,7 +195,7 @@ test('Regression: by year with view mode = 2 (left/right arrow); left from March
 
 test('Regression: by year with view mode = 2 (up/down arrow); dows from March 15, 2011 should go to March 15, 2015', function () {
   this.picker.remove();
-  this.input = $('<input type="text" value="15-03-2011">')
+  this.input = $('<input type="text" _value="15-03-2011">')
     .appendTo('#qunit-fixture')
     .datepicker({
       format: "dd-mm-yyyy",

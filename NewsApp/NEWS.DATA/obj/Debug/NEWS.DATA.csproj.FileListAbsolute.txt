@@ -1,9 +1,13 @@
+D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.dll.config
+D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.dll
+D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.pdb
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\EntityFramework.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\EntityFramework.SqlServer.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.COMMON.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.CORE.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.COMMON.pdb
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.CORE.pdb
+D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.CORE.dll.config
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\EntityFramework.xml
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\EntityFramework.SqlServer.xml
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\obj\Debug\NEWS.DATA.csprojResolveAssemblyReference.cache
@@ -11,7 +15,3 @@ D:\DATH\NewsApp\NewsApp\NEWS.DATA\obj\Debug\NEWS.DATA.csproj.CoreCompileInputs.c
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\obj\Debug\NEWS.DATA.csproj.CopyComplete
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\obj\Debug\NEWS.DATA.dll
 D:\DATH\NewsApp\NewsApp\NEWS.DATA\obj\Debug\NEWS.DATA.pdb
-D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.dll.config
-D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.dll
-D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.DATA.pdb
-D:\DATH\NewsApp\NewsApp\NEWS.DATA\bin\Debug\NEWS.CORE.dll.config

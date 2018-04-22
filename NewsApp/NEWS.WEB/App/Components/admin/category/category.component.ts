@@ -4,13 +4,8 @@ import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms'
 import { ICategory } from '../../../Models/category';
 import { BsModalComponent } from 'ng2-bs3-modal';
 import { DBOperation } from '../../../Shared/enum';
-//import { commondisplay } from "../../../Shared/commondisplay";
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
-//import { filter } from 'rxjs/operator/filter';
-//import { debounce } from 'rxjs/operator/debounce';
-//import { elementAt } from 'rxjs/operator/elementAt';
-//import { debug } from 'util';
 
 @Component({
     templateUrl: '/App/Components/admin/category/category.component.html'
@@ -79,15 +74,21 @@ export class CategoryComponent implements OnInit {
 
         switch (this.dbops) {
             case DBOperation.create:
-                this._categoryService.post(Global.BASE_CATEGORY_ENDPOINT, formData._value).subscribe(
+                this._categoryService.post(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
                             this.msg = "Data successfully added.";
+                            setTimeout(() => {
+                                this.msg = null;
+                            }, 2000);
                             this.LoadCategories();
                         }
                         else {
-                            this.msg = "There is some issue in saving records, please contact to system administrator!"
+                            this.msg = "There is some issue in saving records, please contact to system administrator!";
+                            setTimeout(() => {
+                                this.msg = null;
+                            }, 2000);
                         }
 
                         this.modal.dismiss();
@@ -98,15 +99,21 @@ export class CategoryComponent implements OnInit {
                 );
                 break;
             case DBOperation.update:
-                this._categoryService.put(Global.BASE_CATEGORY_ENDPOINT, formData._value.Id, formData._value).subscribe(
+                this._categoryService.put(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
                             this.msg = "Data successfully updated.";
+                            setTimeout(() => {
+                                this.msg = null;
+                            }, 2000);
                             this.LoadCategories();
                         }
                         else {
-                            this.msg = "There is some issue in saving records, please contact to system administrator!"
+                            this.msg = "There is some issue in saving records, please contact to system administrator!";
+                            setTimeout(() => {
+                                this.msg = null;
+                            }, 2000);
                         }
 
                         this.modal.dismiss();
@@ -117,15 +124,21 @@ export class CategoryComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._categoryService.delete(Global.BASE_CATEGORY_ENDPOINT, formData._value.Id).subscribe(
+                this._categoryService.delete(Global.BASE_CATEGORY_ENDPOINT, formData.value.CategoryId).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
                             this.msg = "Data successfully deleted.";
+                            setTimeout(() => {
+                                this.msg = null;
+                            }, 2000);
                             this.LoadCategories();
                         }
                         else {
-                            this.msg = "There is some issue in saving records, please contact to system administrator!"
+                            this.msg = "There is some issue in saving records, please contact to system administrator!";
+                            setTimeout(() => {
+                                this.msg = null;
+                            }, 2000);
                         }
 
                         this.modal.dismiss();

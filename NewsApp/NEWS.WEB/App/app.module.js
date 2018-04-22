@@ -14,9 +14,18 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var http_1 = require("@angular/http");
 var app_routing_1 = require("./app.routing");
-var category_component_1 = require("./components/category.component");
 var home_component_1 = require("./components/home.component");
 var category_service_1 = require("./Service/category.service");
+var main_header_module_1 = require("./Components/admin/main-header/main-header.module");
+var aside_module_1 = require("./Components/admin/aside/aside.module");
+var aside_right_module_1 = require("./Components/admin/aside-right/aside-right.module");
+var app_footer_module_1 = require("./Components/admin/app-footer/app-footer.module");
+var category_module_1 = require("./Components/admin/category/category.module");
+var news_module_1 = require("./Components/admin/news/news.module");
+var account_module_1 = require("./Components/admin/account/account.module");
+var permission_module_1 = require("./Components/admin/permission/permission.module");
+var comment_module_1 = require("./Components/admin/comment/comment.module");
+var feedback_module_1 = require("./Components/admin/feedback/feedback.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -27,9 +36,19 @@ var AppModule = /** @class */ (function () {
                 animations_1.BrowserAnimationsModule,
                 forms_1.ReactiveFormsModule,
                 http_1.HttpModule,
-                app_routing_1.routing
+                app_routing_1.AppRoutingModule,
+                main_header_module_1.MainHeaderModule,
+                aside_module_1.AsideModule,
+                aside_right_module_1.RightAsideModule,
+                app_footer_module_1.FooterModule,
+                category_module_1.CategoryModule,
+                news_module_1.NewsModule,
+                account_module_1.AccountModule,
+                permission_module_1.PermissionModule,
+                comment_module_1.CommentModule,
+                feedback_module_1.FeedbackModule
             ],
-            declarations: [app_component_1.AppComponent, category_component_1.CategoryComponent, home_component_1.HomeComponent],
+            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
             providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, category_service_1.CategoryService],
             bootstrap: [app_component_1.AppComponent]
         })

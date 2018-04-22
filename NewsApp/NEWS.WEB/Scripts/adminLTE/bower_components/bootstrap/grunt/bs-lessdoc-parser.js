@@ -70,9 +70,9 @@ function SectionDocstring(markdownString) {
   this.html = markdown2html(markdownString);
 }
 
-function Variable(name, defaultValue) {
+function Variable(name, default_value) {
   this.name = name;
-  this.defaultValue = defaultValue;
+  this.default_value = default_value;
   this.docstring = null;
 }
 

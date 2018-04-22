@@ -24,11 +24,11 @@ export class CategoryService {
             .catch(this.handleError);
     }
 
-    put(url: string, id: number, model: any): Observable<any> {
+    put(url: string, model: any): Observable<any> {
         let body = JSON.stringify(model);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http.put(url + id, body, options)
+        return this._http.put(url, body, options)
             .map((response: Response) => <any>response.json())
             .catch(this.handleError);
     }

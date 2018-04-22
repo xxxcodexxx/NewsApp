@@ -1,6 +1,6 @@
 module('Events on initialization', {
     setup: function(){
-        this.input = $('<input type="text" value="31-03-2011">')
+        this.input = $('<input type="text" _value="31-03-2011">')
             .appendTo('#qunit-fixture')
     }
 });
@@ -26,7 +26,7 @@ test('When initializing the datepicker, it should trigger no change or changeDat
 
 module('Events', {
     setup: function(){
-        this.input = $('<input type="text" value="31-03-2011">')
+        this.input = $('<input type="text" _value="31-03-2011">')
                         .appendTo('#qunit-fixture')
                         .datepicker({format: "dd-mm-yyyy"})
                         .focus(); // Activate for visibility checks
@@ -265,7 +265,7 @@ test('format(ix, altformat) returns a formatted date string', function(){
 });
 
 test('Clear button: triggers change and changeDate events', function(){
-    this.input = $('<input type="text" value="31-03-2011">')
+    this.input = $('<input type="text" _value="31-03-2011">')
                     .appendTo('#qunit-fixture')
                     .datepicker({
                         format: "dd-mm-yyyy",
@@ -300,7 +300,7 @@ test('Clear button: triggers change and changeDate events', function(){
 });
 
 test('setDate: triggers change and changeDate events', function(){
-    this.input = $('<input type="text" value="31-03-2011">')
+    this.input = $('<input type="text" _value="31-03-2011">')
                     .appendTo('#qunit-fixture')
                     .datepicker({
                         format: "dd-mm-yyyy"
@@ -481,7 +481,7 @@ test('Changing view mode triggers changeViewMode', function () {
 });
 
 test('Clicking inside content of date with custom beforeShowDay content works', function(){
-    this.input = $('<input type="text" value="31-03-2011">')
+    this.input = $('<input type="text" _value="31-03-2011">')
                     .appendTo('#qunit-fixture')
                     .datepicker({
                         format: "dd-mm-yyyy",

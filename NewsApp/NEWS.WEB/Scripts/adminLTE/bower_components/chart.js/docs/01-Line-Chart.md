@@ -117,7 +117,7 @@ new Chart(ctx).Line(data, {
 // and the Line chart defaults, but this particular instance will have `bezierCurve` set to false.
 ```
 
-We can also change these defaults values for each Line type that is created, this object is available at `Chart.defaults.Line`.
+We can also change these defaults _values for each Line type that is created, this object is available at `Chart.defaults.Line`.
 
 
 ### Prototype methods
@@ -137,28 +137,28 @@ This functionality may be useful for implementing DOM based tooltips, or trigger
 
 #### .update( )
 
-Calling `update()` on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.
+Calling `update()` on your Chart instance will re-render the chart with any updated _values, allowing you to edit the _value of multiple existing points, then render those in one animated render loop.
 
 ```javascript
-myLineChart.datasets[0].points[2].value = 50;
-// Would update the first dataset's value of 'March' to be 50
+myLineChart.datasets[0].points[2]._value = 50;
+// Would update the first dataset's _value of 'March' to be 50
 myLineChart.update();
 // Calling update now animates the position of March from 90 to 50.
 ```
 
-#### .addData( valuesArray, label )
+#### .addData( _valuesArray, label )
 
-Calling `addData(valuesArray, label)` on your Chart instance passing an array of values for each dataset, along with a label for those points.
+Calling `addData(_valuesArray, label)` on your Chart instance passing an array of _values for each dataset, along with a label for those points.
 
 ```javascript
-// The values array passed into addData should be one for each dataset in the chart
+// The _values array passed into addData should be one for each dataset in the chart
 myLineChart.addData([40, 60], "August");
 // This new data will now animate at the end of the chart.
 ```
 
 #### .removeData( )
 
-Calling `removeData()` on your Chart instance will remove the first value for all datasets on the chart.
+Calling `removeData()` on your Chart instance will remove the first _value for all datasets on the chart.
 
 ```javascript
 myLineChart.removeData();

@@ -15,10 +15,10 @@ test('Methods', function(){
     [
         'show',
         'hide',
-        'setValue',
+        'set_value',
         'place'
-    ].forEach($.proxy(function(index, value){
-        var returnedObject = this.$inputs.datepicker(value);
+    ].forEach($.proxy(function(index, _value){
+        var returnedObject = this.$inputs.datepicker(_value);
 
         strictEqual(returnedObject, this.$inputs, "is jQuery element");
         strictEqual(returnedObject.length, 2, "correct length of jQuery elements");

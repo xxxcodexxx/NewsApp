@@ -3,13 +3,13 @@ title: Pie & Doughnut Charts
 anchor: doughnut-pie-chart
 ---
 ###Introduction
-Pie and doughnut charts are probably the most commonly used chart there are. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
+Pie and doughnut charts are probably the most commonly used chart there are. They are divided into segments, the arc of each segment shows the proportional _value of each piece of data.
 
 They are excellent at showing the relational proportions between data.
 
-Pie and doughnut charts are effectively the same class in Chart.js, but have one different default value - their `percentageInnerCutout`. This equates what percentage of the inner should be cut out. This defaults to `0` for pie charts, and `50` for doughnuts.
+Pie and doughnut charts are effectively the same class in Chart.js, but have one different default _value - their `percentageInnerCutout`. This equates what percentage of the inner should be cut out. This defaults to `0` for pie charts, and `50` for doughnuts.
 
-They are also registered under two aliases in the `Chart` core. Other than their different default value, and different alias, they are exactly the same.
+They are also registered under two aliases in the `Chart` core. Other than their different default _value, and different alias, they are exactly the same.
 
 <div class="canvas-holder half">
 	<canvas width="250" height="125"></canvas>
@@ -35,19 +35,19 @@ var myDoughnutChart = new Chart(ctx[1]).Doughnut(data,options);
 ```javascript
 var data = [
 	{
-		value: 300,
+		_value: 300,
 		color:"#F7464A",
 		highlight: "#FF5A5E",
 		label: "Red"
 	},
 	{
-		value: 50,
+		_value: 50,
 		color: "#46BFBD",
 		highlight: "#5AD3D1",
 		label: "Green"
 	},
 	{
-		value: 100,
+		_value: 100,
 		color: "#FDB45C",
 		highlight: "#FFC870",
 		label: "Yellow"
@@ -55,7 +55,7 @@ var data = [
 ]
 ```
 
-For a pie chart, you must pass in an array of objects with a value and a color property. The value attribute should be a number, Chart.js will total all of the numbers and calculate the relative proportion of each. The color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.
+For a pie chart, you must pass in an array of objects with a _value and a color property. The _value attribute should be a number, Chart.js will total all of the numbers and calculate the relative proportion of each. The color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.
 
 ### Chart options
 
@@ -104,7 +104,7 @@ new Chart(ctx).Doughnut(data, {
 // and the Doughnut chart defaults but this particular instance will have `animateScale` set to `true`.
 ```
 
-We can also change these default values for each Doughnut type that is created, this object is available at `Chart.defaults.Doughnut`. Pie charts also have a clone of these defaults available to change at `Chart.defaults.Pie`, with the only difference being `percentageInnerCutout` being set to 0.
+We can also change these default _values for each Doughnut type that is created, this object is available at `Chart.defaults.Doughnut`. Pie charts also have a clone of these defaults available to change at `Chart.defaults.Pie`, with the only difference being `percentageInnerCutout` being set to 0.
 
 ### Prototype methods
 
@@ -123,11 +123,11 @@ This functionality may be useful for implementing DOM based tooltips, or trigger
 
 #### .update( )
 
-Calling `update()` on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.
+Calling `update()` on your Chart instance will re-render the chart with any updated _values, allowing you to edit the _value of multiple existing points, then render those in one animated render loop.
 
 ```javascript
-myDoughnutChart.segments[1].value = 10;
-// Would update the first dataset's value of 'Green' to be 10
+myDoughnutChart.segments[1]._value = 10;
+// Would update the first dataset's _value of 'Green' to be 10
 myDoughnutChart.update();
 // Calling update now animates the circumference of the segment 'Green' from 50 to 10.
 // and transitions other segment widths
@@ -140,7 +140,7 @@ Calling `addData(segmentData, index)` on your Chart instance passing an object i
 ```javascript
 // An object in the same format as the original data source
 myDoughnutChart.addData({
-	value: 130,
+	_value: 130,
 	color: "#B48EAD",
 	highlight: "#C69CBE",
 	label: "Purple"

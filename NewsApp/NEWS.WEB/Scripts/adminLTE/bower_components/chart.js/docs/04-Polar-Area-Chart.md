@@ -3,9 +3,9 @@ title: Polar Area Chart
 anchor: polar-area-chart
 ---
 ### Introduction
-Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value.
+Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the _value.
 
-This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.
+This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of _values for context.
 
 <div class="canvas-holder">
 	<canvas width="250" height="125"></canvas>
@@ -22,31 +22,31 @@ new Chart(ctx).PolarArea(data, options);
 ```javascript
 var data = [
 	{
-		value: 300,
+		_value: 300,
 		color:"#F7464A",
 		highlight: "#FF5A5E",
 		label: "Red"
 	},
 	{
-		value: 50,
+		_value: 50,
 		color: "#46BFBD",
 		highlight: "#5AD3D1",
 		label: "Green"
 	},
 	{
-		value: 100,
+		_value: 100,
 		color: "#FDB45C",
 		highlight: "#FFC870",
 		label: "Yellow"
 	},
 	{
-		value: 40,
+		_value: 40,
 		color: "#949FB1",
 		highlight: "#A8B3C5",
 		label: "Grey"
 	},
 	{
-		value: 120,
+		_value: 120,
 		color: "#4D5360",
 		highlight: "#616774",
 		label: "Dark Grey"
@@ -54,7 +54,7 @@ var data = [
 
 ];
 ```
-As you can see, for the chart data you pass in an array of objects, with a value and a colour. The value attribute should be a number, while the color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.
+As you can see, for the chart data you pass in an array of objects, with a _value and a colour. The _value attribute should be a number, while the color attribute should be a string. Similar to CSS, for this string you can use HEX notation, RGB, RGBA or HSL.
 
 ### Chart options
 
@@ -77,7 +77,7 @@ These are the customisation options specific to Polar Area charts. These options
 	//Number - The backdrop padding to the side of the label in pixels
 	scaleBackdropPaddingX : 2,
 
-	//Boolean - Show line for each value in the scale
+	//Boolean - Show line for each _value in the scale
 	scaleShowLine : true,
 
 	//Boolean - Stroke a line around each segment in the chart
@@ -86,7 +86,7 @@ These are the customisation options specific to Polar Area charts. These options
 	//String - The colour of the stroke on each segement.
 	segmentStrokeColor : "#fff",
 
-	//Number - The width of the stroke value in pixels
+	//Number - The width of the stroke _value in pixels
 	segmentStrokeWidth : 2,
 
 	//Number - Amount of animation steps
@@ -119,7 +119,7 @@ new Chart(ctx).PolarArea(data, {
 // and the PolarArea chart defaults but this particular instance will have `segmentStrokeColor` set to `"#000000"`.
 ```
 
-We can also change these defaults values for each PolarArea type that is created, this object is available at `Chart.defaults.PolarArea`.
+We can also change these defaults _values for each PolarArea type that is created, this object is available at `Chart.defaults.PolarArea`.
 
 ### Prototype methods
 
@@ -138,11 +138,11 @@ This functionality may be useful for implementing DOM based tooltips, or trigger
 
 #### .update( )
 
-Calling `update()` on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.
+Calling `update()` on your Chart instance will re-render the chart with any updated _values, allowing you to edit the _value of multiple existing points, then render those in one animated render loop.
 
 ```javascript
-myPolarAreaChart.segments[1].value = 10;
-// Would update the first dataset's value of 'Green' to be 10
+myPolarAreaChart.segments[1]._value = 10;
+// Would update the first dataset's _value of 'Green' to be 10
 myPolarAreaChart.update();
 // Calling update now animates the position of Green from 50 to 10.
 ```
@@ -154,7 +154,7 @@ Calling `addData(segmentData, index)` on your Chart instance passing an object i
 ```javascript
 // An object in the same format as the original data source
 myPolarAreaChart.addData({
-	value: 130,
+	_value: 130,
 	color: "#B48EAD",
 	highlight: "#C69CBE",
 	label: "Purple"

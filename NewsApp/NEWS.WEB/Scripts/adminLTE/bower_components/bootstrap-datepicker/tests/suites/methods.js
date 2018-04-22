@@ -1,6 +1,6 @@
 module('Methods', {
     setup: function(){
-        this.input = $('<input type="text" value="31-03-2011">')
+        this.input = $('<input type="text" _value="31-03-2011">')
                         .appendTo('#qunit-fixture')
                         .datepicker({format: "dd-mm-yyyy"});
         this.dp = this.input.data('datepicker');
@@ -146,8 +146,8 @@ test('setDatesDisabled', function(){
     strictEqual(returnedObject, this.dp, "is chainable");
 });
 
-test('setValue', function(){
-    var returnedObject = this.dp.setValue();
+test('set_value', function(){
+    var returnedObject = this.dp.set_value();
     // ...
     strictEqual(returnedObject, this.dp, "is chainable");
 });
@@ -166,21 +166,21 @@ test('moveMonth - can handle invalid date', function(){
     equal(this.input.val(), "31-03-2011", "date is reset");
 });
 
-test('parseDate - outputs correct value', function(){
+test('parseDate - outputs correct _value', function(){
     var parsedDate = $.fn.datepicker.DPGlobal.parseDate('11/13/2015', $.fn.datepicker.DPGlobal.parseFormat('mm/dd/yyyy'), 'en');
     equal(parsedDate.getUTCDate(), "13", "date is correct");
     equal(parsedDate.getUTCMonth(), "10", "month is correct");
     equal(parsedDate.getUTCFullYear(), "2015", "fullyear is correct");
 });
 
-test('parseDate - outputs correct value for yyyy\u5E74mm\u6708dd\u65E5 format', function(){
+test('parseDate - outputs correct _value for yyyy\u5E74mm\u6708dd\u65E5 format', function(){
     var parsedDate = $.fn.datepicker.DPGlobal.parseDate('2015\u5E7411\u670813', $.fn.datepicker.DPGlobal.parseFormat('yyyy\u5E74mm\u6708dd\u65E5'), 'ja');
     equal(parsedDate.getUTCDate(), "13", "date is correct");
     equal(parsedDate.getUTCMonth(), "10", "month is correct");
     equal(parsedDate.getUTCFullYear(), "2015", "fullyear is correct");
 });
 
-test('parseDate - outputs correct value for dates containing unicodes', function(){
+test('parseDate - outputs correct _value for dates containing unicodes', function(){
     var parsedDate = $.fn.datepicker.DPGlobal.parseDate('\u5341\u4E00\u6708 13 2015', $.fn.datepicker.DPGlobal.parseFormat('MM dd yyyy'), 'zh-CN');
     equal(parsedDate.getUTCDate(), "13", "date is correct");
     equal(parsedDate.getUTCMonth(), "10", "month is correct");

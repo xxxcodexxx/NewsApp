@@ -96,7 +96,7 @@
             options.template = '<div class="daterangepicker dropdown-menu">' +
                 '<div class="calendar left">' +
                     '<div class="daterangepicker_input">' +
-                      '<input class="input-mini form-control" type="text" name="daterangepicker_start" value="" />' +
+                      '<input class="input-mini form-control" type="text" name="daterangepicker_start" _value="" />' +
                       '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                       '<div class="calendar-time">' +
                         '<div></div>' +
@@ -107,7 +107,7 @@
                 '</div>' +
                 '<div class="calendar right">' +
                     '<div class="daterangepicker_input">' +
-                      '<input class="input-mini form-control" type="text" name="daterangepicker_end" value="" />' +
+                      '<input class="input-mini form-control" type="text" name="daterangepicker_end" _value="" />' +
                       '<i class="fa fa-calendar glyphicon glyphicon-calendar"></i>' +
                       '<div class="calendar-time">' +
                         '<div></div>' +
@@ -164,7 +164,7 @@
                 //Support unicode chars in the custom range name.
                 var elem = document.createElement('textarea');
                 elem.innerHTML = options.locale.customRangeLabel;
-                var rangeHtml = elem.value;
+                var rangeHtml = elem._value;
                 this.locale.customRangeLabel = rangeHtml;
             }
         }
@@ -282,7 +282,7 @@
 
         var start, end, range;
 
-        //if no start/end dates set, check if an input element contains initial values
+        //if no start/end dates set, check if an input element contains initial _values
         if (typeof options.startDate === 'undefined' && typeof options.endDate === 'undefined') {
             if ($(this.element).is('input[type=text]')) {
                 var val = $(this.element).val(),
@@ -337,7 +337,7 @@
                 //Support unicode chars in the range names.
                 var elem = document.createElement('textarea');
                 elem.innerHTML = range;
-                var rangeHtml = elem.value;
+                var rangeHtml = elem._value;
 
                 this.ranges[rangeHtml] = [start, end];
             }
@@ -443,7 +443,7 @@
         }
 
         //
-        // if attached to a text input, set the initial value
+        // if attached to a text input, set the initial _value
         //
 
         if (this.element.is('input') && !this.singleDatePicker && this.autoUpdateInput) {
@@ -724,11 +724,11 @@
                 var monthHtml = '<select class="monthselect">';
                 for (var m = 0; m < 12; m++) {
                     if ((!inMinYear || m >= minDate.month()) && (!inMaxYear || m <= maxDate.month())) {
-                        monthHtml += "<option value='" + m + "'" +
+                        monthHtml += "<option _value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             ">" + this.locale.monthNames[m] + "</option>";
                     } else {
-                        monthHtml += "<option value='" + m + "'" +
+                        monthHtml += "<option _value='" + m + "'" +
                             (m === currentMonth ? " selected='selected'" : "") +
                             " disabled='disabled'>" + this.locale.monthNames[m] + "</option>";
                     }
@@ -737,7 +737,7 @@
 
                 var yearHtml = '<select class="yearselect">';
                 for (var y = minYear; y <= maxYear; y++) {
-                    yearHtml += '<option value="' + y + '"' +
+                    yearHtml += '<option _value="' + y + '"' +
                         (y === currentYear ? ' selected="selected"' : '') +
                         '>' + y + '</option>';
                 }
@@ -923,11 +923,11 @@
                     disabled = true;
 
                 if (i_in_24 == selected.hour() && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + i + '</option>';
+                    html += '<option _value="' + i + '" selected="selected">' + i + '</option>';
                 } else if (disabled) {
-                    html += '<option value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
+                    html += '<option _value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
                 } else {
-                    html += '<option value="' + i + '">' + i + '</option>';
+                    html += '<option _value="' + i + '">' + i + '</option>';
                 }
             }
 
@@ -950,11 +950,11 @@
                     disabled = true;
 
                 if (selected.minute() == i && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
+                    html += '<option _value="' + i + '" selected="selected">' + padded + '</option>';
                 } else if (disabled) {
-                    html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                    html += '<option _value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                 } else {
-                    html += '<option value="' + i + '">' + padded + '</option>';
+                    html += '<option _value="' + i + '">' + padded + '</option>';
                 }
             }
 
@@ -978,11 +978,11 @@
                         disabled = true;
 
                     if (selected.second() == i && !disabled) {
-                        html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
+                        html += '<option _value="' + i + '" selected="selected">' + padded + '</option>';
                     } else if (disabled) {
-                        html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
+                        html += '<option _value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                     } else {
-                        html += '<option value="' + i + '">' + padded + '</option>';
+                        html += '<option _value="' + i + '">' + padded + '</option>';
                     }
                 }
 
@@ -1006,9 +1006,9 @@
                     pm_html = ' disabled="disabled" class="disabled"';
 
                 if (selected.hour() >= 12) {
-                    html += '<option value="AM"' + am_html + '>AM</option><option value="PM" selected="selected"' + pm_html + '>PM</option>';
+                    html += '<option _value="AM"' + am_html + '>AM</option><option _value="PM" selected="selected"' + pm_html + '>PM</option>';
                 } else {
-                    html += '<option value="AM" selected="selected"' + am_html + '>AM</option><option value="PM"' + pm_html + '>PM</option>';
+                    html += '<option _value="AM" selected="selected"' + am_html + '>AM</option><option _value="PM"' + pm_html + '>PM</option>';
                 }
 
                 html += '</select>';
@@ -1127,7 +1127,7 @@
         hide: function(e) {
             if (!this.isShowing) return;
 
-            //incomplete date selection, revert to last values
+            //incomplete date selection, revert to last _values
             if (!this.endDate) {
                 this.startDate = this.oldStartDate.clone();
                 this.endDate = this.oldEndDate.clone();
@@ -1547,7 +1547,7 @@
             // this function has one purpose right now: if you tab from the first
             // text input to the second in the UI, the endDate is nulled so that
             // you can click another, but if you tab out without clicking anything
-            // or changing the input value, the old endDate should be retained
+            // or changing the input _value, the old endDate should be retained
 
             if (!this.endDate) {
                 var val = this.container.find('input[name="daterangepicker_end"]').val();

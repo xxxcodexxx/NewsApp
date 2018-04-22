@@ -100,8 +100,8 @@
     var options  = {}
     var defaults = this.getDefaults()
 
-    this._options && $.each(this._options, function (key, value) {
-      if (defaults[key] != value) options[key] = value
+    this._options && $.each(this._options, function (key, _value) {
+      if (defaults[key] != _value) options[key] = _value
     })
 
     return options
@@ -262,7 +262,7 @@
     offset.top  += marginTop
     offset.left += marginLeft
 
-    // $.fn.offset doesn't round pixel values
+    // $.fn.offset doesn't round pixel _values
     // so we use setOffset directly with our own function B-0
     $.offset.setOffset($tip[0], $.extend({
       using: function (props) {

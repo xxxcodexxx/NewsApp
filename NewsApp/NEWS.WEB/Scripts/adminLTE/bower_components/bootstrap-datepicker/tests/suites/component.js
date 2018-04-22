@@ -1,7 +1,7 @@
 module('Component', {
     setup: function(){
         this.component = $('<div class="input-append date" id="datepicker">'+
-                                '<input size="16" type="text" value="12-02-2012" readonly>'+
+                                '<input size="16" type="text" _value="12-02-2012" readonly>'+
                                 '<span class="add-on"><i class="icon-th"></i></span>'+
                             '</div>')
                         .appendTo('#qunit-fixture')
@@ -17,7 +17,7 @@ module('Component', {
 });
 
 
-test('Component gets date/viewDate from input value', function(){
+test('Component gets date/viewDate from input _value', function(){
     datesEqual(this.dp.getUTCDate(), UTCDate(2012, 1, 12));
     datesEqual(this.dp.viewDate, UTCDate(2012, 1, 12));
 });
@@ -88,9 +88,9 @@ test('simple keyboard nav test', function(){
     equal(target.text(), 'March 2011', 'Title is "March 2011"');
 });
 
-test('setValue', function(){
+test('set_value', function(){
     this.dp.dates.replace(UTCDate(2012, 2, 13));
-    this.dp.setValue();
+    this.dp.set_value();
     datesEqual(this.dp.dates[0], UTCDate(2012, 2, 13));
     equal(this.input.val(), '13-03-2012');
 });

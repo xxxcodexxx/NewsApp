@@ -24,4 +24,4 @@ When the date is deselected, the ``clearDate`` event is triggered; otherwise, th
 escape
 ------
 
-The escape key can be used to clear the focused date and hide and re-show the datepicker; hiding the picker is necessary if the user wants to manually edit the value.
+The escape key can be used to clear the focused date and hide and re-show the datepicker; hiding the picker is necessary if the user wants to manually edit the _value.

@@ -47,7 +47,7 @@ var data = {
 };
 ```
 For a radar chart, to provide context of what each point means, we include an array of strings that show around each point in the chart.
-For the radar chart data, we have an array of datasets. Each of these is an object, with a fill colour, a stroke colour, a colour for the fill of each point, and a colour for the stroke of each point. We also have an array of data values.
+For the radar chart data, we have an array of datasets. Each of these is an object, with a fill colour, a stroke colour, a colour for the fill of each point, and a colour for the stroke of each point. We also have an array of data _values.
 
 The label key on each dataset is optional, and can be used when generating a scale for the chart.
 
@@ -128,7 +128,7 @@ new Chart(ctx).Radar(data, {
 //  and the Bar chart defaults but this particular instance will have `pointDot` set to false.
 ```
 
-We can also change these defaults values for each Radar type that is created, this object is available at `Chart.defaults.Radar`.
+We can also change these defaults _values for each Radar type that is created, this object is available at `Chart.defaults.Radar`.
 
 
 ### Prototype methods
@@ -148,28 +148,28 @@ This functionality may be useful for implementing DOM based tooltips, or trigger
 
 #### .update( )
 
-Calling `update()` on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.
+Calling `update()` on your Chart instance will re-render the chart with any updated _values, allowing you to edit the _value of multiple existing points, then render those in one animated render loop.
 
 ```javascript
-myRadarChart.datasets[0].points[2].value = 50;
-// Would update the first dataset's value of 'Sleeping' to be 50
+myRadarChart.datasets[0].points[2]._value = 50;
+// Would update the first dataset's _value of 'Sleeping' to be 50
 myRadarChart.update();
 // Calling update now animates the position of Sleeping from 90 to 50.
 ```
 
-#### .addData( valuesArray, label )
+#### .addData( _valuesArray, label )
 
-Calling `addData(valuesArray, label)` on your Chart instance passing an array of values for each dataset, along with a label for those points.
+Calling `addData(_valuesArray, label)` on your Chart instance passing an array of _values for each dataset, along with a label for those points.
 
 ```javascript
-// The values array passed into addData should be one for each dataset in the chart
+// The _values array passed into addData should be one for each dataset in the chart
 myRadarChart.addData([40, 60], "Dancing");
 // The new data will now animate at the end of the chart.
 ```
 
 #### .removeData( )
 
-Calling `removeData()` on your Chart instance will remove the first value for all datasets on the chart.
+Calling `removeData()` on your Chart instance will remove the first _value for all datasets on the chart.
 
 ```javascript
 myRadarChart.removeData();

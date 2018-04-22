@@ -43,7 +43,7 @@ Arguments:
 * date (String|Date, optional)
 * ...
 
-Update the datepicker with given arguments or the current input value.
+Update the datepicker with given arguments or the current input _value.
 The arguments can be either an array of strings, an array of Date objects, multiples strings or multiples Date objects.
 If ``date`` arguments are provided and they are Date objects, it is assumed to be "local" Date objects, and will be converted to UTC for internal use.
 
@@ -173,9 +173,9 @@ Arguments:
 
 * startDate (Date)
 
-Sets a new lower date limit on the datepicker.  See :ref:`startDate` for valid values.
+Sets a new lower date limit on the datepicker.  See :ref:`startDate` for valid _values.
 
-Omit startDate (or provide an otherwise falsey value) to unset the limit.
+Omit startDate (or provide an otherwise falsey _value) to unset the limit.
 
 
 setEndDate
@@ -185,9 +185,9 @@ Arguments:
 
 * endDate (Date)
 
-Sets a new upper date limit on the datepicker.  See :ref:`endDate` for valid values.
+Sets a new upper date limit on the datepicker.  See :ref:`endDate` for valid _values.
 
-Omit endDate (or provide an otherwise falsey value) to unset the limit.
+Omit endDate (or provide an otherwise falsey _value) to unset the limit.
 
 
 setDatesDisabled
@@ -197,9 +197,9 @@ Arguments:
 
 * datesDisabled (String|Array)
 
-Sets the days that should be disabled.  See :ref:`datesDisabled` for valid values.
+Sets the days that should be disabled.  See :ref:`datesDisabled` for valid _values.
 
-Omit datesDisabled (or provide an otherwise falsey value) to unset the disabled days.
+Omit datesDisabled (or provide an otherwise falsey _value) to unset the disabled days.
 
 
 setDaysOfWeekDisabled
@@ -209,9 +209,9 @@ Arguments:
 
 * daysOfWeekDisabled (String|Array)
 
-Sets the days of week that should be disabled.  See :ref:`daysOfWeekDisabled` for valid values.
+Sets the days of week that should be disabled.  See :ref:`daysOfWeekDisabled` for valid _values.
 
-Omit daysOfWeekDisabled (or provide an otherwise falsey value) to unset the disabled days of week.
+Omit daysOfWeekDisabled (or provide an otherwise falsey _value) to unset the disabled days of week.
 
 
 setDaysOfWeekHighlighted
@@ -221,6 +221,6 @@ Arguments:
 
 * daysOfWeekHighlighted (String|Array)
 
-Sets the days of week that should be highlighted.  See :ref:`daysOfWeekHighlighted` for valid values.
+Sets the days of week that should be highlighted.  See :ref:`daysOfWeekHighlighted` for valid _values.
 
-Omit daysOfWeekHighlighted (or provide an otherwise falsey value) to unset the highlighted days of week.
+Omit daysOfWeekHighlighted (or provide an otherwise falsey _value) to unset the highlighted days of week.

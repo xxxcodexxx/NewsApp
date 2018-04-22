@@ -24,25 +24,25 @@ namespace NEWS.WEB.Controllers
             this._categoryServices = new CategoryServices(repositoryCategory, unitOfWork);
         }
 
+        [HttpGet]
         public HttpResponseMessage Get()
         {
             return ToJson(_categoryServices.GetAll().ToList());
         }
 
-        public HttpResponseMessage Create(Category item)
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]Category item)
         {
             return ToJson(_categoryServices.Add(item));
         }
 
-        public HttpResponseMessage Edit(int id)
-        {
-            var item = _categoryServices.GetById(id);
-            return ToJson(item);
-        }
-        public HttpResponseMessage Update(Category item)
+        [HttpPut]
+        public HttpResponseMessage Update([FromBody]Category item)
         {
             return ToJson(_categoryServices.Update(item));
         }
+
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             return ToJson(_categoryServices.Delete(_categoryServices.GetById(id)));

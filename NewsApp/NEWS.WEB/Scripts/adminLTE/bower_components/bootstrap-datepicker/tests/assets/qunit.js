@@ -342,7 +342,7 @@ var QUnit = {
 		});
 	},
 
-	// Checks that the first two arguments are equal, with an optional message. Prints out both actual and expected values.
+	// Checks that the first two arguments are equal, with an optional message. Prints out both actual and expected _values.
 	// @example equal( format("Received {0} bytes.", 2), "Received 2 bytes." );
 	equal: function(actual, expected, message) {
 		QUnit.push(expected == actual, actual, expected, message);
@@ -1142,7 +1142,7 @@ QUnit.equiv = (function() {
 			},
 
 			"date" : function(b, a) {
-				return QUnit.objectType(b) === "date" && a.valueOf() === b.valueOf();
+				return QUnit.objectType(b) === "date" && a._valueOf() === b._valueOf();
 			},
 
 			"regexp" : function(b, a) {
@@ -1461,7 +1461,7 @@ QUnit.jsDump = (function() {
 			},
 			key: quote, //object calls it internally, the key part of an item in a map
 			functionCode: '[code]', //function calls it internally, it's the content of the function
-			attribute: quote, //node calls it internally, it's an html attribute value
+			attribute: quote, //node calls it internally, it's an html attribute _value
 			string: quote,
 			date: quote,
 			regexp: literal, //regex
@@ -1490,7 +1490,7 @@ function getText( elems ) {
 
 		// Get the text from text nodes and CDATA nodes
 		if ( elem.nodeType === 3 || elem.nodeType === 4 ) {
-			ret += elem.nodeValue;
+			ret += elem.node_value;
 
 		// Traverse everything else, except comment nodes
 		} else if ( elem.nodeType !== 8 ) {

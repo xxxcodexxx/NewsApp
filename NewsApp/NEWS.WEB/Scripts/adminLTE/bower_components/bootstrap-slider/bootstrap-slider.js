@@ -71,8 +71,8 @@
 		this.min = this.element.data('slider-min')||options.min;
 		this.max = this.element.data('slider-max')||options.max;
 		this.step = this.element.data('slider-step')||options.step;
-		this.value = this.element.data('slider-value')||options.value;
-		if (this.value[1]) {
+		this._value = this.element.data('slider-_value')||options._value;
+		if (this._value[1]) {
 			this.range = true;
 		}
 
@@ -102,21 +102,21 @@
 		}
 
 		if (this.range) {
-			this.value[0] = Math.max(this.min, Math.min(this.max, this.value[0]));
-			this.value[1] = Math.max(this.min, Math.min(this.max, this.value[1]));
+			this._value[0] = Math.max(this.min, Math.min(this.max, this._value[0]));
+			this._value[1] = Math.max(this.min, Math.min(this.max, this._value[1]));
 		} else {
-			this.value = [ Math.max(this.min, Math.min(this.max, this.value))];
+			this._value = [ Math.max(this.min, Math.min(this.max, this._value))];
 			this.handle2.addClass('hide');
 			if (this.selection == 'after') {
-				this.value[1] = this.max;
+				this._value[1] = this.max;
 			} else {
-				this.value[1] = this.min;
+				this._value[1] = this.min;
 			}
 		}
 		this.diff = this.max - this.min;
 		this.percentage = [
-			(this.value[0]-this.min)*100/this.diff,
-			(this.value[1]-this.min)*100/this.diff,
+			(this._value[0]-this.min)*100/this.diff,
+			(this._value[1]-this.min)*100/this.diff,
 			this.step*100/this.diff
 		];
 
@@ -190,14 +190,14 @@
 
       if (this.range) {
         this.tooltipInner.text(
-          this.formater(this.value[0]) + 
+          this.formater(this._value[0]) + 
           ' : ' + 
-          this.formater(this.value[1])
+          this.formater(this._value[1])
         );
         this.tooltip[0].style[this.stylePos] = this.size * (positionPercentages[0] + (positionPercentages[1] - positionPercentages[0])/2)/100 - (this.orientation === 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
       } else {
         this.tooltipInner.text(
-          this.formater(this.value[0])
+          this.formater(this._value[0])
         );
         this.tooltip[0].style[this.stylePos] = this.size * positionPercentages[0]/100 - (this.orientation === 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
       }
@@ -241,15 +241,15 @@
 			}
 
 			this.inDrag = true;
-			var val = this.calculateValue();
+			var val = this.calculate_value();
 			
-			this.setValue(val);
+			this.set_value(val);
 			this.element.trigger({
 				type: 'slideStart',
-				value: val
+				_value: val
 			}).trigger({
 				type: 'slide',
-				value: val
+				_value: val
 			});
 			return false;
 			}
@@ -278,16 +278,16 @@
 				}
 				this.percentage[this.dragged] = x;
 				this.layout();
-				var val = this.calculateValue();
-				this.setValue(val);
+				var val = this.calculate_value();
+				this.set_value(val);
 			
 				this.element
 				.trigger({
 					type: 'slide',
-					value: val
+					_value: val
 				})
-				.data('value', val)
-				.prop('value', val);
+				.data('_value', val)
+				.prop('_value', val);
 				return false;
 			}
 		},
@@ -311,29 +311,29 @@
 				this.hideTooltip();
 			}
 			this.element;
-			var val = this.calculateValue();
+			var val = this.calculate_value();
 			this.layout();
 			this.element
 				.trigger({
 					type: 'slideStop',
-					value: val
+					_value: val
 				})
-				.data('value', val)
-				.prop('value', val);
+				.data('_value', val)
+				.prop('_value', val);
 			return false;
 		},
 
-		calculateValue: function() {
+		calculate_value: function() {
 			var val;
 			if (this.range) {
 				val = [
 					(this.min + Math.round((this.diff * this.percentage[0]/100)/this.step)*this.step),
 					(this.min + Math.round((this.diff * this.percentage[1]/100)/this.step)*this.step)
 				];
-				this.value = val;
+				this._value = val;
 			} else {
 				val = (this.min + Math.round((this.diff * this.percentage[0]/100)/this.step)*this.step);
-				this.value = [val, this.value[1]];
+				this._value = [val, this._value[1]];
 			}
 			return val;
 		},
@@ -347,11 +347,11 @@
 			return Math.max(0, Math.min(100, percentage));
 		},
 
-		getValue: function() {
+		get_value: function() {
 			if (this.range) {
-				return this.value;
+				return this._value;
 			}
-			return this.value[0];
+			return this._value[0];
 		},
 		setLimit: function(val) {
 			this.limit = val;
@@ -362,25 +362,25 @@
 		getDragLocked: function(val) {
 			return this.dragLocked;
 		},
-		setValue: function(val) {
-			this.value = val;
+		set_value: function(val) {
+			this._value = val;
 
 			if (this.range) {
-				this.value[0] = Math.max(this.min, Math.min(this.max, this.value[0]));
-				this.value[1] = Math.max(this.min, Math.min(this.max, this.value[1]));
+				this._value[0] = Math.max(this.min, Math.min(this.max, this._value[0]));
+				this._value[1] = Math.max(this.min, Math.min(this.max, this._value[1]));
 			} else {
-				this.value = [ Math.max(this.min, Math.min(this.max, this.value))];
+				this._value = [ Math.max(this.min, Math.min(this.max, this._value))];
 				this.handle2.addClass('hide');
 				if (this.selection == 'after') {
-					this.value[1] = this.max;
+					this._value[1] = this.max;
 				} else {
-					this.value[1] = this.min;
+					this._value[1] = this.min;
 				}
 			}
 			this.diff = this.max - this.min;
 			this.percentage = [
-				(this.value[0]-this.min)*100/this.diff,
-				(this.value[1]-this.min)*100/this.diff,
+				(this._value[0]-this.min)*100/this.diff,
+				(this._value[1]-this.min)*100/this.diff,
 				this.step*100/this.diff
 			];
 			this.layout();
@@ -410,15 +410,15 @@
 		max: 10,
 		step: 1,
 		orientation: 'horizontal',
-		value: 5,
+		_value: 5,
 		selection: 'before',
 		tooltip: 'show',
 		handle: 'round',
 		reversed : false,
 		limit: 100000,
 		dragLocked: false,
-		formater: function(value) {
-			return value;
+		formater: function(_value) {
+			return _value;
 		}
 	};
 

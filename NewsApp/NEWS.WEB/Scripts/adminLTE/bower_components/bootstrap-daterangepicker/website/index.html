@@ -201,7 +201,7 @@
 
                             <p>
                                 The Date Range Picker is attached to a text input. It will use the current
-                                value of the input to initialize, and update the input if new dates are chosen.
+                                _value of the input to initialize, and update the input if new dates are chosen.
                             </p>
 
                             <div class="row">
@@ -210,7 +210,7 @@
                                 </div>
                                 <div class="col-md-4 col-xs-12">
                                     <h4>Demo:</h4>
-                                    <input class="pull-right" type="text" name="daterange" value="01/15/2015 - 02/15/2015" />
+                                    <input class="pull-right" type="text" name="daterange" _value="01/15/2015 - 02/15/2015" />
                                 </div>
                             </div>
 
@@ -238,7 +238,7 @@
                                 </div>
                                 <div class="col-md-5 col-xs-12">
                                     <h4>Demo:</h4>
-                                    <input class="pull-right" type="text" name="daterange2" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                                    <input class="pull-right" type="text" name="daterange2" _value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
                                 </div>
                             </div>
 
@@ -272,7 +272,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-12">
                                     <h4>Demo:</h4>
-                                    <input class="pull-right" type="text" name="birthdate" value="10/24/1984" />
+                                    <input class="pull-right" type="text" name="birthdate" _value="10/24/1984" />
                                 </div>
                             </div>
 
@@ -360,7 +360,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-12">
                                     <h4>Demo:</h4>
-                                    <input class="pull-right" type="text" name="datefilter" value="" />
+                                    <input class="pull-right" type="text" name="datefilter" _value="" />
                                 </div>
                             </div>
 
@@ -405,43 +405,43 @@
 
                               <div class="form-group">
                                 <label for="parentEl">parentEl</label>
-                                <input type="text" class="form-control" id="parentEl" value="" placeholder="body">
+                                <input type="text" class="form-control" id="parentEl" _value="" placeholder="body">
                               </div>
 
                               <div class="form-group">
                                 <label for="startDate">startDate</label>
-                                <input type="text" class="form-control" id="startDate" value="07/01/2015">
+                                <input type="text" class="form-control" id="startDate" _value="07/01/2015">
                               </div>
 
                               <div class="form-group">
                                 <label for="endDate">endDate</label>
-                                <input type="text" class="form-control" id="endDate" value="07/15/2015">
+                                <input type="text" class="form-control" id="endDate" _value="07/15/2015">
                               </div>
 
                               <div class="form-group">
                                 <label for="minDate">minDate</label>
-                                <input type="text" class="form-control" id="minDate" value="" placeholder="MM/DD/YYYY">
+                                <input type="text" class="form-control" id="minDate" _value="" placeholder="MM/DD/YYYY">
                               </div>
 
                               <div class="form-group">
                                 <label for="maxDate">maxDate</label>
-                                <input type="text" class="form-control" id="maxDate" value="" placeholder="MM/DD/YYYY">
+                                <input type="text" class="form-control" id="maxDate" _value="" placeholder="MM/DD/YYYY">
                               </div>
 
                               <div class="form-group">
                                 <label for="opens">opens</label>
                                 <select id="opens" class="form-control">
-                                  <option value="right" selected>right</option>
-                                  <option value="left">left</option>
-                                  <option value="center">center</option>
+                                  <option _value="right" selected>right</option>
+                                  <option _value="left">left</option>
+                                  <option _value="center">center</option>
                                 </select>
                               </div>
 
                               <div class="form-group">
                                 <label for="drops">drops</label>
                                 <select id="drops" class="form-control">
-                                  <option value="down" selected>down</option>
-                                  <option value="up">up</option>
+                                  <option _value="down" selected>down</option>
+                                  <option _value="up">up</option>
                                 </select>
                               </div>
 
@@ -486,7 +486,7 @@
 
                               <div class="form-group">
                                 <label for="timePickerIncrement">timePickerIncrement (in minutes)</label>
-                                <input type="text" class="form-control" id="timePickerIncrement" value="1">
+                                <input type="text" class="form-control" id="timePickerIncrement" _value="1">
                               </div>
 
                               <div class="checkbox">
@@ -530,17 +530,17 @@
 
                               <div class="form-group">
                                 <label for="buttonClasses">buttonClasses</label>
-                                <input type="text" class="form-control" id="buttonClasses" value="btn btn-sm">
+                                <input type="text" class="form-control" id="buttonClasses" _value="btn btn-sm">
                               </div>
 
                               <div class="form-group">
                                 <label for="applyClass">applyClass</label>
-                                <input type="text" class="form-control" id="applyClass" value="btn-success">
+                                <input type="text" class="form-control" id="applyClass" _value="btn-success">
                               </div>
 
                               <div class="form-group">
                                 <label for="cancelClass">cancelClass</label>
-                                <input type="text" class="form-control" id="cancelClass" value="btn-default">
+                                <input type="text" class="form-control" id="cancelClass" _value="btn-default">
                               </div>
 
                               <div class="checkbox">
@@ -630,7 +630,7 @@
                                 <code>timePickerSeconds</code>: (boolean) Show seconds in the timePicker
                             </li>
                             <li>
-                                <code>ranges</code>: (object) Set predefined date ranges the user can select from. Each key is the label for the range, and its value an array with two dates representing the bounds of the range
+                                <code>ranges</code>: (object) Set predefined date ranges the user can select from. Each key is the label for the range, and its _value an array with two dates representing the bounds of the range
                             </li>
                             <li>
                                 <code>showCustomRangeLabel</code>: (boolean) Displays an item labeled "Custom Range" at
@@ -683,7 +683,7 @@
                             </li>
                             <li>
                                 <code>autoUpdateInput</code>: (boolean) Indicates whether the date range picker should
-                                automatically update the value of an <code>&lt;input&gt;</code> element it's attached to
+                                automatically update the _value of an <code>&lt;input&gt;</code> element it's attached to
                                 at initialization and when the selected dates change.
                             </li>
                             <li>

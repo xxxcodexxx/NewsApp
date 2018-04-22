@@ -24,6 +24,29 @@ var CategoryService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    CategoryService.prototype.post = function (url, model) {
+        var body = JSON.stringify(model);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(url, body, options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    CategoryService.prototype.put = function (url, model) {
+        var body = JSON.stringify(model);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put(url, body, options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    CategoryService.prototype.delete = function (url, id) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.delete(url + id, options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     CategoryService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');

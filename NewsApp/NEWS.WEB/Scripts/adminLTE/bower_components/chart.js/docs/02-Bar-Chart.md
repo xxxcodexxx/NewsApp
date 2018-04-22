@@ -53,7 +53,7 @@ These are the customisation options specific to Bar charts. These options are me
 
 ```javascript
 {
-	//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+	//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest _value
 	scaleBeginAtZero : true,
 
 	//Boolean - Whether grid lines are shown across the chart
@@ -77,10 +77,10 @@ These are the customisation options specific to Bar charts. These options are me
 	//Number - Pixel width of the bar stroke
 	barStrokeWidth : 2,
 
-	//Number - Spacing between each of the X value sets
-	barValueSpacing : 5,
+	//Number - Spacing between each of the X _value sets
+	bar_valueSpacing : 5,
 
-	//Number - Spacing between data sets within X values
+	//Number - Spacing between data sets within X _values
 	barDatasetSpacing : 1,
 	{% raw %}
 	//String - A legend template
@@ -101,7 +101,7 @@ new Chart(ctx).Bar(data, {
 //  and the Bar chart defaults but this particular instance will have `barShowStroke` set to false.
 ```
 
-We can also change these defaults values for each Bar type that is created, this object is available at `Chart.defaults.Bar`.
+We can also change these defaults _values for each Bar type that is created, this object is available at `Chart.defaults.Bar`.
 
 ### Prototype methods
 
@@ -120,28 +120,28 @@ This functionality may be useful for implementing DOM based tooltips, or trigger
 
 #### .update( )
 
-Calling `update()` on your Chart instance will re-render the chart with any updated values, allowing you to edit the value of multiple existing points, then render those in one animated render loop.
+Calling `update()` on your Chart instance will re-render the chart with any updated _values, allowing you to edit the _value of multiple existing points, then render those in one animated render loop.
 
 ```javascript
-myBarChart.datasets[0].bars[2].value = 50;
-// Would update the first dataset's value of 'March' to be 50
+myBarChart.datasets[0].bars[2]._value = 50;
+// Would update the first dataset's _value of 'March' to be 50
 myBarChart.update();
 // Calling update now animates the position of March from 90 to 50.
 ```
 
-#### .addData( valuesArray, label )
+#### .addData( _valuesArray, label )
 
-Calling `addData(valuesArray, label)` on your Chart instance passing an array of values for each dataset, along with a label for those bars.
+Calling `addData(_valuesArray, label)` on your Chart instance passing an array of _values for each dataset, along with a label for those bars.
 
 ```javascript
-// The values array passed into addData should be one for each dataset in the chart
+// The _values array passed into addData should be one for each dataset in the chart
 myBarChart.addData([40, 60], "August");
 // The new data will now animate at the end of the chart.
 ```
 
 #### .removeData( )
 
-Calling `removeData()` on your Chart instance will remove the first value for all datasets on the chart.
+Calling `removeData()` on your Chart instance will remove the first _value for all datasets on the chart.
 
 ```javascript
 myBarChart.removeData();

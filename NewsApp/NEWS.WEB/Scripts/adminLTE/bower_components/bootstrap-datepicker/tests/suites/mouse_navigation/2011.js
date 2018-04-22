@@ -3,7 +3,7 @@ module('Mouse Navigation 2011', {
         /*
             Tests start with picker on March 31, 2011.
         */
-        this.input = $('<input type="text" value="31-03-2011">')
+        this.input = $('<input type="text" _value="31-03-2011">')
                         .appendTo('#qunit-fixture')
                         .datepicker({format: "dd-mm-yyyy"})
                         .focus(); // Activate for visibility checks

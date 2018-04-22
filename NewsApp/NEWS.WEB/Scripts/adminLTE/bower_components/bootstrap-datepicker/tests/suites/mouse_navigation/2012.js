@@ -8,7 +8,7 @@ module('Mouse Navigation 2012', {
             * March 1, 2012 was on a Thursday
             * March 31, 2012 was on a Saturday
         */
-        this.input = $('<input type="text" value="31-03-2012">')
+        this.input = $('<input type="text" _value="31-03-2012">')
                         .appendTo('#qunit-fixture')
                         .datepicker({format: "dd-mm-yyyy"})
                         .focus(); // Activate for visibility checks

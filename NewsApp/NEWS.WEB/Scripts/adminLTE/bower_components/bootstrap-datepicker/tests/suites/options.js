@@ -50,7 +50,7 @@ test('Custom date formatter functions', function(){
                             d.setDate(d.getDate() - 7);
                             return d.toISOString();
                         },
-                        toValue: function (date, format, language) {
+                        to_value: function (date, format, language) {
                             var d = new Date(date);
                             d.setDate(d.getDate() + 7);
                             return new Date(d);
@@ -61,7 +61,7 @@ test('Custom date formatter functions', function(){
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
-    //Value is ISO format and is 7 days older than UI
+    //_value is ISO format and is 7 days older than UI
     equal(input.val(), '2015-09-18T00:00:00.000Z');
     datesEqual(dp.dates[0], UTCDate(2015, 8, 25));
     datesEqual(dp.viewDate, UTCDate(2015, 8, 25));
@@ -73,7 +73,7 @@ test('Custom date formatter functions', function(){
 
     target.click();
     ok(picker.is(':not(:visible)'), 'Picker is hidden');
-    //Value is now 28th Aug 2015 in ISO format
+    //_value is now 28th Aug 2015 in ISO format
     //and is 7 days older than UI
     equal(input.val(), '2015-08-28T00:00:00.000Z');
     datesEqual(dp.dates[0], UTCDate(2015, 8, 4));
@@ -442,7 +442,7 @@ test('Clear Button: clear visibility when enabled', function(){
     ok(picker.find('.datepicker-years tfoot .clear').is(':visible'), 'Clear button visible');
 });
 
-test('Clear Button: clears input value', function(){
+test('Clear Button: clears input _value', function(){
     var input = $('<input />')
                 .appendTo('#qunit-fixture')
                 .val('2012-03-05')
@@ -461,7 +461,7 @@ test('Clear Button: clears input value', function(){
     target = picker.find('.datepicker-days tfoot .clear');
     target.click();
 
-    equal(input.val(),'',"Input value has been cleared.");
+    equal(input.val(),'',"Input _value has been cleared.");
     ok(picker.is(':visible'), 'Picker is visible');
 });
 
@@ -485,7 +485,7 @@ test('Clear Button: hides datepicker if autoclose is on', function(){
     target = picker.find('.datepicker-days tfoot .clear');
     target.click();
 
-    equal(input.val(),'',"Input value has been cleared.");
+    equal(input.val(),'',"Input _value has been cleared.");
     ok(picker.is(':not(:visible)'), 'Picker is hidden');
 });
 
@@ -503,7 +503,7 @@ test('Active Toggle Default: when active date is selected it is not unset', func
     // open our datepicker
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 selected');
 
     // click on our active date
@@ -511,7 +511,7 @@ test('Active Toggle Default: when active date is selected it is not unset', func
     target.click();
 
     // make sure it's still set
-    equal(input.val(), '2012-03-05', "Input value has not been cleared.");
+    equal(input.val(), '2012-03-05', "Input _value has not been cleared.");
 });
 
 test('Active Toggle Enabled (single date): when active date is selected it is unset', function(){
@@ -529,7 +529,7 @@ test('Active Toggle Enabled (single date): when active date is selected it is un
     // open our datepicker
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 selected');
 
     // click on our active date
@@ -537,7 +537,7 @@ test('Active Toggle Enabled (single date): when active date is selected it is un
     target.click();
 
     // make sure it's no longer set
-    equal(input.val(), '', "Input value has been cleared.");
+    equal(input.val(), '', "Input _value has been cleared.");
 });
 
 test('Active Toggle Multidate Default: when one of the active dates is selected it is unset', function(){
@@ -555,7 +555,7 @@ test('Active Toggle Multidate Default: when one of the active dates is selected 
     // open our datepicker
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 in dates');
 
     // Select additional date
@@ -588,7 +588,7 @@ test('Active Toggle Disabled: when active date is selected it remains', function
     // open our datepicker
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 selected');
 
     // click on our active date
@@ -617,7 +617,7 @@ test('Active Toggle Multidate Disabled: when activeToggle is set to false, but m
     // open our datepicker
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 in dates');
 
     // Select additional date
@@ -991,7 +991,7 @@ test('beforeShowCentury', function () {
     ok(!target.hasClass('disabled'), '2700, 9th is enabled');
 });
 
-test('Orientation: values are parsed correctly', function(){
+test('Orientation: _values are parsed correctly', function(){
 
     var input = $('<input />')
                 .appendTo('#qunit-fixture')
@@ -1005,8 +1005,8 @@ test('Orientation: values are parsed correctly', function(){
     equal(dp.o.orientation.y, 'auto');
 
     dp._process_options({orientation: ''});
-    equal(dp.o.orientation.x, 'auto', 'Empty value');
-    equal(dp.o.orientation.y, 'auto', 'Empty value');
+    equal(dp.o.orientation.x, 'auto', 'Empty _value');
+    equal(dp.o.orientation.y, 'auto', 'Empty _value');
 
     dp._process_options({orientation: 'left'});
     equal(dp.o.orientation.x, 'left', '"left"');
@@ -1125,7 +1125,7 @@ test('Multidate', function(){
 
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 (initial date) in dates');
 
     // Select first
@@ -1170,7 +1170,7 @@ test('Multidate with limit', function(){
 
     input.focus();
 
-    // Initial value is selected
+    // Initial _value is selected
     ok(dp.dates.contains(UTCDate(2012, 2, 5)) !== -1, '2012-03-05 (initial date) in dates');
 
     // Select first
@@ -1491,7 +1491,7 @@ test('Title: none', function(){
     ok(target.is(':not(:visible)'), 'Title is hidden');
 });
 
-test('Title: with value', function(){
+test('Title: with _value', function(){
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1552,7 +1552,7 @@ test('Z-index Offset: none', function(){
     equal(picker.css('z-index'), 244, 'Picker Z-index offset is respected.');
 });
 
-test('Z-index Offset: with value', function(){
+test('Z-index Offset: with _value', function(){
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1673,7 +1673,7 @@ test('date cells (outdated)', function(){
     });
 });
 
-test('keepEmptyValues: none (default is false)', function() {
+test('keepEmpty_values: none (default is false)', function() {
     var proxy_element = $('<div />').appendTo('#qunit-fixture'),
         input_from = $('<input />').val('2016-04-01').appendTo('#qunit-fixture'),
         input_to = $('<input />').appendTo('#qunit-fixture'),
@@ -1687,17 +1687,17 @@ test('keepEmptyValues: none (default is false)', function() {
     input_from_dp.picker.find('.old.day').eq(0).click();
 
     equal(input_from.val(), '2016-03-27');
-    equal(input_to.val(), '2016-03-27', 'Input_from value should be distributed.');
+    equal(input_to.val(), '2016-03-27', 'Input_from _value should be distributed.');
 });
 
-test('keepEmptyValues: true', function() {
+test('keepEmpty_values: true', function() {
     var proxy_element = $('<div />').appendTo('#qunit-fixture'),
         input_from = $('<input />').val('2016-04-01').appendTo('#qunit-fixture'),
         input_to = $('<input />').appendTo('#qunit-fixture'),
         dp = proxy_element.datepicker({
             format: 'yyyy-mm-dd',
             inputs: [input_from, input_to],
-            keepEmptyValues: true
+            keepEmpty_values: true
         }),
         input_from_dp = input_from.data('datepicker');
 
@@ -1705,7 +1705,7 @@ test('keepEmptyValues: true', function() {
     input_from_dp.picker.find('.old.day').eq(0).click();
 
     equal(input_from.val(), '2016-03-27');
-    equal(input_to.val(), '', 'Input_from value should not be distributed.');
+    equal(input_to.val(), '', 'Input_from _value should not be distributed.');
 });
 
 test('maxViewMode and navigation switch', function(){
@@ -1726,7 +1726,7 @@ test('maxViewMode and navigation switch', function(){
 test('updateViewDate', function() {
     expect(8);
 
-    var input = $('<input value="08/03/1990"/>')
+    var input = $('<input _value="08/03/1990"/>')
                 .appendTo('#qunit-fixture')
                 .datepicker({
                   defaultViewDate: {

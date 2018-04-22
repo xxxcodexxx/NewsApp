@@ -33,7 +33,7 @@
 			}
 			else
 			{
-				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+				return document.defaultView.getComputedStyle(element).getProperty_value(dimension);
 			}
 		}
 
@@ -73,10 +73,10 @@
 			// ** Required if scaleOverride is true **
 			// Number - The number of steps in a hard coded scale
 			scaleSteps: null,
-			// Number - The value jump in the hard coded scale
+			// Number - The _value jump in the hard coded scale
 			scaleStepWidth: null,
-			// Number - The scale starting value
-			scaleStartValue: null,
+			// Number - The scale starting _value
+			scaleStart_value: null,
 
 			// String - Colour of the scale line
 			scaleLineColor: "rgba(0,0,0,.1)",
@@ -87,13 +87,13 @@
 			// Boolean - Whether to show labels on the scale
 			scaleShowLabels: true,
 
-			// Interpolated JS string - can access value
-			scaleLabel: "<%=value%>",
+			// Interpolated JS string - can access _value
+			scaleLabel: "<%=_value%>",
 
 			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
 			scaleIntegersOnly: true,
 
-			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest _value
 			scaleBeginAtZero: false,
 
 			// String - Scale label font declaration for the scale label
@@ -166,10 +166,10 @@
 			tooltipXOffset: 10,
 
 			// String - Template string for single tooltips
-			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= _value %>",
 
 			// String - Template string for single tooltips
-			multiTooltipTemplate: "<%= value %>",
+			multiTooltipTemplate: "<%= _value %>",
 
 			// String - Colour behind the legend colour block
 			multiTooltipKeyBackground: '#fff',
@@ -209,15 +209,15 @@
 		},
 		clone = helpers.clone = function(obj){
 			var objClone = {};
-			each(obj,function(value,key){
-				if (obj.hasOwnProperty(key)) objClone[key] = value;
+			each(obj,function(_value,key){
+				if (obj.hasOwnProperty(key)) objClone[key] = _value;
 			});
 			return objClone;
 		},
 		extend = helpers.extend = function(base){
 			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
-				each(extensionObject,function(value,key){
-					if (extensionObject.hasOwnProperty(key)) base[key] = value;
+				each(extensionObject,function(_value,key){
+					if (extensionObject.hasOwnProperty(key)) base[key] = _value;
 				});
 			});
 			return base;
@@ -313,18 +313,18 @@
 		min = helpers.min = function(array){
 			return Math.min.apply( Math, array );
 		},
-		cap = helpers.cap = function(valueToCap,maxValue,minValue){
-			if(isNumber(maxValue)) {
-				if( valueToCap > maxValue ) {
-					return maxValue;
+		cap = helpers.cap = function(_valueToCap,max_value,min_value){
+			if(isNumber(max_value)) {
+				if( _valueToCap > max_value ) {
+					return max_value;
 				}
 			}
-			else if(isNumber(minValue)){
-				if ( valueToCap < minValue ){
-					return minValue;
+			else if(isNumber(min_value)){
+				if ( _valueToCap < min_value ){
+					return min_value;
 				}
 			}
-			return valueToCap;
+			return _valueToCap;
 		},
 		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
 			if (num%1!==0 && isNumber(num)){
@@ -380,43 +380,43 @@
 		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
 			return Math.floor(Math.log(val) / Math.LN10);
 		},
-		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
+		calculateScaleRange = helpers.calculateScaleRange = function(_valuesArray, drawingSize, textSize, startFromZero, integersOnly){
 
 			//Set a minimum step of two - a point at the top of the graph, and a point at the base
 			var minSteps = 2,
 				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
 				skipFitting = (minSteps >= maxSteps);
 
-			var maxValue = max(valuesArray),
-				minValue = min(valuesArray);
+			var max_value = max(_valuesArray),
+				min_value = min(_valuesArray);
 
-			// We need some degree of seperation here to calculate the scales if all the values are the same
+			// We need some degree of seperation here to calculate the scales if all the _values are the same
 			// Adding/minusing 0.5 will give us a range of 1.
-			if (maxValue === minValue){
-				maxValue += 0.5;
-				// So we don't end up with a graph with a negative start value if we've said always start from zero
-				if (minValue >= 0.5 && !startFromZero){
-					minValue -= 0.5;
+			if (max_value === min_value){
+				max_value += 0.5;
+				// So we don't end up with a graph with a negative start _value if we've said always start from zero
+				if (min_value >= 0.5 && !startFromZero){
+					min_value -= 0.5;
 				}
 				else{
-					// Make up a whole number above the values
-					maxValue += 0.5;
+					// Make up a whole number above the _values
+					max_value += 0.5;
 				}
 			}
 
-			var	valueRange = Math.abs(maxValue - minValue),
-				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
-				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
-				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+			var	_valueRange = Math.abs(max_value - min_value),
+				rangeOrderOfMagnitude = calculateOrderOfMagnitude(_valueRange),
+				graphMax = Math.ceil(max_value / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphMin = (startFromZero) ? 0 : Math.floor(min_value / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
 				graphRange = graphMax - graphMin,
-				stepValue = Math.pow(10, rangeOrderOfMagnitude),
-				numberOfSteps = Math.round(graphRange / stepValue);
+				step_value = Math.pow(10, rangeOrderOfMagnitude),
+				numberOfSteps = Math.round(graphRange / step_value);
 
 			//If we have more space on the graph we'll use it to give more definition to the data
 			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
 				if(numberOfSteps > maxSteps){
-					stepValue *=2;
-					numberOfSteps = Math.round(graphRange/stepValue);
+					step_value *=2;
+					numberOfSteps = Math.round(graphRange/step_value);
 					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
 					if (numberOfSteps % 1 !== 0){
 						skipFitting = true;
@@ -424,12 +424,12 @@
 				}
 				//We can fit in double the amount of scale points on the scale
 				else{
-					//If user has declared ints only, and the step value isn't a decimal
+					//If user has declared ints only, and the step _value isn't a decimal
 					if (integersOnly && rangeOrderOfMagnitude >= 0){
 						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
-						if(stepValue/2 % 1 === 0){
-							stepValue /=2;
-							numberOfSteps = Math.round(graphRange/stepValue);
+						if(step_value/2 % 1 === 0){
+							step_value /=2;
+							numberOfSteps = Math.round(graphRange/step_value);
 						}
 						//If it would make it a float break out of the loop
 						else{
@@ -438,8 +438,8 @@
 					}
 					//If the scale doesn't have to be an int, make the scale more granular anyway.
 					else{
-						stepValue /=2;
-						numberOfSteps = Math.round(graphRange/stepValue);
+						step_value /=2;
+						numberOfSteps = Math.round(graphRange/step_value);
 					}
 
 				}
@@ -447,14 +447,14 @@
 
 			if (skipFitting){
 				numberOfSteps = minSteps;
-				stepValue = graphRange / numberOfSteps;
+				step_value = graphRange / numberOfSteps;
 			}
 
 			return {
 				steps : numberOfSteps,
-				stepValue : stepValue,
+				step_value : step_value,
 				min : graphMin,
-				max	: graphMin + (numberOfSteps * stepValue)
+				max	: graphMin + (numberOfSteps * step_value)
 			};
 
 		},
@@ -462,12 +462,12 @@
 		// Blows up jshint errors based on the new Function constructor
 		//Templating methods
 		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
-		template = helpers.template = function(templateString, valuesObject){
+		template = helpers.template = function(templateString, _valuesObject){
 
-			// If templateString is function rather than string-template - call the function for valuesObject
+			// If templateString is function rather than string-template - call the function for _valuesObject
 
 			if(templateString instanceof Function){
-			 	return templateString(valuesObject);
+			 	return templateString(_valuesObject);
 		 	}
 
 			var cache = {};
@@ -500,14 +500,14 @@
 				// Provide some basic currying to the user
 				return data ? fn( data ) : fn;
 			}
-			return tmpl(templateString,valuesObject);
+			return tmpl(templateString,_valuesObject);
 		},
 		/* jshint ignore:end */
-		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
+		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,step_value){
 			var labelsArray = new Array(numberOfSteps);
 			if (labelTemplateString){
 				each(labelsArray,function(val,index){
-					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
+					labelsArray[index] = template(templateString,{_value: (graphMin + (step_value*(index+1)))});
 				});
 			}
 			return labelsArray;
@@ -965,7 +965,7 @@
 								yMin;
 							helpers.each(this.datasets, function(dataset){
 								dataCollection = dataset.points || dataset.bars || dataset.segments;
-								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
+								if (dataCollection[dataIndex] && dataCollection[dataIndex].has_value()){
 									Elements.push(dataCollection[dataIndex]);
 								}
 							});
@@ -1068,7 +1068,7 @@
 		if (extensions.name || parent.prototype.name){
 
 			var chartName = extensions.name || parent.prototype.name;
-			//Assign any potential default values of the new chart type
+			//Assign any potential default _values of the new chart type
 
 			//If none are defined, we'll use a clone of the chart type this is being extended from.
 			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
@@ -1114,15 +1114,15 @@
 			return this;
 		},
 		update : function(newProps){
-			each(newProps,function(value,key){
+			each(newProps,function(_value,key){
 				this._saved[key] = this[key];
-				this[key] = value;
+				this[key] = _value;
 			},this);
 			return this;
 		},
 		transition : function(props,ease){
-			each(props,function(value,key){
-				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
+			each(props,function(_value,key){
+				this[key] = ((_value - this._saved[key]) * ease) + this._saved[key];
 			},this);
 			return this;
 		},
@@ -1132,8 +1132,8 @@
 				y : this.y
 			};
 		},
-		hasValue: function(){
-			return isNumber(this.value);
+		has_value: function(){
+			return isNumber(this._value);
 		}
 	});
 
@@ -1461,21 +1461,21 @@
 		buildYLabels : function(){
 			this.yLabels = [];
 
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+			var stepDecimalPlaces = getDecimalPlaces(this.step_value);
 
 			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+				this.yLabels.push(template(this.templateString,{_value:(this.min + (i * this.step_value)).toFixed(stepDecimalPlaces)}));
 			}
 			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
 		},
 		addXLabel : function(label){
 			this.xLabels.push(label);
-			this.valuesCount++;
+			this._valuesCount++;
 			this.fit();
 		},
 		removeXLabel : function(){
 			this.xLabels.shift();
-			this.valuesCount--;
+			this._valuesCount--;
 			this.fit();
 		},
 		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
@@ -1499,7 +1499,7 @@
 			 *	This sets what is returned from calculateScaleRange as static properties of this class:
 			 *
 				this.steps;
-				this.stepValue;
+				this.step_value;
 				this.min;
 				this.max;
 			 *
@@ -1585,22 +1585,22 @@
 		drawingArea: function(){
 			return this.startPoint - this.endPoint;
 		},
-		calculateY : function(value){
+		calculateY : function(_value){
 			var scalingFactor = this.drawingArea() / (this.min - this.max);
-			return this.endPoint - (scalingFactor * (value - this.min));
+			return this.endPoint - (scalingFactor * (_value - this.min));
 		},
 		calculateX : function(index){
 			var isRotated = (this.xLabelRotation > 0),
 				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
 				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
-				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
-				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
+				_valueWidth = innerWidth/Math.max((this._valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
+				_valueOffset = (_valueWidth * index) + this.xScalePaddingLeft;
 
 			if (this.offsetGridLines){
-				valueOffset += (valueWidth/2);
+				_valueOffset += (_valueWidth/2);
 			}
 
-			return Math.round(valueOffset);
+			return Math.round(_valueOffset);
 		},
 		update : function(newProps){
 			helpers.extend(this, newProps);
@@ -1727,11 +1727,11 @@
 			this.size = min([this.height, this.width]);
 			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
 		},
-		calculateCenterOffset: function(value){
-			// Take into account half font size + the yPadding of the top value
+		calculateCenterOffset: function(_value){
+			// Take into account half font size + the yPadding of the top _value
 			var scalingFactor = this.drawingArea / (this.max - this.min);
 
-			return (value - this.min) * scalingFactor;
+			return (_value - this.min) * scalingFactor;
 		},
 		update : function(){
 			if (!this.lineArc){
@@ -1744,14 +1744,14 @@
 		buildYLabels: function(){
 			this.yLabels = [];
 
-			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+			var stepDecimalPlaces = getDecimalPlaces(this.step_value);
 
 			for (var i=0; i<=this.steps; i++){
-				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+				this.yLabels.push(template(this.templateString,{_value:(this.min + (i * this.step_value)).toFixed(stepDecimalPlaces)}));
 			}
 		},
 		getCircumference : function(){
-			return ((Math.PI*2) / this.valuesCount);
+			return ((Math.PI*2) / this._valuesCount);
 		},
 		setScaleSize: function(){
 			/*
@@ -1802,11 +1802,11 @@
 				radiusReductionLeft,
 				maxWidthRadius;
 			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
-			for (i=0;i<this.valuesCount;i++){
+			for (i=0;i<this._valuesCount;i++){
 				// 5px to space the text slightly out - similar to what we do in the draw function.
 				pointPosition = this.getPointPosition(i, largestPossibleRadius);
-				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
-				if (i === 0 || i === this.valuesCount/2){
+				textWidth = this.ctx.measureText(template(this.templateString, { _value: this.labels[i] })).width + 5;
+				if (i === 0 || i === this._valuesCount/2){
 					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
 					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
 					// w/left and right text sizes
@@ -1820,15 +1820,15 @@
 						furthestLeftIndex = i;
 					}
 				}
-				else if (i < this.valuesCount/2) {
-					// Less than half the values means we'll left align the text
+				else if (i < this._valuesCount/2) {
+					// Less than half the _values means we'll left align the text
 					if (pointPosition.x + textWidth > furthestRight) {
 						furthestRight = pointPosition.x + textWidth;
 						furthestRightIndex = i;
 					}
 				}
-				else if (i > this.valuesCount/2){
-					// More than half the values means we'll right align the text
+				else if (i > this._valuesCount/2){
+					// More than half the _values means we'll right align the text
 					if (pointPosition.x - textWidth < furthestLeft) {
 						furthestLeft = pointPosition.x - textWidth;
 						furthestLeftIndex = i;
@@ -1869,7 +1869,7 @@
 		},
 
 		getIndexAngle : function(index){
-			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
+			var angleMultiplier = (Math.PI * 2) / this._valuesCount;
 			// Start from the top instead of right, so remove a quarter of the circle
 
 			return index * angleMultiplier - (Math.PI/2);
@@ -1885,7 +1885,7 @@
 			if (this.display){
 				var ctx = this.ctx;
 				each(this.yLabels, function(label, index){
-					// Don't draw a centre value
+					// Don't draw a centre _value
 					if (index > 0){
 						var yCenterOffset = index * (this.drawingArea/this.steps),
 							yHeight = this.yCenter - yCenterOffset,
@@ -1903,9 +1903,9 @@
 								ctx.stroke();
 							} else{
 								ctx.beginPath();
-								for (var i=0;i<this.valuesCount;i++)
+								for (var i=0;i<this._valuesCount;i++)
 								{
-									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
+									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.step_value)));
 									if (i === 0){
 										ctx.moveTo(pointPosition.x, pointPosition.y);
 									} else {
@@ -1939,7 +1939,7 @@
 				if (!this.lineArc){
 					ctx.lineWidth = this.angleLineWidth;
 					ctx.strokeStyle = this.angleLineColor;
-					for (var i = this.valuesCount - 1; i >= 0; i--) {
+					for (var i = this._valuesCount - 1; i >= 0; i--) {
 						if (this.angleLineWidth > 0){
 							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
 							ctx.beginPath();

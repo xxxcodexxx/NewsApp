@@ -91,7 +91,7 @@
 		addData : function(segment, atIndex, silent){
 			var index = atIndex || this.segments.length;
 			this.segments.splice(index, 0, new this.SegmentArc({
-				value : segment.value,
+				_value : segment._value,
 				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
 				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
 				fillColor : segment.color,
@@ -100,7 +100,7 @@
 				strokeWidth : this.options.segmentStrokeWidth,
 				strokeColor : this.options.segmentStrokeColor,
 				startAngle : Math.PI * 1.5,
-				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
+				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment._value),
 				label : segment.label
 			}));
 			if (!silent){
@@ -108,13 +108,13 @@
 				this.update();
 			}
 		},
-		calculateCircumference : function(value){
-			return (Math.PI*2)*(Math.abs(value) / this.total);
+		calculateCircumference : function(_value){
+			return (Math.PI*2)*(Math.abs(_value) / this.total);
 		},
 		calculateTotal : function(data){
 			this.total = 0;
 			helpers.each(data,function(segment){
-				this.total += Math.abs(segment.value);
+				this.total += Math.abs(segment._value);
 			},this);
 		},
 		update : function(){
@@ -156,7 +156,7 @@
 			this.clear();
 			helpers.each(this.segments,function(segment,index){
 				segment.transition({
-					circumference : this.calculateCircumference(segment.value),
+					circumference : this.calculateCircumference(segment._value),
 					outerRadius : this.outerRadius,
 					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
 				},animDecimal);

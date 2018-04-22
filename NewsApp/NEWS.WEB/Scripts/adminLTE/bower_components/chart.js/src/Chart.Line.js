@@ -106,7 +106,7 @@
 				helpers.each(dataset.data,function(dataPoint,index){
 					//Add a new point for each piece of data, passing any required data to draw.
 					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
+						_value : dataPoint,
 						label : data.labels[index],
 						datasetLabel: dataset.label,
 						strokeColor : dataset.pointStrokeColor,
@@ -162,12 +162,12 @@
 			var self = this;
 
 			var dataTotal = function(){
-				var values = [];
+				var _values = [];
 				self.eachPoints(function(point){
-					values.push(point.value);
+					_values.push(point._value);
 				});
 
-				return values;
+				return _values;
 			};
 
 			var scaleOptions = {
@@ -179,7 +179,7 @@
 				fontSize : this.options.scaleFontSize,
 				fontStyle : this.options.scaleFontStyle,
 				fontFamily : this.options.scaleFontFamily,
-				valuesCount : labels.length,
+				_valuesCount : labels.length,
 				beginAtZero : this.options.scaleBeginAtZero,
 				integersOnly : this.options.scaleIntegersOnly,
 				calculateYRange : function(currentHeight){
@@ -209,24 +209,24 @@
 				helpers.extend(scaleOptions, {
 					calculateYRange: helpers.noop,
 					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+					step_value: this.options.scaleStepWidth,
+					min: this.options.scaleStart_value,
+					max: this.options.scaleStart_value + (this.options.scaleSteps * this.options.scaleStepWidth)
 				});
 			}
 
 
 			this.scale = new Chart.Scale(scaleOptions);
 		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
+		addData : function(_valuesArray,label){
+			//Map the _values array for each of the datasets
 
-			helpers.each(valuesArray,function(value,datasetIndex){
+			helpers.each(_valuesArray,function(_value,datasetIndex){
 				//Add a new point for each piece of data, passing any required data to draw.
 				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
+					_value : _value,
 					label : label,
-					x: this.scale.calculateX(this.scale.valuesCount+1),
+					x: this.scale.calculateX(this.scale._valuesCount+1),
 					y: this.scale.endPoint,
 					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
 					fillColor : this.datasets[datasetIndex].pointColor
@@ -259,29 +259,29 @@
 			var ctx = this.chart.ctx;
 
 			// Some helper methods for getting the next/prev points
-			var hasValue = function(item){
-				return item.value !== null;
+			var has_value = function(item){
+				return item._value !== null;
 			},
 			nextPoint = function(point, collection, index){
-				return helpers.findNextWhere(collection, hasValue, index) || point;
+				return helpers.findNextWhere(collection, has_value, index) || point;
 			},
 			previousPoint = function(point, collection, index){
-				return helpers.findPreviousWhere(collection, hasValue, index) || point;
+				return helpers.findPreviousWhere(collection, has_value, index) || point;
 			};
 
 			this.scale.draw(easingDecimal);
 
 
 			helpers.each(this.datasets,function(dataset){
-				var pointsWithValues = helpers.where(dataset.points, hasValue);
+				var pointsWith_values = helpers.where(dataset.points, has_value);
 
 				//Transition each point first so that the line and point drawing isn't out of sync
 				//We can use this extra loop to calculate the control points of this dataset also in this loop
 
 				helpers.each(dataset.points, function(point, index){
-					if (point.hasValue()){
+					if (point.has_value()){
 						point.transition({
-							y : this.scale.calculateY(point.value),
+							y : this.scale.calculateY(point._value),
 							x : this.scale.calculateX(index)
 						}, easingDecimal);
 					}
@@ -291,12 +291,12 @@
 				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
 				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
 				if (this.options.bezierCurve){
-					helpers.each(pointsWithValues, function(point, index){
-						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
+					helpers.each(pointsWith_values, function(point, index){
+						var tension = (index > 0 && index < pointsWith_values.length - 1) ? this.options.bezierCurveTension : 0;
 						point.controlPoints = helpers.splineCurve(
-							previousPoint(point, pointsWithValues, index),
+							previousPoint(point, pointsWith_values, index),
 							point,
-							nextPoint(point, pointsWithValues, index),
+							nextPoint(point, pointsWith_values, index),
 							tension
 						);
 
@@ -326,13 +326,13 @@
 				ctx.strokeStyle = dataset.strokeColor;
 				ctx.beginPath();
 
-				helpers.each(pointsWithValues, function(point, index){
+				helpers.each(pointsWith_values, function(point, index){
 					if (index === 0){
 						ctx.moveTo(point.x, point.y);
 					}
 					else{
 						if(this.options.bezierCurve){
-							var previous = previousPoint(point, pointsWithValues, index);
+							var previous = previousPoint(point, pointsWith_values, index);
 
 							ctx.bezierCurveTo(
 								previous.controlPoints.outer.x,
@@ -351,10 +351,10 @@
 
 				ctx.stroke();
 
-				if (this.options.datasetFill && pointsWithValues.length > 0){
+				if (this.options.datasetFill && pointsWith_values.length > 0){
 					//Round off the line by going to the base of the chart, back to the start, then fill.
-					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
-					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
+					ctx.lineTo(pointsWith_values[pointsWith_values.length - 1].x, this.scale.endPoint);
+					ctx.lineTo(pointsWith_values[0].x, this.scale.endPoint);
 					ctx.fillStyle = dataset.fillColor;
 					ctx.closePath();
 					ctx.fill();
@@ -363,7 +363,7 @@
 				//Now draw the points over the line
 				//A little inefficient double looping, but better than the line
 				//lagging behind the point positions
-				helpers.each(pointsWithValues,function(point){
+				helpers.each(pointsWith_values,function(point){
 					point.draw();
 				});
 			},this);

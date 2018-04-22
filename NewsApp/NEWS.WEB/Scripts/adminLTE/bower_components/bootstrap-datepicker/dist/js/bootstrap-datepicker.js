@@ -48,10 +48,10 @@
 			contains: function(d){
 				// Array.indexOf is not cross-browser;
 				// $.inArray doesn't work with Dates
-				var val = d && d.valueOf();
+				var val = d && d._valueOf();
 				for (var i=0, l=this.length; i < l; i++)
           // Use date arithmetic to allow dates with different times to match
-          if (0 <= this[i].valueOf() - val && this[i].valueOf() - val < 1000*60*60*24)
+          if (0 <= this[i]._valueOf() - val && this[i]._valueOf() - val < 1000*60*60*24)
 						return i;
 				return -1;
 			},
@@ -488,7 +488,7 @@
 			this.setViewMode(this.o.startView);
 
 			if (this.o.forceParse && this.inputField.val())
-				this.setValue();
+				this.set_value();
 			this._trigger('hide');
 			return this;
 		},
@@ -580,7 +580,7 @@
 			var args = $.isArray(arguments[0]) ? arguments[0] : arguments;
 			this.update.apply(this, args);
 			this._trigger('changeDate');
-			this.setValue();
+			this.set_value();
 			return this;
 		},
 
@@ -594,7 +594,7 @@
 		setUTCDate: alias('setUTCDates'),
 		remove: alias('destroy', 'Method `remove` is deprecated and will be removed in version 2.0. Use `destroy` instead'),
 
-		setValue: function(){
+		set_value: function(){
 			var formatted = this.getFormattedDate();
 			this.inputField.val(formatted);
 			return this;
@@ -791,7 +791,7 @@
 
 			if (fromArgs){
 				// setting date by clicking
-				this.setValue();
+				this.set_value();
 				this.element.change();
 			}
 			else if (this.dates.length){
@@ -844,7 +844,7 @@
 				delete this.range;
 			else
 				this.range = $.map(range, function(d){
-					return d.valueOf();
+					return d._valueOf();
 				});
 			this.fill();
 		},
@@ -859,7 +859,7 @@
 			} else if (date.getUTCFullYear() > year || (date.getUTCFullYear() === year && date.getUTCMonth() > month)){
 				cls.push('new');
 			}
-			if (this.focusDate && date.valueOf() === this.focusDate.valueOf())
+			if (this.focusDate && date._valueOf() === this.focusDate._valueOf())
 				cls.push('focused');
 			// Compare internal UTC date with UTC today, not local today
 			if (this.o.todayHighlight && isUTCEquals(date, today)) {
@@ -881,13 +881,13 @@
 				if (date > this.range[0] && date < this.range[this.range.length-1]){
 					cls.push('range');
 				}
-				if ($.inArray(date.valueOf(), this.range) !== -1){
+				if ($.inArray(date._valueOf(), this.range) !== -1){
 					cls.push('selected');
 				}
-				if (date.valueOf() === this.range[0]){
+				if (date._valueOf() === this.range[0]){
           cls.push('range-start');
         }
-        if (date.valueOf() === this.range[this.range.length-1]){
+        if (date._valueOf() === this.range[this.range.length-1]){
           cls.push('range-end');
         }
 			}
@@ -988,10 +988,10 @@
         nextMonth.setUTCFullYear(prevMonth.getUTCFullYear());
       }
 			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
-			nextMonth = nextMonth.valueOf();
+			nextMonth = nextMonth._valueOf();
 			var html = [];
 			var weekDay, clsName;
-			while (prevMonth.valueOf() < nextMonth){
+			while (prevMonth._valueOf() < nextMonth){
 				weekDay = prevMonth.getUTCDay();
 				if (weekDay === this.o.weekStart){
 					html.push('<tr>');
@@ -1282,7 +1282,7 @@
 				this.viewDate = date && new Date(date);
 
 			this.fill();
-			this.setValue();
+			this.set_value();
 			if (!which || which !== 'view') {
 				this._trigger('changeDate');
 			}
@@ -1308,7 +1308,7 @@
 				return this.o.defaultViewDate;
 			if (!dir)
 				return date;
-			var new_date = new Date(date.valueOf()),
+			var new_date = new Date(date._valueOf()),
 				day = new_date.getUTCDate(),
 				month = new_date.getUTCMonth(),
 				mag = Math.abs(dir),
@@ -1446,7 +1446,7 @@
           }
 					if (newViewDate){
 						this.focusDate = this.viewDate = newViewDate;
-						this.setValue();
+						this.set_value();
 						this.fill();
 						e.preventDefault();
 					}
@@ -1461,7 +1461,7 @@
 					}
 					this.focusDate = null;
 					this.viewDate = this.dates.get(-1) || this.viewDate;
-					this.setValue();
+					this.set_value();
 					this.fill();
 					if (this.picker.is(':visible')){
 						e.preventDefault();
@@ -1506,8 +1506,8 @@
 		});
 		delete options.inputs;
 
-		this.keepEmptyValues = options.keepEmptyValues;
-		delete options.keepEmptyValues;
+		this.keepEmpty_values = options.keepEmpty_values;
+		delete options.keepEmpty_values;
 
 		datepickerPlugin.call($(this.inputs), options)
 			.on('changeDate', $.proxy(this.dateUpdated, this));
@@ -1526,7 +1526,7 @@
 		},
 		updateRanges: function(){
 			var range = $.map(this.dates, function(d){
-				return d.valueOf();
+				return d._valueOf();
 			});
 			$.each(this.pickers, function(i, p){
 				p.setRange(range);
@@ -1547,7 +1547,7 @@
 			}
 
 			var new_date = dp.getUTCDate(),
-				keep_empty_values = this.keepEmptyValues,
+				keep_empty__values = this.keepEmpty_values,
 				i = $.inArray(e.target, this.inputs),
 				j = i - 1,
 				k = i + 1,
@@ -1556,7 +1556,7 @@
 				return;
 
 			$.each(this.pickers, function(i, p){
-				if (!p.getUTCDate() && (p === dp || !keep_empty_values))
+				if (!p.getUTCDate() && (p === dp || !keep_empty__values))
 					p.setUTCDate(new_date);
 			});
 
@@ -1681,7 +1681,7 @@
 		endDate: Infinity,
 		forceParse: true,
 		format: 'mm/dd/yyyy',
-		keepEmptyValues: false,
+		keepEmpty_values: false,
 		keyboardNavigation: true,
 		language: 'en',
 		minViewMode: 0,
@@ -1763,9 +1763,9 @@
 		validParts: /dd?|DD?|mm?|MM?|yy(?:yy)?/g,
 		nonpunctuation: /[^ -\/:-@\u5e74\u6708\u65e5\[-`{-~\t\n\r]+/g,
 		parseFormat: function(format){
-			if (typeof format.toValue === 'function' && typeof format.toDisplay === 'function')
+			if (typeof format.to_value === 'function' && typeof format.toDisplay === 'function')
                 return format;
-            // IE treats \0 as a string end in inputs (truncating the value),
+            // IE treats \0 as a string end in inputs (truncating the _value),
 			// so it's a bad format delimiter, anyway
 			var separators = format.replace(this.validParts, '\0').split('\0'),
 				parts = format.match(this.validParts);
@@ -1781,8 +1781,8 @@
 				return date;
 			if (typeof format === 'string')
 				format = DPGlobal.parseFormat(format);
-			if (format.toValue)
-				return format.toValue(date, format, language);
+			if (format.to_value)
+				return format.to_value(date, format, language);
 			var fn_map = {
 					d: 'moveDay',
 					m: 'moveMonth',

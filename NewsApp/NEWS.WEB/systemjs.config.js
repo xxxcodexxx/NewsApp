@@ -40,9 +40,9 @@
             rxjs: {
                 defaultExtension: 'js'
             }
-            ,
+            //,
             //'ng2-bs3-modal':
-            //    { main: '/bundles/ng2-bs3-modal.js', defaultExtension: 'js' },
+            //    { main: '/bundles/ng2-bs3-modal.js', defaultextension: 'js' },
             //'primeng':
             //    { main: 'primeng.js', defaultExtension: 'js' }
         }

@@ -117,7 +117,7 @@
 						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
 					}
 					datasetObject.points.push(new this.PointClass({
-						value : dataPoint,
+						_value : dataPoint,
 						label : data.labels[index],
 						datasetLabel: dataset.label,
 						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
@@ -146,12 +146,12 @@
 					y: this.scale.yCenter
 				}, mousePosition);
 
-			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
+			var anglePerIndex = (Math.PI * 2) /this.scale._valuesCount,
 				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
 				activePointsCollection = [];
 
 			// If we're at the top, make the pointIndex 0 to get the first of the array.
-			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
+			if (pointIndex >= this.scale._valuesCount || pointIndex < 0){
 				pointIndex = 0;
 			}
 
@@ -192,7 +192,7 @@
 				ctx : this.chart.ctx,
 				templateString: this.options.scaleLabel,
 				labels: data.labels,
-				valuesCount: data.datasets[0].data.length
+				_valuesCount: data.datasets[0].data.length
 			});
 
 			this.scale.setScaleSize();
@@ -200,7 +200,7 @@
 			this.scale.buildYLabels();
 		},
 		updateScaleRange: function(datasets){
-			var valuesArray = (function(){
+			var _valuesArray = (function(){
 				var totalDataArray = [];
 				helpers.each(datasets,function(dataset){
 					if (dataset.data){
@@ -208,7 +208,7 @@
 					}
 					else {
 						helpers.each(dataset.points, function(point){
-							totalDataArray.push(point.value);
+							totalDataArray.push(point._value);
 						});
 					}
 				});
@@ -219,12 +219,12 @@
 			var scaleSizes = (this.options.scaleOverride) ?
 				{
 					steps: this.options.scaleSteps,
-					stepValue: this.options.scaleStepWidth,
-					min: this.options.scaleStartValue,
-					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+					step_value: this.options.scaleStepWidth,
+					min: this.options.scaleStart_value,
+					max: this.options.scaleStart_value + (this.options.scaleSteps * this.options.scaleStepWidth)
 				} :
 				helpers.calculateScaleRange(
-					valuesArray,
+					_valuesArray,
 					helpers.min([this.chart.width, this.chart.height])/2,
 					this.options.scaleFontSize,
 					this.options.scaleBeginAtZero,
@@ -237,13 +237,13 @@
 			);
 
 		},
-		addData : function(valuesArray,label){
-			//Map the values array for each of the datasets
-			this.scale.valuesCount++;
-			helpers.each(valuesArray,function(value,datasetIndex){
-				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
+		addData : function(_valuesArray,label){
+			//Map the _values array for each of the datasets
+			this.scale._valuesCount++;
+			helpers.each(_valuesArray,function(_value,datasetIndex){
+				var pointPosition = this.scale.getPointPosition(this.scale._valuesCount, this.scale.calculateCenterOffset(_value));
 				this.datasets[datasetIndex].points.push(new this.PointClass({
-					value : value,
+					_value : _value,
 					label : label,
 					x: pointPosition.x,
 					y: pointPosition.y,
@@ -259,7 +259,7 @@
 			this.update();
 		},
 		removeData : function(){
-			this.scale.valuesCount--;
+			this.scale._valuesCount--;
 			this.scale.labels.shift();
 			helpers.each(this.datasets,function(dataset){
 				dataset.points.shift();
@@ -296,8 +296,8 @@
 
 				//Transition each point first so that the line and point drawing isn't out of sync
 				helpers.each(dataset.points,function(point,index){
-					if (point.hasValue()){
-						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
+					if (point.has_value()){
+						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point._value)), easeDecimal);
 					}
 				},this);
 
@@ -325,7 +325,7 @@
 				//A little inefficient double looping, but better than the line
 				//lagging behind the point positions
 				helpers.each(dataset.points,function(point){
-					if (point.hasValue()){
+					if (point.has_value()){
 						point.draw();
 					}
 				});
