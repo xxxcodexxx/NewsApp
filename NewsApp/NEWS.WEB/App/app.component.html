@@ -1,1 +1,20 @@
-﻿<router-outlet></router-outlet>
+﻿<div class="wrapper">
+    <app-header></app-header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <app-aside></app-aside>
+    
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <router-outlet></router-outlet>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <app-rightaside></app-rightaside>
+    <app-footer></app-footer>
+</div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+

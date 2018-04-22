@@ -10,6 +10,7 @@ using NEWS.DATA.UnitOfWork;
 using NEWS.SERVICES.Business;
 using System.Web.Http;
 
+
 namespace NEWS.WEB.Controllers
 {
     public class CategoryAPIController : BaseAPIController
@@ -27,6 +28,26 @@ namespace NEWS.WEB.Controllers
         {
             return ToJson(_categoryServices.GetAll().ToList());
         }
+
+        public HttpResponseMessage Create(Category item)
+        {
+            return ToJson(_categoryServices.Add(item));
+        }
+
+        public HttpResponseMessage Edit(int id)
+        {
+            var item = _categoryServices.GetById(id);
+            return ToJson(item);
+        }
+        public HttpResponseMessage Update(Category item)
+        {
+            return ToJson(_categoryServices.Update(item));
+        }
+        public HttpResponseMessage Delete(int id)
+        {
+            return ToJson(_categoryServices.Delete(_categoryServices.GetById(id)));
+        }
+
 
         public HttpResponseMessage Post([FromBody]Category category)
         {

@@ -28,7 +28,7 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-            //'ng2-bs3-modal': 'npm:/ng2-bs3-modal',
+            'ng2-bs3-modal': 'npm:ng2-bs3-modal/bundles/ng2-bs3-modal.umd.js',
             //'primeng': 'npm:primeng',
             //'primeng/table': 'npm:primeng/components/table/table.js',
         },
