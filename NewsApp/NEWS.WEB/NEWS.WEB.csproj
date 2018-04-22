@@ -247,6 +247,7 @@
     <Content Include="Content\adminLTE\img\credit\visa.png" />
     <Content Include="Content\adminLTE\img\default-50x50.gif" />
     <Content Include="Content\adminLTE\img\icons.png" />
+    <Content Include="Content\adminLTE\img\loading.gif" />
     <Content Include="Content\adminLTE\img\photo1.png" />
     <Content Include="Content\adminLTE\img\photo2.png" />
     <Content Include="Content\adminLTE\img\photo3.jpg" />
@@ -7414,7 +7415,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="systemjs.config.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -7478,6 +7481,7 @@
     <TypeScriptCompile Include="App\Models\category.ts" />
     <TypeScriptCompile Include="App\Service\category.service.ts" />
     <TypeScriptCompile Include="App\Shared\commondisplay.ts" />
+    <TypeScriptCompile Include="App\Shared\enum.ts" />
     <TypeScriptCompile Include="App\Shared\global.ts" />
     <TypeScriptCompile Include="Scripts\adminLTE\bower_components\moment\moment.d.ts" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿<div class='table-responsive'>
+﻿    <div class='table-responsive'>
+    <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="addCategory()">Add</button></div>
     <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
     <div *ngIf='categories && categories.length==0' class="alert alert-info" role="alert">No record found!</div>
 
@@ -17,8 +18,8 @@
                 <td>{{category.ParentId}}</td>
                 <td>{{category.Status}}</td>
                 <td>
-                    <button title="Edit" class="btn btn-primary" (click)="editUser(user.Id)">Edit</button>
-                    <button title="Delete" class="btn btn-danger" (click)="deleteUser(user.Id)">Delete</button>
+                    <button title="Edit" class="btn btn-primary" (click)="editCategory(category.Id)">Edit</button>
+                    <button title="Delete" class="btn btn-danger" (click)="deleteCategory(category.Id)">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -26,3 +27,41 @@
     <div>
     </div>
 </div>
+
+    <bs-modal #modal>
+        <form novalidate (ngSubmit)="onSubmit(categoryFrm)" [formGroup]="categoryFrm">
+            <bs-modal-header [showDismiss]="true">
+                <h4 class="modal-title">{{modalTitle}}</h4>
+            </bs-modal-header>
+            <bs-modal-body>
+
+                <div class="form-group">
+                    <div>
+                        <span>Category Name</span>
+                        <input type="text" class="form-control" placeholder="CategoryName" formControlName="CategoryName" id="CategoryName" required>
+                        <div *ngIf="categoryFrm.controls['CategoryName'].invalid && (categoryFrm.controls['CategoryName'].dirty || categoryFrm.controls['CategoryName'].touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="categoryFrm.controls['CategoryName'].errors.required">
+                                Category Name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span>ParentId </span>
+                        <input type="text" class="form-control" placeholder="ParentId" formControlName="ParentId">
+                    </div>
+                    <div>
+                        <span>Status</span>
+                        <input type="text" class="form-control" placeholder="Status" formControlName="Status">                      
+                    </div>
+
+                </div>
+            </bs-modal-body>
+            <bs-modal-footer>
+                <div>
+                    <a class="btn btn-default" (click)="modal.close()">Cancel</a>
+                    <button type="submit" [disabled]="categoryFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+                </div>
+            </bs-modal-footer>
+        </form>
+    </bs-modal>
