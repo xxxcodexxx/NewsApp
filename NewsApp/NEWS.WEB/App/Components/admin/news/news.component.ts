@@ -27,8 +27,8 @@ export class NewsComponent implements OnInit {
 
     ngOnInit(): void {
         this.newFrm = this.fb.group({
-            ID: ['', Validators.required],
-            Title:[''],
+            ID: [''],
+            Title: ['', Validators.required],
             Description: [''],
             Content: [''],
             Image: [''],
