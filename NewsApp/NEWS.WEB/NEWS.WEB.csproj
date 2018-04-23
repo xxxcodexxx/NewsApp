@@ -7491,6 +7491,7 @@
     <TypeScriptCompile Include="App\Components\admin\main-header\main-header.module.ts" />
     <TypeScriptCompile Include="App\main.ts" />
     <TypeScriptCompile Include="App\Models\category.ts" />
+    <TypeScriptCompile Include="App\Models\new.ts" />
     <TypeScriptCompile Include="App\Service\admin.service.ts" />
     <TypeScriptCompile Include="App\Shared\commondisplay.ts" />
     <TypeScriptCompile Include="App\Shared\enum.ts" />

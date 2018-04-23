@@ -1,0 +1,16 @@
+﻿export interface INew {
+    Id: number,
+    Title: string,
+    Description: string,
+    Content: string,
+    Image: string,
+    CategoryId: number,
+    Status: number,
+    CreatedTime: Date,
+    ModifiedTime: Date,
+    CreateBy: string,
+    ModifiedBy: string,
+    Author: string,
+    ViewCount: number,
+    Tags:string,
+}
