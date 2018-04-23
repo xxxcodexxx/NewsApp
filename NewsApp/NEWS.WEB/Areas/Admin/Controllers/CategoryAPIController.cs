@@ -27,12 +27,13 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_categoryServices.GetAll().ToList());
+            return ToJson(_categoryServices.GetAll().ToList().Where(w=>w.Status == 0));
         }
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody]Category item)
         {
+            item.Status = (int)Models.CommonStatus.Acitivy;
             return ToJson(_categoryServices.Add(item));
         }
 
@@ -45,7 +46,9 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            return ToJson(_categoryServices.Delete(_categoryServices.GetById(id)));
+            var item = _categoryServices.GetById(id);
+            item.Status = (int)Models.CommonStatus.Deleted;
+            return ToJson(_categoryServices.Update(item));
         }
         
     }
