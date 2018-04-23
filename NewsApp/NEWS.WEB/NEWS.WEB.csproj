@@ -7412,10 +7412,10 @@
     <Content Include="Scripts\adminLTE\bower_components\select2\src\scss\_dropdown.scss" />
     <Content Include="Scripts\adminLTE\bower_components\select2\src\scss\_multiple.scss" />
     <Content Include="Scripts\adminLTE\bower_components\select2\src\scss\_single.scss" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
