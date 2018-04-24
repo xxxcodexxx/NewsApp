@@ -1,6 +1,7 @@
 ﻿export interface ICategory {
-    Id: number,
+    CategoryId: number,
     CategoryName: string,
     ParentId: number,
-    Status: number
+    Status: number,
+    ParentName : string
 }
