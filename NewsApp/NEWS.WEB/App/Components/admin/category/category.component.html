@@ -56,7 +56,7 @@
                 <div>
                     <span>ParentId</span>
                     <select formControlName="ParentId">
-                        <option value="0" selected="selected">Choose this parent</option>
+                        <option value="null" selected="selected">Choose this parent</option>
                         <option *ngFor="let item of categories" [value]="item.CategoryId">{{item.CategoryName}}</option>
                     </select>
                 </div>

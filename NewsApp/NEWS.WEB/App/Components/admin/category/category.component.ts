@@ -50,6 +50,9 @@ export class CategoryComponent implements OnInit {
                 if (val.ParentId == value.CategoryId) {
                     val.ParentName = value.CategoryName;
                 }
+                if (val.ParentId == 0) {
+                    val.ParentName = "";
+                }
             })
         })
     }
@@ -68,7 +71,9 @@ export class CategoryComponent implements OnInit {
         this.modalTitle = "Edit Category";
         this.modalBtnTitle = "Update";
         this.category = this.categories.filter(x => x.CategoryId == id)[0];
-        this.category.ParentId = 0;
+        if (this.category.ParentId == 0)
+            this.category.ParentId = null;
+        this.categoryFrm.setValue(this.category);
         this.modal.open();
     }
 

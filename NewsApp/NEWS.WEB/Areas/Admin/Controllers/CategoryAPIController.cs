@@ -34,12 +34,16 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Post([FromBody]Category item)
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
+            if (item.ParentId == null)
+                item.ParentId = 0;
             return ToJson(_categoryServices.Add(item));
         }
 
         [HttpPut]
         public HttpResponseMessage Update([FromBody]Category item)
         {
+            if (item.ParentId == null)
+                item.ParentId = 0;
             return ToJson(_categoryServices.Update(item));
         }
 
