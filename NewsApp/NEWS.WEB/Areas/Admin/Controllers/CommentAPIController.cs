@@ -13,45 +13,43 @@ using System;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
-    public class NewsAPIController : BaseAPIController
+    public class CommentAPIController : BaseAPIController
     {
-        private readonly INewsServices _newsServices;
-        public NewsAPIController()
+        private readonly ICommentServices _commentServices;
+        public CommentAPIController()
         {
             IDatabaseFactory databaseFactory = new DatabaseFactory();
-            IRepository<News> repositorynews = new Repository<News>(databaseFactory);
+            IRepository<Comment> repositoryComment = new Repository<Comment>(databaseFactory);
             IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-            this._newsServices = new NewsServices(repositorynews, unitOfWork);
+            this._commentServices = new CommentServices(repositoryComment, unitOfWork);
         }
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_newsServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(_commentServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]News item)
+        public HttpResponseMessage Post([FromBody]Comment item)
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
-            item.CreatedTime = DateTime.Now;
-            item.ViewCount = 0;
-            return ToJson(_newsServices.Add(item));
+            item.PostedTime = DateTime.Now;
+            return ToJson(_commentServices.Add(item));
         }
 
         [HttpPut]
-        public HttpResponseMessage Update([FromBody]News item)
+        public HttpResponseMessage Update([FromBody]Comment item)
         {
-            item.ModifiedTime = DateTime.Now;
-            return ToJson(_newsServices.Update(item));
+            return ToJson(_commentServices.Update(item));
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var item = _newsServices.GetById(id);
+            var item = _commentServices.GetById(id);
             item.Status = (int)Models.CommonStatus.Deleted;
-            return ToJson(_newsServices.Update(item));
+            return ToJson(_commentServices.Update(item));
         }
         
     }

@@ -27,7 +27,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_categoryServices.GetAll().ToList().Where(w=>w.Status == 0));
+            return ToJson(_categoryServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]

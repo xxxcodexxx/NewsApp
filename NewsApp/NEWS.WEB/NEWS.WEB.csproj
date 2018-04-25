@@ -203,6 +203,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PermissionAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FeedbackAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsAPIController.cs" />
