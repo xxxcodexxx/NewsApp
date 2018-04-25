@@ -1,4 +1,4 @@
-﻿export interface INew {
+﻿export interface INews {
     Id: number,
     Title: string,
     Description: string,
@@ -6,8 +6,8 @@
     Image: string,
     CategoryId: number,
     Status: number,
-    CreatedTime: Date,
-    ModifiedTime: Date,
+    CreatedTime: string,
+    ModifiedTime: string,
     CreateBy: string,
     ModifiedBy: string,
     Author: string,

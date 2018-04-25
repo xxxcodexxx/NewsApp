@@ -1,1 +1,91 @@
-﻿<div><h1>Account view</h1></div>
+﻿<div class='table-responsive'>
+    <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="addAccounts()">Add</button></div>
+    <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
+    <div *ngIf='accounts && accounts.length==0' class="alert alert-info" role="alert">No record found!</div>
+
+    <table class='table table-striped' *ngIf='accounts && accounts.length'>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>FullName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>PermissionId</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let account of accounts">
+                <td>{{account.UserName}}</td>
+                <td>{{account.Password}}</td>
+                <td>{{account.FullName}}</td>
+                <td>{{account.Email}}</td>
+                <td>{{account.Phone}}</td>
+                <td>{{account.PermissionId}}</td>
+                <td>{{account.Status}}</td>
+                <td>
+                    <button title="Edit" class="btn btn-primary" (click)="editAccounts(account.UserName)">Edit</button>
+                    <button title="Delete" class="btn btn-danger" (click)="deleteAccounts(account.UserName)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{msg}}
+        </div>
+    </div>
+</div>
+
+<bs-modal #modal>
+    <form novalidate (ngSubmit)="onSubmit(accountFrm)" [formGroup]="accountFrm">
+        <bs-modal-header [showDismiss]="true">
+            <h4 class="modal-title">{{modalTitle}}</h4>
+        </bs-modal-header>
+        <bs-modal-body>
+
+            <div class="form-group">
+                <div>
+                    <span>UserName </span>
+                    <input type="text" class="form-control" placeholder="UserName" formControlName="UserName">
+                </div>
+                <div>
+                    <span>Password </span>
+                    <input type="text" class="form-control" placeholder="ParentId" formControlName="ParentId">
+                </div>
+                <div>
+                    <span>FullName </span>
+                    <input type="text" class="form-control" placeholder="FullName" formControlName="FullName">
+                </div>
+                <div>
+                    <span>Email </span>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="Email">
+                </div>
+                <div>
+                    <span>Phone </span>
+                    <input type="text" class="form-control" placeholder="Phone" formControlName="Phone">
+                </div>
+                <div>
+                    <span>PermissionId </span>
+                    <input type="text" class="form-control" placeholder="PermissionId" formControlName="PermissionId">
+                </div>
+                <div>
+                    <span>Status</span>
+                    <input type="text" class="form-control" placeholder="Status" formControlName="Status">
+                </div>
+
+            </div>
+        </bs-modal-body>
+        <bs-modal-footer>
+            <div>
+                <a class="btn btn-default" (click)="modal.close()">Cancel</a>
+                <button type="submit" [disabled]="accountFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+            </div>
+        </bs-modal-footer>
+    </form>
+</bs-modal>

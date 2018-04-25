@@ -7491,8 +7491,12 @@
     <TypeScriptCompile Include="App\Components\admin\main-header\main-header.component.ts" />
     <TypeScriptCompile Include="App\Components\admin\main-header\main-header.module.ts" />
     <TypeScriptCompile Include="App\main.ts" />
+    <TypeScriptCompile Include="App\Models\account.ts" />
     <TypeScriptCompile Include="App\Models\category.ts" />
+    <TypeScriptCompile Include="App\Models\comment.ts" />
+    <TypeScriptCompile Include="App\Models\feedback.ts" />
     <TypeScriptCompile Include="App\Models\new.ts" />
+    <TypeScriptCompile Include="App\Models\permission.ts" />
     <TypeScriptCompile Include="App\Service\admin.service.ts" />
     <TypeScriptCompile Include="App\Shared\commondisplay.ts" />
     <TypeScriptCompile Include="App\Shared\enum.ts" />

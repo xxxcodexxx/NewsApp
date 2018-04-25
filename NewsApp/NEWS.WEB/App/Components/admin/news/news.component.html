@@ -11,7 +11,6 @@
                 <th>Content</th>
                 <th>Image</th>
                 <th>CategoryId</th>
-                <th>Status</th>
                 <th>CreatedTime</th>
                 <th>ModifiedTime</th>
                 <th>CreateBy</th>
@@ -23,12 +22,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let category of categories">
+            <tr *ngFor="let new of news">
                 <td>{{new.Title}}</td>
                 <td>{{new.Description}}</td>
                 <td>{{new.Content}}</td>
                 <td>{{new.Image}}</td>
-                <td>{{new.CreateTime}}</td>
+                <td>{{new.CategoryId}}</td>
+                <td>{{new.CreatedTime}}</td>
                 <td>{{new.ModifiedTime}}</td>
                 <td>{{new.CreateBy}}</td>
                 <td>{{new.ModifiedBy}}</td>
@@ -53,65 +53,79 @@
 </div>
 
 <bs-modal #modal>
-    <form novalidate (ngSubmit)="onSubmit(newFrm)" [formGroup]="newFrm">
+    <form novalidate (ngSubmit)="onSubmit(newFrm)" [formGroup]="newFrm" >
         <bs-modal-header [showDismiss]="true">
             <h4 class="modal-title">{{modalTitle}}</h4>
         </bs-modal-header>
         <bs-modal-body>
 
             <div class="form-group">
-                <div>
-                    <span>Title</span>
-                    <input type="text" class="form-control" placeholder="Title" formControlName="Title" id="Title" required>
-                    <div *ngIf="newFrm.controls['Title'].invalid && (newFrm.controls['Title'].dirty || newFrm.controls['Title'].touched)"
-                         class="alert alert-danger">
-                        <div *ngIf="newFrm.controls['Title'].errors.required">
-                            Title is required.
+                <div class="row">
+                    <div class="rol">
+                        <span>Title</span>
+                        <input type="text" class="form-control" placeholder="Title" formControlName="Title" id="Title" required>
+                        <div *ngIf="newFrm.controls['Title'].invalid && (newFrm.controls['Title'].dirty || newFrm.controls['Title'].touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="newFrm.controls['Title'].errors.required">
+                                Title is required.
+                            </div>
                         </div>
                     </div>
+                    <div class="rol">
+                        <span>Description</span>
+                        <input type="text" class="form-control" placeholder="Description" formControlName="Description">
+                    </div>
+                    <div class="rol">
+                        <span>Content</span>
+                        <input type="text" class="form-control" placeholder="Content" formControlName="Content">
+                    </div>
+                    <div class="rol">
+                        <span>Image</span>
+                        <input type="text" class="form-control" placeholder="Image" formControlName="Image">
+                    </div>
+                    <div class="rol">
+                        <span>CategoryId</span>
+                        <input type="text" class="form-control" placeholder="CategoryId" formControlName="CategoryId">
+                    </div>
+                    </div>
+                <div class="row">
+                    <div class="rol">
+                        <span>Status</span>
+                        <input type="text" class="form-control" placeholder="Status" formControlName="Status">
+                    </div>
+                    <div class="rol">
+                        <span>ModifiedTime</span>
+                        <input type="date" class="form-control" placeholder="ModifiedTime" formControlName="ModifiedTime">
+                    </div>
+                    <div class="rol">
+                        <span>CreatedTime</span>
+                        <input type="date" class="form-control" placeholder="CreatedTime" formControlName="CreatedTime">
+                    </div>
+                    <div class="rol">
+                        <span>CreateBy</span>
+                        <input type="text" class="form-control" placeholder="CreateBy" formControlName="CreateBy">
+                    </div>
                 </div>
-                <div>
-                    <span>Description</span>
-                    <input type="text" class="form-control" placeholder="Description" formControlName="Description">
-                </div>
-                <div>
-                    <span>Content</span>
-                    <input type="text" class="form-control" placeholder="Content" formControlName="Content">
-                </div>
-                <div>
-                    <span>Image</span>
-                    <input type="text" class="form-control" placeholder="Image" formControlName="Image">
-                </div>
-                <div>
-                    <span>CreatedTime</span>
-                    <input type="date" class="form-control" placeholder="CreatedTime" formControlName="CreatedTime">
-                </div>
-                <div>
-                    <span>ModifiedTime</span>
-                    <input type="date" class="form-control" placeholder="ModifiedTime" formControlName="ModifiedTime">
-                </div>
-                <div>
-                    <span>CreateBy</span>
-                    <input type="text" class="form-control" placeholder="CreateBy" formControlName="CreateBy">
-                </div>
-                <div>
-                    <span>ModifiedBy</span>
-                    <input type="text" class="form-control" placeholder="ModifiedBy" formControlName="ModifiedBy">
-                </div>
-                <div>
-                    <span>Author</span>
-                    <input type="text" class="form-control" placeholder="Author" formControlName="Author">
-                </div>
-                <div>
-                    <span>ViewCount</span>
-                    <input type="number" class="form-control" placeholder="ViewCount" formControlName="ViewCount">
-                </div>
-                <div>
-                    <span>Tags</span>
-                    <input type="text" class="form-control" placeholder="Tags" formControlName="Tags">
+                <div class="row">
+                    <div class="rol">
+                        <span>ModifiedBy</span>
+                        <input type="text" class="form-control" placeholder="ModifiedBy" formControlName="ModifiedBy">
+                    </div>
+                    <div class="rol">
+                        <span>ViewCount</span>
+                        <input type="number" class="form-control" placeholder="ViewCount" formControlName="ViewCount">
+                    </div>
+                    <div class="rol">
+                        <span>Author</span>
+                        <input type="text" class="form-control" placeholder="Author" formControlName="Author">
+                    </div>
+                    <div class="rol">
+                        <span>Tags</span>
+                        <input type="text" class="form-control" placeholder="Tags" formControlName="Tags">
+                    </div>
                 </div>
 
-            </div>
+                </div>
         </bs-modal-body>
         <bs-modal-footer>
             <div>

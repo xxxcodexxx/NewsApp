@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from '../../../Service/admin.service';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
-import { INew } from '../../../Models/new';
+import { INews } from '../../../Models/new';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
 import { BsModalComponent } from 'ng2-bs3-modal';
@@ -13,8 +13,8 @@ import { DBOperation } from '../../../Shared/enum';
 })
 export class NewsComponent implements OnInit {
 
-    news: INew[];
-    new: INew;
+    news: INews[];
+    new: INews;
     msg: string;
     indLoading: boolean = false;
     @ViewChild('modal') modal: BsModalComponent;
@@ -27,19 +27,19 @@ export class NewsComponent implements OnInit {
 
     ngOnInit(): void {
         this.newFrm = this.fb.group({
-            ID: [''],
+            NewsId: [''],
             Title: ['', Validators.required],
             Description: [''],
             Content: [''],
             Image: [''],
+            Status:[''],
             CategoryId: [''],
-            Status: [''],
-            CreatedTime: [''],
+            CreatedTime:[''],
             ModifiedTime: [''],
             CreateBy: [''],
             ModifiedBy: [''],
             Author: [''],
-            ViewCount: [''],
+            ViewCount:[''],
             Tags: [''],
         });
 
@@ -47,7 +47,7 @@ export class NewsComponent implements OnInit {
     }
     LoadNews() {
         this.indLoading = true;
-        this._adminService.get(Global.BASE_CATEGORY_ENDPOINT)
+        this._adminService.get(Global.BASE_NEWS_ENDPOINT)
             .subscribe(res => { this.news = res, this.indLoading = false; },
             error => this.msg = <any>error);
     }
@@ -85,7 +85,7 @@ export class NewsComponent implements OnInit {
 
         switch (this.dbops) {
             case DBOperation.create:
-                this._adminService.post(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
+                this._adminService.post(Global.BASE_NEWS_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
@@ -110,7 +110,7 @@ export class NewsComponent implements OnInit {
                 );
                 break;
             case DBOperation.update:
-                this._adminService.put(Global.BASE_CATEGORY_ENDPOINT, formData.value).subscribe(
+                this._adminService.put(Global.BASE_NEWS_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
@@ -135,7 +135,7 @@ export class NewsComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._adminService.delete(Global.BASE_CATEGORY_ENDPOINT, formData.value.CategoryId).subscribe(
+                this._adminService.delete(Global.BASE_NEWS_ENDPOINT, formData.value.Id).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
