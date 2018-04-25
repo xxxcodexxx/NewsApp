@@ -6,6 +6,9 @@ import { BsModalComponent } from 'ng2-bs3-modal';
 import { DBOperation } from '../../../Shared/enum';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
+import { ICapability } from 'selenium-webdriver';
+import { debug } from 'util';
+import { Script } from 'vm';
 
 @Component({
     templateUrl: '/App/Components/admin/category/category.component.html'
@@ -29,7 +32,8 @@ export class CategoryComponent implements OnInit {
             CategoryId: [''],
             CategoryName: ['', Validators.required],
             ParentId: [''],
-            Status: ['']
+            Status: [''],
+            ParentName: ['']
         });
 
         this.LoadCategories();
@@ -37,8 +41,20 @@ export class CategoryComponent implements OnInit {
     LoadCategories() {
         this.indLoading = true;   
         this._adminService.get(Global.BASE_CATEGORY_ENDPOINT)
-            .subscribe(res => { this.categories = res, this.indLoading = false; },
+            .subscribe(res => { this.categories = res, this.indLoading = false;this.LoadParentCategory(res) },
             error => this.msg = <any>error);
+    }
+    LoadParentCategory(cate: ICategory[]) {
+        cate.forEach((val) => {
+            cate.forEach((value) => {
+                if (val.ParentId == value.CategoryId) {
+                    val.ParentName = value.CategoryName;
+                }
+                if (val.ParentId == 0) {
+                    val.ParentName = "";
+                }
+            })
+        })
     }
     addCategory() {
         this.dbops = DBOperation.create;
@@ -54,7 +70,9 @@ export class CategoryComponent implements OnInit {
         this.SetControlsState(true);
         this.modalTitle = "Edit Category";
         this.modalBtnTitle = "Update";
-        this.category = this.categories.filter(x => x.Id == id)[0];
+        this.category = this.categories.filter(x => x.CategoryId == id)[0];
+        if (this.category.ParentId == 0)
+            this.category.ParentId = null;
         this.categoryFrm.setValue(this.category);
         this.modal.open();
     }
@@ -64,7 +82,7 @@ export class CategoryComponent implements OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
-        this.category = this.categories.filter(x => x.Id == id)[0];
+        this.category = this.categories.filter(x => x.CategoryId == id)[0];
         this.categoryFrm.setValue(this.category);
         this.modal.open();
     }
