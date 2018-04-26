@@ -48,7 +48,7 @@ export class CommentComponent implements  OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Detail Comment";
         this.modalBtnTitle = "";
-        this.comment = this.comments.filter(x => x.Id == id)[0];
+        this.comment = this.comments.filter(x => x.CommentId == id)[0];
         this.commentFrm.setValue(this.comment);
         this.modal.open();
     }

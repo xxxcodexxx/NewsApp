@@ -54,7 +54,7 @@ export class PermissionComponent implements OnInit {
         this.SetControlsState(true);
         this.modalTitle = "Edit Permission";
         this.modalBtnTitle = "Update";
-        this.permission = this.permissions.filter(x => x.Id == id)[0];
+        this.permission = this.permissions.filter(x => x.PermissionId == id)[0];
         this.permissionFrm.setValue(this.permission);
         this.modal.open();
     }
@@ -64,7 +64,7 @@ export class PermissionComponent implements OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
-        this.permission = this.permissions.filter(x => x.Id == id)[0];
+        this.permission = this.permissions.filter(x => x.PermissionId == id)[0];
         this.permissionFrm.setValue(this.permission);
         this.modal.open();
     }

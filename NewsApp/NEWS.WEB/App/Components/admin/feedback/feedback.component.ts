@@ -48,7 +48,7 @@ export class FeedbackComponent implements OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Detail Feedback";
         this.modalBtnTitle = "";
-        this.feedback = this.feedbacks.filter(x => x.Id == id)[0];
+        this.feedback = this.feedbacks.filter(x => x.FeedbackId == id)[0];
         this.feedbackFrm.setValue(this.feedback);
         this.modal.open();
     }

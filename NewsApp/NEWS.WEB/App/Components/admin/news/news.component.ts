@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
 import { BsModalComponent } from 'ng2-bs3-modal';
 import { DBOperation } from '../../../Shared/enum';
+import { ICategory } from '../../../Models/category';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { DBOperation } from '../../../Shared/enum';
 export class NewsComponent implements OnInit {
 
     news: INews[];
+    category: ICategory[];
     new: INews;
     msg: string;
     indLoading: boolean = false;
@@ -41,14 +43,15 @@ export class NewsComponent implements OnInit {
             Author: [''],
             ViewCount:[''],
             Tags: [''],
+            CategoryName:['']
         });
-
+        this.loadCategory();
         this.LoadNews();
     }
     LoadNews() {
         this.indLoading = true;
         this._adminService.get(Global.BASE_NEWS_ENDPOINT)
-            .subscribe(res => { this.news = res, this.indLoading = false; },
+            .subscribe(res => { this.news = res, this.indLoading = false, this.LoadParentCategory(this.news)},
             error => this.msg = <any>error);
     }
     addNew() {
@@ -59,13 +62,32 @@ export class NewsComponent implements OnInit {
         this.newFrm.reset();
         this.modal.open();
     }
+    loadCategory() {
+        this._adminService.get(Global.BASE_CATEGORY_ENDPOINT)
+            .subscribe(res => { this.category = res},
+            error => this.msg = <any>error);
+    }
 
+    LoadParentCategory(item: INews[]) {
+        item.forEach((val) => {
+            this.category.forEach((value) => {
+                if (val.CategoryId == value.CategoryId) {
+                    val.CategoryName = value.CategoryName;
+                }
+                if (val.CategoryId == 0) {
+                    val.CategoryName = "";
+                }
+            })
+        })
+    }
     editNew(id: number) {
         this.dbops = DBOperation.update;
         this.SetControlsState(true);
         this.modalTitle = "Edit New";
         this.modalBtnTitle = "Update";
-        this.new = this.news.filter(x => x.Id == id)[0];
+        this.new = this.news.filter(x => x.NewsId == id)[0];
+        if (this.new.CategoryId == 0)
+            this.new.CategoryId = null;
         this.newFrm.setValue(this.new);
         this.modal.open();
     }
@@ -75,7 +97,7 @@ export class NewsComponent implements OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
-        this.new = this.news.filter(x => x.Id == id)[0];
+        this.new = this.news.filter(x => x.NewsId == id)[0];
         this.newFrm.setValue(this.new);
         this.modal.open();
     }
@@ -135,7 +157,7 @@ export class NewsComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._adminService.delete(Global.BASE_NEWS_ENDPOINT, formData.value.Id).subscribe(
+                this._adminService.delete(Global.BASE_NEWS_ENDPOINT, formData.value.NewsId).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
