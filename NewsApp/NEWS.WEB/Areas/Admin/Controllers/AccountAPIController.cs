@@ -44,7 +44,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage Delete(string id)
         {
             var item = _accountServices.GetById(id);
             item.Status = (int)Models.CommonStatus.Deleted;

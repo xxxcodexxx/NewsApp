@@ -39,6 +39,7 @@ namespace NEWS.CORE.Services
         /// <param name="id"></param>
         /// <returns></returns>
         T GetById(int id);
+        T GetById(string id);
 
         T GetById(int? id);
 

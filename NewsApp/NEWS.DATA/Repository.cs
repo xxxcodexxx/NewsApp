@@ -62,6 +62,13 @@ namespace NEWS.DATA
             return result;
         }
 
+        public T GetById(string id)
+        {
+            T result = DbSet.Find(id);
+            if (result == null) return null;
+            return result;
+        }
+
         public T GetById(int? id)
         {
             if (id == null) return null;

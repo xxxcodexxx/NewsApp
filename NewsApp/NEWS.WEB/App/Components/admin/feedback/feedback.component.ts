@@ -27,7 +27,7 @@ export class FeedbackComponent implements OnInit {
 
     ngOnInit(): void {
         this.feedbackFrm = this.fb.group({
-            Id: [''],
+            FeedbackId: [''],
             Content: [''],
             FullName: [''],
             Email: [''],
