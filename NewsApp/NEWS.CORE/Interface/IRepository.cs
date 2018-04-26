@@ -32,6 +32,8 @@ namespace NEWS.CORE.Interface
         /// <param name="id"></param>
         /// <returns></returns>
         T GetById(int id);
+
+        T GetById(string id);
         /// <summary>
         /// 
         /// </summary>

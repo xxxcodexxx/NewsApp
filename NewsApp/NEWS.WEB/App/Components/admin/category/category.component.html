@@ -1,5 +1,5 @@
 ﻿<div class='table-responsive'>
-    <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="addCategory()">Add</button></div>
+    <div style="padding-bottom:10px"><button class="pull-right  btn btn-primary" (click)="addCategory()">Add</button></div>
     <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
     <div *ngIf='categories && categories.length==0' class="alert alert-info" role="alert">No record found!</div>
 
@@ -38,25 +38,22 @@
             <h4 class="modal-title">{{modalTitle}}</h4>
         </bs-modal-header>
         <bs-modal-body>
-
             <div class="form-group">
-                <div>
-                    <span>Category Name</span>
-                    <input type="text" class="form-control" placeholder="CategoryName" formControlName="CategoryName" id="CategoryName" required>
-                    <div *ngIf="categoryFrm.controls['CategoryName'].invalid && (categoryFrm.controls['CategoryName'].dirty || categoryFrm.controls['CategoryName'].touched)"
-                         class="alert alert-danger">
-                        <div *ngIf="categoryFrm.controls['CategoryName'].errors.required">
-                            Category Name is required.
-                        </div>
+                <label class="">Category Name</label>
+                <input type="text" class="form-control" placeholder="Enter category name" formControlName="CategoryName" id="CategoryName" required>
+                <div *ngIf="categoryFrm.controls['CategoryName'].invalid && (categoryFrm.controls['CategoryName'].dirty || categoryFrm.controls['CategoryName'].touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="categoryFrm.controls['CategoryName'].errors.required">
+                        Category Name is required.
                     </div>
                 </div>
-
                 <input type="hidden" class="form-control" placeholder="CategoryName" formControlName="ParentName" id="ParentName">
-
+            </div>
+            <div class="form-group">
+                <label>Parent Name</label>
                 <div>
-                    <span>ParentId</span>
                     <select formControlName="ParentId">
-                        <option value="null" selected="selected">Choose this parent</option>
+                        <option value="null" hidden>Choose this parent</option>
                         <option *ngFor="let item of categories" [value]="item.CategoryId">{{item.CategoryName}}</option>
                     </select>
                 </div>
