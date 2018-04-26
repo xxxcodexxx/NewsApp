@@ -1,5 +1,5 @@
 ﻿<div class='table-responsive'>
-    <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="addAccounts()">Add</button></div>
+    <div style="padding-bottom:10px"><button class="pull-right btn btn-primary" (click)="addAccounts()">Add</button></div>
     <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
     <div *ngIf='accounts && accounts.length==0' class="alert alert-info" role="alert">No record found!</div>
 
@@ -50,36 +50,38 @@
         <bs-modal-body>
 
             <div class="form-group">
-                <div>
-                    <span>UserName </span>
-                    <input type="text" class="form-control" placeholder="UserName" formControlName="UserName">
-                </div>
-                <div>
-                    <span>Password </span>
-                    <input type="text" class="form-control" placeholder="Password" formControlName="Password">
-                </div>
-                <div>
-                    <span>FullName </span>
-                    <input type="text" class="form-control" placeholder="FullName" formControlName="FullName">
-                </div>
-                <div>
-                    <span>Email </span>
-                    <input type="text" class="form-control" placeholder="Email" formControlName="Email">
-                </div>
-                <div>
-                    <span>Phone </span>
-                    <input type="text" class="form-control" placeholder="Phone" formControlName="Phone">
-                </div>
-                <div>
-                    <span>PermissionId </span>
-                    <input type="text" class="form-control" placeholder="PermissionId" formControlName="PermissionId">
-                </div>
-                <div>
-                    <span>Status</span>
-                    <input type="text" class="form-control" placeholder="Status" formControlName="Status">
-                </div>
-
+                <label>UserName </label>
+                <input type="text" class="form-control" placeholder="Username" formControlName="UserName">
             </div>
+            <div class="form-group">
+                <label>Password </label>
+                <input type="password" class="form-control" placeholder="Password" formControlName="Password">
+            </div>
+            <div class="form-group">
+                <label>FullName </label>
+                <input type="text" class="form-control" placeholder="FullName" formControlName="FullName">
+            </div>
+            <div class="form-group">
+                <label>Email </label>
+                <input type="text" class="form-control" placeholder="Email" formControlName="Email">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" placeholder="Phone Number" formControlName="Phone">
+            </div>
+            <div class="form-group">
+                <label>Permission</label>
+                <select formControlName="PermissionId">
+                    <option value="" selected hidden>Choose this permission</option>
+                    <option value="0">Admin</option>
+                    <option value="1">Staff</option>
+                </select>
+            </div>
+            <!--<div class="form-group">
+                <label>Status</label>
+                <input type="text" class="form-control" placeholder="Status" formControlName="Status">
+            </div>-->
+
         </bs-modal-body>
         <bs-modal-footer>
             <div>

@@ -46,6 +46,11 @@ namespace NEWS.SERVICES
             return Repository.GetById(id);
         }
 
+        public T GetById(string id)
+        {
+            return Repository.GetById(id);
+        }
+
         public T GetById(int? id)
         {
             return Repository.GetById(id);
