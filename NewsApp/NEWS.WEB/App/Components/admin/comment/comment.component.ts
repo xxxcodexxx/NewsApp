@@ -27,7 +27,7 @@ export class CommentComponent implements  OnInit {
 
     ngOnInit(): void {
         this.commentFrm = this.fb.group({
-            Id: [''],
+            CommentId: [''],
             Content: [''],
             Poster: [''],
             PostedTime: [''],
