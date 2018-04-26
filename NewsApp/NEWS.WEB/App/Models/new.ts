@@ -1,5 +1,5 @@
 ﻿export interface INews {
-    Id: number,
+    NewsId: number,
     Title: string,
     Description: string,
     Content: string,
@@ -12,5 +12,6 @@
     ModifiedBy: string,
     Author: string,
     ViewCount: number,
-    Tags:string,
+    Tags: string,
+    CategoryName:string
 }

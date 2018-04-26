@@ -35,6 +35,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
             item.CreatedTime = DateTime.Now;
+            item.CategoryId = item.CategoryId ?? 0;
             item.ViewCount = 0;
             return ToJson(_newsServices.Add(item));
         }

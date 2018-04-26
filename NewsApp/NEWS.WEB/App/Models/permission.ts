@@ -1,5 +1,5 @@
 ﻿export interface IPermission {
-    Id: number,
+    PermissionId: number,
     PermissionName: string,
     Status: number
 }
