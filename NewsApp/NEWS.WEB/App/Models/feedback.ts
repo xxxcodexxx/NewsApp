@@ -1,5 +1,5 @@
 ﻿export interface IFeedback {
-    Id: number,
+    FeedbackId: number,
     Content: string,
     FullName: string,
     Email: string,
