@@ -44,6 +44,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]News item)
         {
             item.ModifiedTime = DateTime.Now;
+            item.CategoryId = item.CategoryId ?? 0;
             return ToJson(_newsServices.Update(item));
         }
 
