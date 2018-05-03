@@ -1,36 +1,47 @@
-﻿<div class='table-responsive'>
-    <div style="padding-bottom:10px"><button class="pull-right  btn btn-primary" (click)="addCategory()">Add</button></div>
-    <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
-    <div *ngIf='categories && categories.length==0' class="alert alert-info" role="alert">No record found!</div>
+﻿<section class="content-header">
+    <h1>
+        Categories
+    </h1>
+</section>
+<section class="content">
+    <div class="box box-default">
+        <div class='table-responsive'>
+            <div style="padding:10px"><button class="pull-right  btn btn-primary" (click)="addCategory()">Add</button></div>
+            <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
+            <div *ngIf='categories && categories.length==0' class="alert alert-info" role="alert">No record found!</div>
 
-    <table class='table table-striped' *ngIf='categories && categories.length'>
-        <thead>
-            <tr>
-                <th>Category Name</th>
-                <th>Category Parent</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let category of categories">
-                <td>{{category.CategoryName}}</td>
-                <td>{{category.ParentName}}</td>
-                <td>
-                    <button title="Edit" class="btn btn-primary" (click)="editCategory(category.CategoryId)">Edit</button>
-                    <button title="Delete" class="btn btn-danger" (click)="deleteCategory(category.CategoryId)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div>
-        <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            {{msg}}
+            <table class='table table-striped' *ngIf='categories && categories.length'>
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Category Parent</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categories">
+                        <td>{{category.CategoryName}}</td>
+                        <td>{{category.ParentName}}</td>
+                        <td>
+                            <button title="Edit" class="btn btn-primary" (click)="editCategory(category.CategoryId)">Edit</button>
+                            <button title="Delete" class="btn btn-danger" (click)="deleteCategory(category.CategoryId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</section>
+<div>
+    <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{msg}}
+    </div>
 </div>
+           
+
 
 <bs-modal #modal>
     <form novalidate (ngSubmit)="onSubmit(categoryFrm)" [formGroup]="categoryFrm">
@@ -52,7 +63,7 @@
             <div class="form-group">
                 <label>Parent Name</label>
                 <div>
-                    <select formControlName="ParentId">
+                    <select class="form-control select2" style="width: 100%;" formControlName="ParentId">
                         <option value="null" hidden>Choose this parent</option>
                         <option *ngFor="let item of categories" [value]="item.CategoryId">{{item.CategoryName}}</option>
                     </select>

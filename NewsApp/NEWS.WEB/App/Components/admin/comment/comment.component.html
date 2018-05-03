@@ -1,71 +1,81 @@
-﻿<div class='table-responsive'>
-    <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
-    <div *ngIf='comments && comments.length==0' class="alert alert-info" role="alert">No record found!</div>
+﻿
+<section class="content-header">
+    <h1>
+        Comments
+    </h1>
+</section>
+<section class="content">
+    <div class="box box-default">
+        <div class='table-responsive'>
+            <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
+            <div *ngIf='comments && comments.length==0' class="alert alert-info" role="alert">No record found!</div>
 
-    <table class='table table-striped' *ngIf='comments && comments.length'>
-        <thead>
-            <tr>
-                <th>Content</th>
-                <th>Poster</th>
-                <th>PostedTime</th>
-                <th>ParentId</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let comment of comments">
-                <td>{{comment.Content}}</td>
-                <td>{{comment.Poster}}</td>
-                <td>{{comment.PostedTime}}</td>
-                <td>{{comment.ParentId}}</td>
-                <td *ngIf="comment.Status==0; else elseBlock">
-                 <span class="label label-success">Đã trả lời</span>
-                </td>
-                <ng-template #elseBlock><td><span class="label label-warning">Chưa trả lời</span></td></ng-template>
-                <td>
-                    <button title="Edit" class="btn btn-primary" (click)="detailComments(comment.CommentId)">Detail</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+            <table class='table table-hover' *ngIf='comments && comments.length' style="vertical-align:central">
+                <thead>
+                    <tr>
+                        <th>Content</th>
+                        <th>Poster</th>
+                        <th>PostedTime</th>
+                        <th>ParentId</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comment of comments" >
+                        <td>{{comment.Content}}</td>
+                        <td>{{comment.Poster}}</td>
+                        <td>{{comment.PostedTime}}</td>
+                        <td>{{comment.ParentId}}</td>
+                        <td *ngIf="comment.Status==0; else elseBlock">
+                            <span class="label label-success">Replied</span>
+                        </td>
+                        <ng-template #elseBlock><td ><span class="label label-warning " >Pending</span></td></ng-template>
+                        <td>
+                            <button title="Edit" class="btn btn-primary" (click)="detailComments(comment.CommentId)">Detail</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
 
-<bs-modal #modal>
-    <form novalidate [formGroup]="commentFrm">
-        <bs-modal-header [showDismiss]="true">
-            <h4 class="modal-title">{{modalTitle}}</h4>
-        </bs-modal-header>
-        <bs-modal-body>
+        <bs-modal #modal>
+            <form novalidate [formGroup]="commentFrm">
+                <bs-modal-header [showDismiss]="true">
+                    <h4 class="modal-title">{{modalTitle}}</h4>
+                </bs-modal-header>
+                <bs-modal-body>
 
-            <div class="form-group">
-                <div>
-                    <span>Content </span>
-                    <input type="text" class="form-control" placeholder="Content" formControlName="Content">
-                </div>
-                <div>
-                    <span>Poster </span>
-                    <input type="text" class="form-control" placeholder="Poster" formControlName="Poster">
-                </div>
-                <div>
-                    <span>PostedTime </span>
-                    <input type="text" class="form-control" placeholder="PostedTime" formControlName="PostedTime">
-                </div>
-                <div>
-                    <span>ParentId </span>
-                    <input type="text" class="form-control" placeholder="ParentId" formControlName="ParentId">
-                </div>
-                <div>
-                    <span>Status</span>
-                    <input type="text" class="form-control" placeholder="Status" formControlName="Status">
-                </div>
+                    <div class="form-group">
+                        <div>
+                            <span>Content </span>
+                            <input type="text" class="form-control" placeholder="Content" formControlName="Content">
+                        </div>
+                        <div>
+                            <span>Poster </span>
+                            <input type="text" class="form-control" placeholder="Poster" formControlName="Poster">
+                        </div>
+                        <div>
+                            <span>PostedTime </span>
+                            <input type="text" class="form-control" placeholder="PostedTime" formControlName="PostedTime">
+                        </div>
+                        <div>
+                            <span>ParentId </span>
+                            <input type="text" class="form-control" placeholder="ParentId" formControlName="ParentId">
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <input type="text" class="form-control" placeholder="Status" formControlName="Status">
+                        </div>
 
-            </div>
-        </bs-modal-body>
-        <bs-modal-footer>
-            <div>
-                <a class="btn btn-default" (click)="modal.close()">Cancel</a>
-            </div>
-        </bs-modal-footer>
-    </form>
-</bs-modal>
+                    </div>
+                </bs-modal-body>
+                <bs-modal-footer>
+                    <div>
+                        <a class="btn btn-default" (click)="modal.close()">Cancel</a>
+                    </div>
+                </bs-modal-footer>
+            </form>
+        </bs-modal>
