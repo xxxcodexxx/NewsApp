@@ -54,60 +54,62 @@
 
 
 <bs-modal #modal>
-    <form novalidate (ngSubmit)="onSubmit(newFrm)" [formGroup]="newFrm">
-        <bs-modal-header [showDismiss]="true">
-            <h4 class="modal-title">{{modalTitle}}</h4>
-        </bs-modal-header>
-        <bs-modal-body>
-
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" placeholder="Title" formControlName="Title" id="Title" required>
-                <div *ngIf="newFrm.controls['Title'].invalid && (newFrm.controls['Title'].dirty || newFrm.controls['Title'].touched)"
-                     class="alert alert-danger">
-                    <div *ngIf="newFrm.controls['Title'].errors.required">
-                        Title is required.
+      
+            <bs-modal-header [showDismiss]="true">
+                <h4 class="modal-title">{{modalTitle}}</h4>
+            </bs-modal-header>
+            <bs-modal-body>
+                <form novalidate (ngSubmit)="onSubmit(newFrm)" [formGroup]="newFrm">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" placeholder="Title" formControlName="Title" id="Title" required>
+                        <div *ngIf="newFrm.controls['Title'].invalid && (newFrm.controls['Title'].dirty || newFrm.controls['Title'].touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="newFrm.controls['Title'].errors.required">
+                                Title is required.
+                            </div>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" placeholder="Description" formControlName="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <ckeditor formControlName="Description" debounce="500">
+                            <p>Hello <strong>world</strong></p>
+                        </ckeditor>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="text" class="form-control" placeholder="Image" formControlName="Image">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label><br />
+                        <select class="form-control select2" style="width: 100%;" formControlName="CategoryId">
+                            <option value="null" selected="selected" hidden>Choose this parent</option>
+                            <option *ngFor="let item of category" [value]="item.CategoryId">{{item.CategoryName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" class="form-control" placeholder="Author" formControlName="Author">
+                    </div>
+                    <div class="form-group">
+                        <label>Tags</label>
+                        <input type="text" class="form-control" placeholder="Tags" formControlName="Tags">
+                    </div>
+                </form>
+            </bs-modal-body>
+            <bs-modal-footer>
+                <div>
+                    <a class="btn btn-default" (click)="modal.close()">Cancel</a>
+                    <button type="submit" [disabled]="newFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
                 </div>
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" placeholder="Description" formControlName="Description"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <textarea id="editor1" name="editor1" rows="10" cols="80" class="form-control" formControlName="Content">
-                                            This is my textarea to be replaced with CKEditor.
-                                </textarea>
-
-
-            </div>
-            <div class="form-group">
-                <label>Image</label>
-                <input type="text" class="form-control" placeholder="Image" formControlName="Image">
-            </div>
-            <div class="form-group">
-                <label>Category</label><br />
-                <select class="form-control select2" style="width: 100%;" formControlName="CategoryId">
-                    <option value="null" selected="selected" hidden>Choose this parent</option>
-                    <option *ngFor="let item of category" [value]="item.CategoryId">{{item.CategoryName}}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Author</label>
-                <input type="text" class="form-control" placeholder="Author" formControlName="Author">
-            </div>
-            <div class="form-group">
-                <label>Tags</label>
-                <input type="text" class="form-control" placeholder="Tags" formControlName="Tags">
-            </div>
-        </bs-modal-body>
-        <bs-modal-footer>
-            <div>
-                <a class="btn btn-default" (click)="modal.close()">Cancel</a>
-                <button type="submit" [disabled]="newFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
-            </div>
-        </bs-modal-footer>
-    </form>
+            </bs-modal-footer>
+     
+        
 </bs-modal>
+
 
