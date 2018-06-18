@@ -31,9 +31,9 @@ namespace NEWS.WEB.Controllers
             db.SaveChanges();
             return View(item);
         }
-        public ActionResult Search(string searchInput)
+        public ActionResult Search(string txtSearch="")
         {
-            var item = db.News.Where(w => w.Description.Contains(searchInput) || w.Content.Contains(searchInput) || w.Title.Contains(searchInput) || w.Tags.Contains(searchInput));
+            var item = db.News.Where(w => w.Description.Contains(txtSearch) || w.Content.Contains(txtSearch) || w.Title.Contains(txtSearch) || w.Tags.Contains(txtSearch));
             return View(item);
         }
     }
