@@ -13,5 +13,7 @@
 <script>
     var link = window.location.href;
     var res = link.substr(link.search('=') + 1, link.length - link.search('='));
-    document.getElementById("searchInput").value = res;
+    $(function () {
+        $('#txtSearch').val(res);
+    });
 </script>

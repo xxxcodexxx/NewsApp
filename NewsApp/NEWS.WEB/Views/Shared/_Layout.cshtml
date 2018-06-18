@@ -3,10 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/require")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/AdminLTE")
+    @RenderSection("scripts", required: false)
 
 </head>
 <body>
@@ -23,16 +28,16 @@
                 <li><a href="">NHỊP SỐNG TRẺ</a></li>
             </ul>
             <div class="header__search">
-                <form>
-                    <input type="text" name="txtSearch" placeholder="Tìm kiếm">
-                    <i class="fa fa-search header--search"></i>
+                <form method="get" action="@Url.Action("Search", "Home")">
+                    <input type="text" id="txtSearch" name="txtSearch" placeholder="Tìm kiếm">
+                    <button type="submit"><i class="fa fa-search header--search"></i></button>
                 </form>
             </div>
         </div>
     </header>
-
-    @RenderBody()
-
+    <div>
+        @RenderBody()
+    </div>
     <footer class="footer">
         <div class="footer__contact">
             <p>
@@ -56,11 +61,6 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/AdminLTE")
-    @RenderSection("scripts", required: false)
-
+    
 </body>
 </html>
-
