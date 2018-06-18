@@ -1,0 +1,17 @@
+﻿@model IEnumerable<NEWS.CORE.Models.News>
+<table>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.Title</td>
+        <td>@item.Author</td>
+        <td>@item.CreatedTime</td>
+        <td>@item.Description</td>
+    </tr>
+    }
+</table>
+<script>
+    var link = window.location.href;
+    var res = link.substr(link.search('=') + 1, link.length - link.search('='));
+    document.getElementById("searchInput").value = res;
+</script>

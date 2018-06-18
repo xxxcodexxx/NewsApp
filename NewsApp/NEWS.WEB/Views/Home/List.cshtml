@@ -1,0 +1,12 @@
+﻿@model IEnumerable<NEWS.CORE.Models.News>
+<table>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.Title</td>
+        <td>@item.Author</td>
+        <td>@item.CreatedTime</td>
+        <td>@item.Description</td>
+    </tr>
+    }
+</table>
