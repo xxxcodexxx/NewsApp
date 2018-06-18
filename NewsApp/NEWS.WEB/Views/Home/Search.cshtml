@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<NEWS.CORE.Models.News>
-<table>
+<table class="table">
     @foreach (var item in Model)
     {
     <tr>
@@ -12,7 +12,9 @@
 </table>
 <script>
     var link = window.location.href;
-    var res = link.substr(link.search('=') + 1, link.length - link.search('='));
+    if (link.search('=') != -1) {
+        var res = link.substr(link.search('=') + 1, link.length - link.search('='));
+    }
     $(function () {
         $('#txtSearch').val(res);
     });
