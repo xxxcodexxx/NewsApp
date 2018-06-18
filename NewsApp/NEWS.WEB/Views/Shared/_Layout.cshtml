@@ -2,6 +2,10 @@
 @Styles.Render("~/Content/css")
 @Scripts.Render("~/bundles/modernizr")
 @Scripts.Render("~/bundles/require")
+<form action="@Url.Action("Search", "Home")" method="get">
+    <input type="text" id="searchInput" name="searchInput" />
+    <input type="submit" />
+</form>
 <body class="hold-transition skin-blue sidebar-mini">
     @RenderBody()
 </body>
