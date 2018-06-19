@@ -7432,6 +7432,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Style\detail.css" />
+    <Content Include="Style\site.css" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -7448,10 +7450,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="tsconfig.json" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
-    <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\user\" />

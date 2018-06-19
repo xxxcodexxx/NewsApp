@@ -1,8 +1,136 @@
-﻿@model NEWS.CORE.Models.News
-
-@Model.Title<br />
-@Model.Author<br/>
-@Model.Description<br />
-@Model.Content<br />
-@Model.CreatedTime<br />
-@Model.Tags
+@model NEWS.CORE.Models.News
+<link href="~/Style/detail.css" rel="stylesheet" />
+<div class="container">
+    <section class="main">
+        <header class="header-main">
+            <div class="header-main__title">
+                <h1>@Model.Title</h1>
+                <span>@Model.CreatedTime</span>
+            </div>
+            <div class="header-main__description">
+                <p>
+                    @Model.Description
+                </p>
+            </div>
+            <div class="header-main__boder"></div>
+        </header>
+        <div class="content">
+            @Model.Content
+        </div>
+        <div class="comment">
+            <div class="comment__editor">
+                <textarea placeholder="Bạn nghĩ gì về tin này?"></textarea>
+                <input class="btn btn-primary" type="button" name="" value="Gửi bình luận">
+            </div>
+        </div>
+    </section>
+    @*<section class="container news-interested">
+        <header class="news-interested__title">
+            <h2>BẠN CÓ THỂ QUAN TÂM</h2>
+        </header>
+        <article class="article-list">
+            <article class="article-item">
+                <div class="article-item__cover">
+                    <a href="">
+                        <img src="https://znews-photo-td.zadn.vn/w480/Uploaded/mfzhr/2018_05_11/ong_thuy.jpg">
+                    </a>
+                </div>
+                <header class="article-item__title">
+                    <p>
+                        <a href="">
+                            Ông lão 77 tuổi dâm ô với trẻ em ở Vũng Tàu được giảm án
+                        </a>
+                    </p>
+                    <p class="article-main__title--meta">
+                        <span>13:59 11/05/2018</span>
+                    </p>
+                </header>
+            </article>
+            <article class="article-item">
+                <div class="article-item__cover">
+                    <a href="">
+                        <img src="https://znews-photo-td.zadn.vn/w480/Uploaded/mfzhr/2018_05_11/ong_thuy.jpg">
+                    </a>
+                </div>
+                <header class="article-item__title">
+                    <p>
+                        <a href="">
+                            Ông lão 77 tuổi dâm ô với trẻ em ở Vũng Tàu được giảm án
+                        </a>
+                    </p>
+                    <p class="article-main__title--meta">
+                        <span>13:59 11/05/2018</span>
+                    </p>
+                </header>
+            </article>
+            <article class="article-item">
+                <div class="article-item__cover">
+                    <a href="">
+                        <img src="https://znews-photo-td.zadn.vn/w480/Uploaded/mfzhr/2018_05_11/ong_thuy.jpg">
+                    </a>
+                </div>
+                <header class="article-item__title">
+                    <p>
+                        <a href="">
+                            Ông lão 77 tuổi dâm ô với trẻ em ở Vũng Tàu được giảm án
+                        </a>
+                    </p>
+                    <p class="article-main__title--meta">
+                        <span>13:59 11/05/2018</span>
+                    </p>
+                </header>
+            </article>
+            <article class="article-item">
+                <div class="article-item__cover">
+                    <a href="">
+                        <img src="https://znews-photo-td.zadn.vn/w480/Uploaded/mfzhr/2018_05_11/ong_thuy.jpg">
+                    </a>
+                </div>
+                <header class="article-item__title">
+                    <p>
+                        <a href="">
+                            Ông lão 77 tuổi dâm ô với trẻ em ở Vũng Tàu được giảm án
+                        </a>
+                    </p>
+                    <p class="article-main__title--meta">
+                        <span>13:59 11/05/2018</span>
+                    </p>
+                </header>
+            </article>
+            <article class="article-item">
+                <div class="article-item__cover">
+                    <a href="">
+                        <img src="https://znews-photo-td.zadn.vn/w480/Uploaded/mfzhr/2018_05_11/ong_thuy.jpg">
+                    </a>
+                </div>
+                <header class="article-item__title">
+                    <p>
+                        <a href="">
+                            Ông lão 77 tuổi dâm ô với trẻ em ở Vũng Tàu được giảm án
+                        </a>
+                    </p>
+                    <p class="article-main__title--meta">
+                        <span>13:59 11/05/2018</span>
+                    </p>
+                </header>
+            </article>
+            <article class="article-item">
+                <div class="article-item__cover">
+                    <a href="">
+                        <img src="https://znews-photo-td.zadn.vn/w480/Uploaded/mfzhr/2018_05_11/ong_thuy.jpg">
+                    </a>
+                </div>
+                <header class="article-item__title">
+                    <p>
+                        <a href="">
+                            Ông lão 77 tuổi dâm ô với trẻ em ở Vũng Tàu được giảm án
+                        </a>
+                    </p>
+                    <p class="article-main__title--meta">
+                        <span>13:59 11/05/2018</span>
+                    </p>
+                </header>
+            </article>
+        </article>
+    </section>*@
+</div>
