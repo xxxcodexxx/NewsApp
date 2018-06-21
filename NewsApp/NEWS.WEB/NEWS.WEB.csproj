@@ -225,6 +225,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoriesName.cs" />
     <Compile Include="Models\CommonAction.cs" />
+    <Compile Include="Models\CommonStatus.cs" />
     <Compile Include="Models\CommonDisplay.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
