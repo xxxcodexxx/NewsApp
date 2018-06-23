@@ -5,14 +5,15 @@ namespace NEWS.WEB.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<NEWS.WEB.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NEWS.WEB.Models.DBContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            ContextKey = "NEWS.WEB.Models.DBContext";
         }
 
-        protected override void Seed(NEWS.WEB.Models.ApplicationDbContext context)
+        protected override void Seed(NEWS.WEB.Models.DBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
