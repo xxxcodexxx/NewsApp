@@ -1,14 +1,14 @@
-﻿using System;
+﻿using NEWS.WEB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using NEWS.CORE.Models;
 namespace NEWS.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        NEWS.DATA.NewsDbContext db = new DATA.NewsDbContext();
+        DBContext db = new DBContext();
         public ActionResult Index()
         {
             return View();
