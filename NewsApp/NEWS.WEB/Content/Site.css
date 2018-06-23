@@ -1,37 +1,16 @@
-﻿/*body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}*/
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-
-/*Layout*/
-
-* {
+﻿* {
     padding: 0;
     margin: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
-.container-body {
+.containerr {
     margin: 0px auto;
-    width: 1300px;
+    width: 1300px !important;
 }
 
 
@@ -316,5 +295,3 @@ body {
         .footer__logo p > a {
             color: #000;
         }
-
-/*Layout*/

@@ -31,11 +31,12 @@ namespace NEWS.WEB
                      "~/Scripts/adminLTE/js/adminlte.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                       "~/node_modules/font-awesome/css/font-awesome.css",
-                       "~/Content/adminLTE/AdminLTE.min.css",
-                       "~/Content/adminLTE/skins/_all-skins.min.css",
-                      "~/Content/site.css"));
+                        "~/Content/Site.css",
+                        "~/Content/bootstrap.css",
+                        "~/node_modules/font-awesome/css/font-awesome.css",
+                        "~/Content/adminLTE/AdminLTE.min.css",
+                        "~/Content/adminLTE/skins/_all-skins.min.css"
+                      ));
         }
     }
 }

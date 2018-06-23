@@ -10,11 +10,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/AdminLTE")
     @RenderSection("scripts", required: false)
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-    <header class="header ">
-        <div class="container-body">
+    <header class="header">
+        <div class="containerr">
             <i class="header__logo">Logo</i>
             <ul class="header__menu">
                 <li><a href="">TRANG CHỦ</a></li>
@@ -28,17 +29,16 @@
             <div class="header__search">
                 <form method="get" action="@Url.Action("Search", "Home")">
                     <input type="text" id="txtSearch" name="txtSearch" placeholder="Tìm kiếm">
-                    <button type="submit"><i class="fa fa-search header--search"></i></button>
+                    <i class="fa fa-search header--search"></i>
                 </form>
             </div>
         </div>
     </header>
-    <div class="container-body">
-        @RenderBody()
-    </div>
-    <footer class="footer">
-
-        <div class="container-body">
+    <div class="containerr">
+        <div class="">
+            @RenderBody()
+        </div>
+        <footer class="footer">
             <div class="footer__contact">
                 <p>
                     Giấy phép báo điện tử số: 236/GP-BTTTT. Tổng Biên tập: Ngô Việt Anh
@@ -61,8 +61,8 @@
                     <a href="">Quảng cáo</a>
                 </p>
             </div>
-    </footer>
+        </footer>
+    </div>
 
-    
 </body>
 </html>
