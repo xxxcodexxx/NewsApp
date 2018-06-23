@@ -26,7 +26,8 @@ var CategoryComponent = /** @class */ (function () {
             CategoryId: [''],
             CategoryName: ['', forms_1.Validators.required],
             ParentId: [''],
-            Status: ['']
+            Status: [''],
+            ParentName: ['']
         });
         this.LoadCategories();
     };
@@ -34,7 +35,19 @@ var CategoryComponent = /** @class */ (function () {
         var _this = this;
         this.indLoading = true;
         this._adminService.get(global_1.Global.BASE_CATEGORY_ENDPOINT)
-            .subscribe(function (res) { _this.categories = res, _this.indLoading = false; }, function (error) { return _this.msg = error; });
+            .subscribe(function (res) { _this.categories = res, _this.indLoading = false; _this.LoadParentCategory(res); }, function (error) { return _this.msg = error; });
+    };
+    CategoryComponent.prototype.LoadParentCategory = function (cate) {
+        cate.forEach(function (val) {
+            cate.forEach(function (value) {
+                if (val.ParentId == value.CategoryId) {
+                    val.ParentName = value.CategoryName;
+                }
+                if (val.ParentId == 0) {
+                    val.ParentName = "";
+                }
+            });
+        });
     };
     CategoryComponent.prototype.addCategory = function () {
         this.dbops = enum_1.DBOperation.create;
@@ -49,7 +62,9 @@ var CategoryComponent = /** @class */ (function () {
         this.SetControlsState(true);
         this.modalTitle = "Edit Category";
         this.modalBtnTitle = "Update";
-        this.category = this.categories.filter(function (x) { return x.Id == id; })[0];
+        this.category = this.categories.filter(function (x) { return x.CategoryId == id; })[0];
+        if (this.category.ParentId == 0)
+            this.category.ParentId = null;
         this.categoryFrm.setValue(this.category);
         this.modal.open();
     };
@@ -58,7 +73,7 @@ var CategoryComponent = /** @class */ (function () {
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
-        this.category = this.categories.filter(function (x) { return x.Id == id; })[0];
+        this.category = this.categories.filter(function (x) { return x.CategoryId == id; })[0];
         this.categoryFrm.setValue(this.category);
         this.modal.open();
     };
