@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<NEWS.WEB.Models.News>
-<table class="table">
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>@item.Title</td>
-        <td>@item.Author</td>
-        <td>@item.CreatedTime</td>
-        <td>@item.Description</td>
-    </tr>
-    }
-</table>
+@if (Model != null)
+{
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Author</td>
+                <td>@item.CreatedTime</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </table>
+}
 <script>
     var link = window.location.href;
     if (link.search('=') != -1) {

@@ -23,8 +23,11 @@ namespace NEWS.WEB.Controllers
         public ActionResult Detail(int id)
         {
             var item = db.News.FirstOrDefault(w => w.NewsId == id);
-            ++item.ViewCount;
-            db.SaveChanges();
+            if(item!=null)
+            {
+                ++item.ViewCount;
+                db.SaveChanges();
+            }
             return View(item);
         }
         public ActionResult Search(string txtSearch="")

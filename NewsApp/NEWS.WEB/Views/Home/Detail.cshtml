@@ -1,7 +1,9 @@
 ﻿@model NEWS.WEB.Models.News
 <link href="~/Style/detail.css" rel="stylesheet" />
 <div class="container">
-    <section class="main">
+    @if(Model != null)
+    {
+        <section class="main">
         <header class="header-main">
             <div class="header-main__title">
                 <h1>@Model.Title</h1>
@@ -24,6 +26,12 @@
             </div>
         </div>
     </section>
+    }
+    else
+    {
+        <h3>Không có dữ liệu</h3>
+    }
+
     @*<section class="container news-interested">
             <header class="news-interested__title">
                 <h2>BẠN CÓ THỂ QUAN TÂM</h2>
