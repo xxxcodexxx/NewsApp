@@ -11,17 +11,13 @@ namespace NEWS.WEB.Controllers
         DBContext db = new DBContext();
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult List()
-        {
             var news = db.News;
-            return View(news.ToArray());
+            return View(news.ToList());
         }
-        public ActionResult ListByCategory(int id)
+        public ActionResult List(int id)
         {
             var list = db.News.Where(w=>w.CategoryId == id);
-            return View("List",list.ToList());
+            return View(list.ToList());
         }
 
         public ActionResult Detail(int id)
