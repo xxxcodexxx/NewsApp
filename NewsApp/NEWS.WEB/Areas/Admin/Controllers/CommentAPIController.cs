@@ -1,56 +1,40 @@
 ﻿using System.Net.Http;
 using System.Linq;
-using NEWS.CORE.Interface;
-using NEWS.CORE.Models;
-using NEWS.CORE.Services;
-using NEWS.CORE.UnitOfWork;
-using NEWS.DATA;
-using NEWS.DATA.Interface;
-using NEWS.DATA.UnitOfWork;
-using NEWS.SERVICES.Business;
 using System.Web.Http;
-using System;
+using NEWS.WEB.Models;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class CommentAPIController : BaseAPIController
     {
-        private readonly ICommentServices _commentServices;
-        public CommentAPIController()
-        {
-            IDatabaseFactory databaseFactory = new DatabaseFactory();
-            IRepository<Comment> repositoryComment = new Repository<Comment>(databaseFactory);
-            IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-            this._commentServices = new CommentServices(repositoryComment, unitOfWork);
-        }
+        DBContext context = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_commentServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(context.Comments.ToList());
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]Comment item)
+        public HttpResponseMessage Post([FromBody]Models.Comment item)
         {
-            item.Status = (int)Models.CommonStatus.Acitivy;
-            item.PostedTime = DateTime.Now;
-            return ToJson(_commentServices.Add(item));
+            return ToJson(context.Comments.Add(item));
         }
 
         [HttpPut]
-        public HttpResponseMessage Update([FromBody]Comment item)
+        public HttpResponseMessage Update([FromBody]Models.Comment item)
         {
-            return ToJson(_commentServices.Update(item));
+            var obj = context.Comments.Where(c => c.NewsId == item.NewsId).FirstOrDefault();
+            return ToJson(context.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var item = _commentServices.GetById(id);
-            item.Status = (int)Models.CommonStatus.Deleted;
-            return ToJson(_commentServices.Update(item));
+            var obj = context.Comments.Where(c => c.NewsId == id).FirstOrDefault();
+            context.Comments.Remove(obj);
+            return ToJson(context.SaveChanges());
+
         }
-        
     }
 }

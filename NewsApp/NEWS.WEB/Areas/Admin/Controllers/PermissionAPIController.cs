@@ -1,54 +1,40 @@
 ﻿using System.Net.Http;
 using System.Linq;
-using NEWS.CORE.Interface;
-using NEWS.CORE.Models;
-using NEWS.CORE.Services;
-using NEWS.CORE.UnitOfWork;
-using NEWS.DATA;
-using NEWS.DATA.Interface;
-using NEWS.DATA.UnitOfWork;
-using NEWS.SERVICES.Business;
 using System.Web.Http;
-
+using NEWS.WEB.Models;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class PermissionAPIController : BaseAPIController
     {
-        private readonly IPermissionServices _permissionServices;
-        public PermissionAPIController()
-        {
-            IDatabaseFactory databaseFactory = new DatabaseFactory();
-            IRepository<Permission> repositoryPermission = new Repository<Permission>(databaseFactory);
-            IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-            this._permissionServices = new PermissionServices(repositoryPermission, unitOfWork);
-        }
+        DBContext context = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_permissionServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(context.Roles.ToList().Where(w => w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]Permission item)
+        public HttpResponseMessage Post([FromBody]Role item)
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
-            return ToJson(_permissionServices.Add(item));
+            return ToJson(context.Roles.Add(item));
         }
 
         [HttpPut]
-        public HttpResponseMessage Update([FromBody]Permission item)
+        public HttpResponseMessage Update([FromBody]Role item)
         {
-            return ToJson(_permissionServices.Update(item));
+            var obj = context.Roles.Where(c => c.RoleId == item.RoleId).FirstOrDefault();
+            return ToJson(context.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var item = _permissionServices.GetById(id);
-            item.Status = (int)Models.CommonStatus.Deleted;
-            return ToJson(_permissionServices.Update(item));
+            var obj = context.Roles.Where(c => c.RoleId == id).FirstOrDefault();
+            context.Roles.Remove(obj);
+            return ToJson(context.SaveChanges());
         }
         
     }

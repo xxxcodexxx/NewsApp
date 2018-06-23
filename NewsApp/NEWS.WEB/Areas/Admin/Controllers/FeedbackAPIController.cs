@@ -1,55 +1,43 @@
 ﻿using System.Net.Http;
 using System.Linq;
-using NEWS.CORE.Interface;
-using NEWS.CORE.Models;
-using NEWS.CORE.Services;
-using NEWS.CORE.UnitOfWork;
-using NEWS.DATA;
-using NEWS.DATA.Interface;
-using NEWS.DATA.UnitOfWork;
-using NEWS.SERVICES.Business;
 using System.Web.Http;
 using System;
+using NEWS.WEB.Models;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class FeedbackAPIController : BaseAPIController
     {
-        private readonly IFeedbackServices _feedbackServices;
-        public FeedbackAPIController()
-        {
-            IDatabaseFactory databaseFactory = new DatabaseFactory();
-            IRepository<Feedback> repositoryFeedback = new Repository<Feedback>(databaseFactory);
-            IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-            this._feedbackServices = new FeedbackServices(repositoryFeedback, unitOfWork);
-        }
+
+        DBContext context = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_feedbackServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(context.Feedbacks.ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]Feedback item)
+        public HttpResponseMessage Post([FromBody]Models.Feedback item)
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
             item.SendedTime = DateTime.Now;
-            return ToJson(_feedbackServices.Add(item));
+            return ToJson(context.Feedbacks.Add(item));
         }
 
         [HttpPut]
-        public HttpResponseMessage Update([FromBody]Feedback item)
+        public HttpResponseMessage Update([FromBody]Models.Feedback item)
         {
-            return ToJson(_feedbackServices.Update(item));
+            var obj = context.Feedbacks.Where(c => c.FeedbackId == item.FeedbackId).FirstOrDefault();
+            return ToJson(context.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var item = _feedbackServices.GetById(id);
-            item.Status = (int)Models.CommonStatus.Deleted;
-            return ToJson(_feedbackServices.Update(item));
+            var obj = context.Feedbacks.Where(c => c.FeedbackId == id).FirstOrDefault();
+            context.Feedbacks.Remove(obj);
+            return ToJson(context.SaveChanges());
         }
         
     }

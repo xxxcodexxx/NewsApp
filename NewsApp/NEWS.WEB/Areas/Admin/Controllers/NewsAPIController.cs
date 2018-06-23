@@ -1,59 +1,43 @@
 ﻿using System.Net.Http;
 using System.Linq;
-using NEWS.CORE.Interface;
-using NEWS.CORE.Models;
-using NEWS.CORE.Services;
-using NEWS.CORE.UnitOfWork;
-using NEWS.DATA;
-using NEWS.DATA.Interface;
-using NEWS.DATA.UnitOfWork;
-using NEWS.SERVICES.Business;
 using System.Web.Http;
 using System;
+using NEWS.WEB.Models;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class NewsAPIController : BaseAPIController
     {
-        private readonly INewsServices _newsServices;
-        public NewsAPIController()
-        {
-            IDatabaseFactory databaseFactory = new DatabaseFactory();
-            IRepository<News> repositorynews = new Repository<News>(databaseFactory);
-            IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-            this._newsServices = new NewsServices(repositorynews, unitOfWork);
-        }
+        DBContext context = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_newsServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(context.News.ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]News item)
+        public HttpResponseMessage Post([FromBody]Models.News item)
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
             item.CreatedTime = DateTime.Now;
-            item.CategoryId = item.CategoryId ?? 0;
             item.ViewCount = 0;
-            return ToJson(_newsServices.Add(item));
+            return ToJson(context.News.Add(item));
         }
 
         [HttpPut]
-        public HttpResponseMessage Update([FromBody]News item)
+        public HttpResponseMessage Update([FromBody]Models.News item)
         {
-            item.ModifiedTime = DateTime.Now;
-            item.CategoryId = item.CategoryId ?? 0;
-            return ToJson(_newsServices.Update(item));
+            var obj = context.News.Where(c => c.NewsId == item.NewsId).FirstOrDefault();
+            return ToJson(context.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var item = _newsServices.GetById(id);
-            item.Status = (int)Models.CommonStatus.Deleted;
-            return ToJson(_newsServices.Update(item));
+            var obj = context.News.Where(c => c.NewsId == id).FirstOrDefault();
+            context.News.Remove(obj);
+            return ToJson(context.SaveChanges());
         }
         
     }

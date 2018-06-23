@@ -1,55 +1,39 @@
 ﻿using System.Net.Http;
 using System.Linq;
-using NEWS.CORE.Interface;
-using NEWS.CORE.Models;
-using NEWS.CORE.Services;
-using NEWS.CORE.UnitOfWork;
-using NEWS.DATA;
-using NEWS.DATA.Interface;
-using NEWS.DATA.UnitOfWork;
-using NEWS.SERVICES.Business;
 using System.Web.Http;
-
+using NEWS.WEB.Models;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class AccountAPIController : BaseAPIController
     {
-        private readonly IAccountServices _accountServices;
-        public AccountAPIController()
-        {
-            IDatabaseFactory databaseFactory = new DatabaseFactory();
-            IRepository<Account> repositoryAccount = new Repository<Account>(databaseFactory);
-            IUnitOfWork unitOfWork = new UnitOfWork(databaseFactory);
-            this._accountServices = new AccountServices(repositoryAccount, unitOfWork);
-        }
+        DBContext context = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(_accountServices.GetAll().ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(context.Users.ToList());
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]Account item)
+        public HttpResponseMessage Post([FromBody]User item)
         {
-            item.Status = (int)Models.CommonStatus.Acitivy;
-            return ToJson(_accountServices.Add(item));
+            return ToJson(context.Users.Add(item));
         }
 
         [HttpPut]
-        public HttpResponseMessage Update([FromBody]Account item)
+        public HttpResponseMessage Update([FromBody]User item)
         {
-            return ToJson(_accountServices.Update(item));
+            var obj = context.Users.Where(u => u.ID == item.ID);
+            return ToJson(context.SaveChanges());
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(string id)
+        public HttpResponseMessage Delete(User item)
         {
-            var item = _accountServices.GetById(id);
-            item.Status = (int)Models.CommonStatus.Deleted;
-            return ToJson(_accountServices.Update(item));
+            context.Users.Remove(item);
+            return ToJson(context.SaveChanges());
         }
-        
+
     }
 }
