@@ -14,54 +14,12 @@
 
 </head>
 <body>
-    <header class="header">
-        <div class="containerr">
-            <i class="header__logo">Logo</i>
-            <ul class="header__menu">
-                <li><a href="">TRANG CHỦ</a></li>
-                <li><a href="">SỰ KIỆN</a></li>
-                <li><a href="">XÃ HỘI</a></li>
-                <li><a href="">THẾ GIỚI</a></li>
-                <li><a href="">GIÁO DỤC</a></li>
-                <li><a href="">GIẢI TRÍ</a></li>
-                <li><a href="">NHỊP SỐNG TRẺ</a></li>
-            </ul>
-            <div class="header__search">
-                <form method="get" action="@Url.Action("Search", "Home")">
-                    <input type="text" id="txtSearch" name="txtSearch" placeholder="Tìm kiếm">
-                    <i class="fa fa-search header--search"></i>
-                </form>
-            </div>
-        </div>
-    </header>
+    @Html.Partial("_Header");
     <div class="containerr">
         <div class="">
             @RenderBody()
         </div>
-        <footer class="footer">
-            <div class="footer__contact">
-                <p>
-                    Giấy phép báo điện tử số: 236/GP-BTTTT. Tổng Biên tập: Ngô Việt Anh
-                    <br />
-                    Cơ quan chủ quản: Hội Xuất bản Việt Nam.
-                    <br />
-                    Tòa soạn: D29 Trần Thái Tông, Cầu Giấy, Hà Nội.
-                    <br />
-                    <i>
-                        Chỉ được phát hành lại thông tin từ website này khi có sự đồng ý bằng văn bản của báo
-                    </i>
-
-                </p>
-            </div>
-            <div class="footer__logo">
-                <a href="">
-                    <img src="https://znews-static.zadn.vn/css/img/logo_zing_trithuc.png">
-                </a>
-                <p>
-                    <a href="">Quảng cáo</a>
-                </p>
-            </div>
-        </footer>
+        @Html.Partial("_Footer");
     </div>
 
 </body>
