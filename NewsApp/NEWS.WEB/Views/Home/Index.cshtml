@@ -12,7 +12,6 @@
         <div class="aside__title">
             <p>Đọc nhiều nhất</p>
         </div>
-
         @{
             Html.RenderAction("_TopViewPartial", "Home");
         }
@@ -28,8 +27,9 @@
                 <li><a href="">Giải trí</a></li>
             </ul>
         </nav>
-        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home",new { categoryname = "vanhoa" });}
+        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home", new { categoryname = "vanhoa" });}
     </section>
+
     <section class="section-news">
         <nav class="nav">
             <ul>
@@ -41,41 +41,10 @@
                 <li><a href="">Giải trí</a></li>
             </ul>
         </nav>
-        <article class="article-main">
-            <div class="article-main__title">
-                <p>Đi tắm biển, chồng đuối nước, vợ mang bầu nhập viện</p>
-            </div>
-            <div class="article-main__cover">
-                <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/mtfuc/2018_05_13/32419248_1654714414644015_6184259934188732416_n.jpg">
-            </div>
-            <header class="article-main__header">
-                <p>Thấy vợ bị sóng cuốn trôi, người chồng chạy ra cứu vớt thì cả hai bị nhấn chìm. Người dân phát hiện chạy ra cứu nhưng người chồng đã tử vong còn vợ phải nhập viện cấp cứu.</p>
-            </header>
-        </article>
-        <div class="newslist">
-            <article class="newslist__element">
-                <a href="">Thời tiết ngày 14/5: Nam Bộ nắng mạnh diện rộng, có nơi nóng 37 độ C</a>
-            </article>
-            <article class="newslist__element">
-                <a href="">Bí thư Nhân xin phép vắng mặt buổi tiếp xúc cử tri TP.HCM</a>
-            </article>
-            <article class="newslist__element">
-                <a href="">Bí thư Nhân xin phép vắng mặt buổi tiếp xúc cử tri TP.HCM</a>
-            </article>
-            <article class="newslist__element">
-                <a href="">Bí thư Nhân xin phép vắng mặt buổi tiếp xúc cử tri TP.HCM</a>
-            </article>
-        </div>
-        <aside class="aside-news">
-            <div class="aside-news__cover">
-                <img src="https://znews-photo-td.zadn.vn/w120/Uploaded/pwivovlb/2018_05_13/bi_thu.jpg">
-            </div>
-            <header class="aside-news__header">
-                <p><a href="">Bí thư Nguyễn Thiện Nhân thăm cơ sở tôn giáo ở Thủ Thiêm</a></p>
-            </header>
-        </aside>
+        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home", new { categoryname = "vanhoa" });}
     </section>
-    <section class="section-news section-news--last">
+
+    <section class="section-news">
         <nav class="nav">
             <ul>
                 <li class="active"><a href="">Văn hóa</a></li>
@@ -86,38 +55,6 @@
                 <li><a href="">Giải trí</a></li>
             </ul>
         </nav>
-        <article class="article-main">
-            <div class="article-main__title">
-                <p>Đi tắm biển, chồng đuối nước, vợ mang bầu nhập viện</p>
-            </div>
-            <div class="article-main__cover">
-                <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/mtfuc/2018_05_13/32419248_1654714414644015_6184259934188732416_n.jpg">
-            </div>
-            <header class="article-main__header">
-                <p>Thấy vợ bị sóng cuốn trôi, người chồng chạy ra cứu vớt thì cả hai bị nhấn chìm. Người dân phát hiện chạy ra cứu nhưng người chồng đã tử vong còn vợ phải nhập viện cấp cứu.</p>
-            </header>
-        </article>
-        <div class="newslist">
-            <article class="newslist__element">
-                <a href="">Thời tiết ngày 14/5: Nam Bộ nắng mạnh diện rộng, có nơi nóng 37 độ C</a>
-            </article>
-            <article class="newslist__element">
-                <a href="">Bí thư Nhân xin phép vắng mặt buổi tiếp xúc cử tri TP.HCM</a>
-            </article>
-            <article class="newslist__element">
-                <a href="">Bí thư Nhân xin phép vắng mặt buổi tiếp xúc cử tri TP.HCM</a>
-            </article>
-            <article class="newslist__element">
-                <a href="">Bí thư Nhân xin phép vắng mặt buổi tiếp xúc cử tri TP.HCM</a>
-            </article>
-        </div>
-        <aside class="aside-news">
-            <div class="aside-news__cover">
-                <img src="https://znews-photo-td.zadn.vn/w120/Uploaded/pwivovlb/2018_05_13/bi_thu.jpg">
-            </div>
-            <header class="aside-news__header">
-                <p><a href="">Bí thư Nguyễn Thiện Nhân thăm cơ sở tôn giáo ở Thủ Thiêm</a></p>
-            </header>
-        </aside>
+        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home", new { categoryname = "vanhoa" });}
     </section>
 </div>
