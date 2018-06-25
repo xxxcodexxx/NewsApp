@@ -3,9 +3,6 @@
     ViewBag.Title = "Index";
 }
 Top view partial
-@{
-    Html.RenderAction("_TopViewPartial", "Home");
-}
 
 <div id="toUpdate"></div>
 <div class="">
@@ -95,16 +92,16 @@ Top view partial
         </article>
     </section>
     <aside class="aside">
-        <div class="aside__image">
-            <a href="">
-                <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/aohunax/2018_05_12/etr.jpg">
-            </a>
-        </div>
         <div class="aside__title">
             <p>Đọc nhiều nhất</p>
         </div>
-        <div class="aside__hotnews">
+
+        @{
+        Html.RenderAction("_TopViewPartial", "Home");
+        }
+        @*<div class="aside__hotnews">
             <a href="">
+
                 <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
                 <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
             </a>
@@ -120,7 +117,7 @@ Top view partial
                 <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
                 <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
             </a>
-        </div>
+        </div>*@
     </aside>
     <section class="section-news">
         <nav class="nav">

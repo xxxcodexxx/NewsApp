@@ -4,10 +4,13 @@
 {
     foreach (var item in Model)
     {
-    <a>
-        <img src=" @item.Image" alt="Alternate Text" />
-    @item.Title
+<div class="aside__hotnews">
+    <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">
+
+        <img src="@item.Image">
+        <p> @item.Title</p>
     </a>
+</div>
     <br />
     }
 }
