@@ -239,6 +239,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TopNewestViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.component.html" />
@@ -7465,6 +7466,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\_TopNewestPartial.cshtml" />
     <Content Include="Views\Home\_TopViewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

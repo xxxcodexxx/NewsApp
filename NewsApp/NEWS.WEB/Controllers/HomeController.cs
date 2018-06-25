@@ -38,7 +38,17 @@ namespace NEWS.WEB.Controllers
         public ActionResult _TopViewPartial()
         {
             var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.ViewCount).Take(3);
-            return PartialView("_TopViewPartial", news.ToList());
+            return PartialView(news.ToList());
         }
+        public ActionResult _TopNewestPartial()
+        {
+            var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.CategoryId).Skip(1).Take(9);
+            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.CategoryId).FirstOrDefault();
+            ViewModels.TopNewestViewModels viewmodel = new ViewModels.TopNewestViewModels();
+            viewmodel.listnewsItem = listnews.ToList();
+            viewmodel.newsItem = item;
+            return PartialView(viewmodel);
+        }
+        
     }
 }

@@ -4,89 +4,9 @@
 }
 <div class="">
     <section class="section">
-        <article class="article">
-            <article class="article__hotnews">
-                <a href="">
-                    <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/aohunax/2018_05_12/etr.jpg">
-                </a>
-                <h4 class="article__hotnews--bold">Tổng bí thư: 'Lò nóng rực rồi nhưng còn nhiều việc phải làm'</h4>
-                <p class="article__hotnews--size">"Nếu không có sự ủng hộ của toàn dân thì cuộc đấu tranh chống tham nhũng không thành công. Với đà này tôi tin chắc làm đến cùng, không bỏ giữa chừng", Tổng bí thư chia sẻ.</p>
-            </article>
-            <article class="article-element">
-                <div class="article-element__cover">
-                    <a href="">
-                        <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    </a>
-                </div>
-                <header class="article-element__header">
-                    <p class="article-element__header--bold">
-                        <a>
-                            'Tại sao CSAGA đứng về phía Phạm Anh Khoa thay vì các cô gái?'
-                        </a>
-                    </p>
-                </header>
-            </article>
-            <article class="article-element">
-                <div class="article-element__cover">
-                    <a href="">
-                        <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    </a>
-                </div>
-                <header class="article-element__header">
-                    <p class="article-element__header--bold">
-                        <a>
-                            'Tại sao CSAGA đứng về phía Phạm Anh Khoa thay vì các cô gái?'
-                            <a />
-                    </p>
-                </header>
-            </article>
-            <article class="article-element">
-                <div class="article-element__cover">
-                    <a href="">
-                        <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    </a>
-                </div>
-                <header class="article-element__header">
-                    <p class="article-element__header--bold">
-                        <a>
-                            'Tại sao CSAGA đứng về phía Phạm Anh Khoa thay vì các cô gái?'
-                            <a />
-                    </p>
-                </header>
-            </article>
-        </article>
-        <article class="article-side">
-            <article class="article-side__element">
-                <a href="">
-                    <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
-                </a>
-            </article>
-            <article class="article-side__element">
-                <a href="">
-                    <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
-                </a>
-            </article>
-            <article class="article-side__element">
-                <a href="">
-                    <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
-                </a>
-            </article>
-            <article class="article-side__element">
-                <a href="">
-                    <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
-                </a>
-            </article>
-            <article class="article-side__element">
-                <a href="">
-                    <img src="https://znews-photo-td.zadn.vn/w210/Uploaded/bpivpjbp/2018_05_13/Screen_Shot_20180513_at_122126_AMava.jpg">
-                    <p>Tranh cãi gay gắt về 'Chiến lược loại bỏ CO2' của Đức</p>
-                </a>
-            </article>
-        </article>
+        @{
+            Html.RenderAction("_TopNewestPartial", "Home");
+        }
     </section>
     <aside class="aside">
         <div class="aside__title">
@@ -94,7 +14,7 @@
         </div>
 
         @{
-        Html.RenderAction("_TopViewPartial", "Home");
+            Html.RenderAction("_TopViewPartial", "Home");
         }
     </aside>
     <section class="section-news">
