@@ -11,29 +11,34 @@ namespace NEWS.WEB.Controllers
         DBContext db = new DBContext();
         public ActionResult Index()
         {
-            var news = db.News;
+            var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy);
             return View(news.ToList());
         }
         public ActionResult List(int id)
         {
-            var list = db.News.Where(w=>w.CategoryId == id);
+            var list = db.News.Where(w => w.CategoryId == id && w.Status == (int?)CommonStatus.Acitivy);
             return View(list.ToList());
         }
 
         public ActionResult Detail(int id)
         {
-            var item = db.News.FirstOrDefault(w => w.NewsId == id);
-            if(item!=null)
+            var item = db.News.FirstOrDefault(w => w.NewsId == id && w.Status == (int?)CommonStatus.Acitivy);
+            if (item != null)
             {
                 ++item.ViewCount;
                 db.SaveChanges();
             }
             return View(item);
         }
-        public ActionResult Search(string txtSearch="")
+        public ActionResult Search(string txtSearch = "")
         {
-            var item = db.News.Where(w => w.Description.Contains(txtSearch) || w.Content.Contains(txtSearch) || w.Title.Contains(txtSearch) || w.Tags.Contains(txtSearch));
+            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && (w.Description.Contains(txtSearch) || w.Content.Contains(txtSearch) || w.Title.Contains(txtSearch) || w.Tags.Contains(txtSearch)));
             return View(item);
+        }
+        public ActionResult _TopViewPartial()
+        {
+            var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.ViewCount).Take(3);
+            return PartialView("_TopViewPartial", news.ToList());
         }
     }
 }

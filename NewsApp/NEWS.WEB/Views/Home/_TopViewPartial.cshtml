@@ -1,0 +1,13 @@
+﻿@model IEnumerable<NEWS.WEB.Models.News>
+
+@if(Model != null)
+{
+    foreach (var item in Model)
+    {
+    <a>
+        <img src=" @item.Image" alt="Alternate Text" />
+    @item.Title
+    </a>
+    <br />
+    }
+}
