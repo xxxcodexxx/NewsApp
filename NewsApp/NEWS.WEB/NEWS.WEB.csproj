@@ -7468,6 +7468,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_TopNewestPartial.cshtml" />
     <Content Include="Views\Home\_TopViewPartial.cshtml" />
+    <Content Include="Views\Home\_TopNewestByCategoryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\user\" />

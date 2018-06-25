@@ -14,9 +14,10 @@ namespace NEWS.WEB.Controllers
             var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy);
             return View(news.ToList());
         }
-        public ActionResult List(int id)
+        public ActionResult List(string categoryname)
         {
-            var list = db.News.Where(w => w.CategoryId == id && w.Status == (int?)CommonStatus.Acitivy);
+            var categoryid = db.Categories.FirstOrDefault(f => f.CategoryName == categoryname).CategoryId;
+            var list = db.News.Where(w => w.CategoryId == categoryid && w.Status == (int?)CommonStatus.Acitivy);
             return View(list.ToList());
         }
 
@@ -49,6 +50,17 @@ namespace NEWS.WEB.Controllers
             viewmodel.newsItem = item;
             return PartialView(viewmodel);
         }
-        
+        public ActionResult _TopNewestByCategoryPartial(string categoryname)
+        {
+            var categoryid = db.Categories.FirstOrDefault(f => f.CategoryName == categoryname).CategoryId;
+            var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).Skip(1).Take(4);
+            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).FirstOrDefault();
+            ViewModels.TopNewestViewModels viewmodel = new ViewModels.TopNewestViewModels();
+            viewmodel.listnewsItem = listnews.ToList();
+            viewmodel.newsItem = item;
+            return PartialView(viewmodel);
+        }
+
+
     }
 }
