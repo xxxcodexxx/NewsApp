@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<NEWS.WEB.Models.News>
 
-@if(Model != null)
-{
     foreach (var item in Model)
     {
 <div class="aside__hotnews">
@@ -11,6 +9,5 @@
         <p> @item.Title</p>
     </a>
 </div>
-    <br />
+<br />
     }
-}

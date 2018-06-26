@@ -1,12 +1,15 @@
 ﻿
 @model NEWS.WEB.ViewModels.TopNewestViewModels
-<article class="article__hotnews">
-    <a href="@Url.Action("Detail", "Home", new { id = @Model.newsItem.NewsId })">
-        <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/aohunax/2018_05_12/etr.jpg">
-        <h4 class="article__hotnews--bold">@Model.newsItem.Title</h4>
-    </a>
-    <p class="article__hotnews--size">@Model.newsItem.Description</p>
-</article>
+@if (Model.newsItem != null)
+{
+    <article class="article__hotnews">
+        <a href="@Url.Action("Detail", "Home", new { id = @Model.newsItem.NewsId })">
+            <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/aohunax/2018_05_12/etr.jpg">
+            <h4 class="article__hotnews--bold">@Model.newsItem.Title</h4>
+        </a>
+        <p class="article__hotnews--size">@Model.newsItem.Description</p>
+    </article>
+}
 
 @foreach (var item in Model.listnewsItem)
 {

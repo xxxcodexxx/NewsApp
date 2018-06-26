@@ -1,18 +1,21 @@
 ﻿@model NEWS.WEB.ViewModels.TopNewestViewModels
-<article class="article-main">
-    <a href="@Url.Action("Detail", "Home", new { id = Model.newsItem.NewsId })">
-        <img src="@Model.newsItem.Image">
-        @Model.newsItem.Title
-    </a>
-    <header class="article-main__header">
-        <p>@Model.newsItem.Description</p>
-    </header>
-</article>
-<div class="newslist">
-    @foreach (var item in Model.listnewsItem)
-    {
-        <article class="newslist__element">
-            <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">@item.Title</a>
-        </article>
-    }
-</div>
+@if (Model.newsItem != null)
+{
+    <article class="article-main">
+        <a href="@Url.Action("Detail", "Home", new { id = Model.newsItem.NewsId })">
+            <img src="@Model.newsItem.Image">
+            @Model.newsItem.Title
+        </a>
+        <header class="article-main__header">
+            <p>@Model.newsItem.Description</p>
+        </header>
+    </article>
+}
+    <div class="newslist">
+        @foreach (var item in Model.listnewsItem)
+        {
+            <article class="newslist__element">
+                <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">@item.Title</a>
+            </article>
+        }
+    </div>
