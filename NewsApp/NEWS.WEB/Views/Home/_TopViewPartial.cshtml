@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<NEWS.WEB.Models.News>
 
-    foreach (var item in Model)
+    @foreach (var item in Model)
     {
 <div class="aside__hotnews">
     <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">
