@@ -3,13 +3,13 @@
     <div class="containerr">
         <i class="header__logo">Logo</i>
         <ul class="header__menu">
-            <li><a href="">TRANG CHỦ</a></li>
-            <li><a href="">SỰ KIỆN</a></li>
-            <li><a href="">XÃ HỘI</a></li>
-            <li><a href="">THẾ GIỚI</a></li>
-            <li><a href="">GIÁO DỤC</a></li>
-            <li><a href="">GIẢI TRÍ</a></li>
-            <li><a href="">NHỊP SỐNG TRẺ</a></li>
+            <li><a href="/">TRANG CHỦ</a></li>
+            <li><a href="@Url.Action("List", "Home", new { categoryname = "sukien" })">SỰ KIỆN</a></li>
+            <li><a href="@Url.Action("List", "Home", new { categoryname = "xahoi" })">XÃ HỘI</a></li>
+            <li><a href="@Url.Action("List", "Home", new { categoryname = "thegioi" })">THẾ GIỚI</a></li>
+            <li><a href="@Url.Action("List", "Home", new { categoryname = "giaoduc" })">GIÁO DỤC</a></li>
+            <li><a href="@Url.Action("List", "Home", new { categoryname = "giaitri" })">GIẢI TRÍ</a></li>
+            <li><a href="@Url.Action("List", "Home", new { categoryname = "nhipsongtre" })">NHỊP SỐNG TRẺ</a></li>
         </ul>
         <div class="header__search">
             <form method="get" action="@Url.Action("Search", "Home")">
