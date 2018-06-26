@@ -16,9 +16,14 @@ namespace NEWS.WEB.Controllers
         }
         public ActionResult List(string categoryname)
         {
-            var categoryid = db.Categories.FirstOrDefault(f => f.CategoryName == categoryname).CategoryId;
-            var list = db.News.Where(w => w.CategoryId == categoryid && w.Status == (int?)CommonStatus.Acitivy);
-            return View(list.ToList());
+            var category = db.Categories.Where(f => f.CategoryName == categoryname && f.Status == (int?)CommonStatus.Acitivy);
+            if(category != null)
+            {
+                var categoryid = category.FirstOrDefault().CategoryId;
+                var list = db.News.Where(w => w.CategoryId == categoryid && w.Status == (int?)CommonStatus.Acitivy);
+                return View(list.ToList());
+            }
+            return View();
         }
 
         public ActionResult Detail(int id)
@@ -52,13 +57,18 @@ namespace NEWS.WEB.Controllers
         }
         public ActionResult _TopNewestByCategoryPartial(string categoryname)
         {
-            var categoryid = db.Categories.FirstOrDefault(f => f.CategoryName == categoryname).CategoryId;
-            var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).Skip(1).Take(4);
-            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).FirstOrDefault();
-            ViewModels.TopNewestViewModels viewmodel = new ViewModels.TopNewestViewModels();
-            viewmodel.listnewsItem = listnews.ToList();
-            viewmodel.newsItem = item;
-            return PartialView(viewmodel);
+            var cate = db.Categories.Where(f => f.CategoryName == categoryname && f.Status == (int?)CommonStatus.Acitivy);
+            if(cate != null)
+            {
+                var categoryid = cate.FirstOrDefault().CategoryId;
+                var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).Skip(1).Take(4);
+                var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).FirstOrDefault();
+                ViewModels.TopNewestViewModels viewmodel = new ViewModels.TopNewestViewModels();
+                viewmodel.listnewsItem = listnews.ToList();
+                viewmodel.newsItem = item;
+                return PartialView(viewmodel);
+            }
+            return PartialView();
         }
 
 
