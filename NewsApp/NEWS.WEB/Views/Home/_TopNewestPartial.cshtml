@@ -1,24 +1,28 @@
 ﻿
 @model NEWS.WEB.ViewModels.TopNewestViewModels
-@if (Model.newsItem != null)
+@if (Model != null)
 {
-    <article class="article__hotnews">
-        <a href="@Url.Action("Detail", "Home", new { id = @Model.newsItem.NewsId })">
-            <img src="@Model.newsItem.Image">
-            <h4 class="article__hotnews--bold">@Model.newsItem.Title</h4>
-        </a>
-        <p class="article__hotnews--size">@Model.newsItem.Description</p>
-    </article>
-}
+    @if (Model.newsItem != null)
+    {
+        <article class="article__hotnews">
+            <a href="@Url.Action("Detail", "Home", new { id = @Model.newsItem.NewsId })">
+                <img src="@Model.newsItem.Image">
+                <h4 class="article__hotnews--bold">@Model.newsItem.Title</h4>
+            </a>
+            <p class="article__hotnews--size">@Model.newsItem.Description</p>
+        </article>
+    }
 
-@foreach (var item in Model.listnewsItem)
-{
-    <div class="aside__hotnews">
-        <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">
+    @foreach (var item in Model.listnewsItem)
+    {
+        <div class="aside__hotnews">
+            <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">
 
-            <img src="@item.Image">
-            <p> @item.Title</p>
-        </a>
-    </div>
-    <br />
+                <img src="@item.Image">
+                <p> @item.Title</p>
+            </a>
+        </div>
+        <br />
+    }
+
 }

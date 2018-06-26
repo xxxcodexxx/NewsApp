@@ -1,16 +1,18 @@
 ﻿@model NEWS.WEB.ViewModels.TopNewestViewModels
-@if (Model.newsItem != null)
+@if (Model != null)
 {
-    <article class="article-main">
-        <a href="@Url.Action("Detail", "Home", new { id = Model.newsItem.NewsId })">
-            <img src="@Model.newsItem.Image">
-            @Model.newsItem.Title
-        </a>
-        <header class="article-main__header">
-            <p>@Model.newsItem.Description</p>
-        </header>
-    </article>
-}
+    @if (Model.newsItem != null)
+    {
+        <article class="article-main">
+            <a href="@Url.Action("Detail", "Home", new { id = Model.newsItem.NewsId })">
+                <img src="@Model.newsItem.Image">
+                @Model.newsItem.Title
+            </a>
+            <header class="article-main__header">
+                <p>@Model.newsItem.Description</p>
+            </header>
+        </article>
+    }
     <div class="newslist">
         @foreach (var item in Model.listnewsItem)
         {
@@ -19,3 +21,4 @@
             </article>
         }
     </div>
+}
