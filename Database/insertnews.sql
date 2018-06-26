@@ -72,8 +72,6 @@ VALUES  ( N'nhipsongtre' , -- CategoryName - nvarchar(max)
           N'NHỊP SỐNG TRẺ'  -- CategoryDisplayName - nvarchar(max)
         )
 GO
-USE cms
-GO
 
 DECLARE @intFlag INT
 DECLARE @categoryid INT
