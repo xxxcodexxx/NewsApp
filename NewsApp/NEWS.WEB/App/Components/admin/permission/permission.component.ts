@@ -125,7 +125,7 @@ export class PermissionComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._adminService.delete(Global.BASE_PERMISSION_ENDPOINT, formData.value.Id).subscribe(
+                this._adminService.delete(Global.BASE_PERMISSION_ENDPOINT, formData.value.RoleId).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
