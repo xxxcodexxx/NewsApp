@@ -1,21 +1,12 @@
 ﻿
 <header class="header">
     <div class="containerr">
-        <i class="header__logo">Logo</i>
-        <ul class="header__menu">
-            <li><a href="/">TRANG CHỦ</a></li>
-            <li><a href="@Url.Action("List", "Home", new { categoryname = "sukien" })">SỰ KIỆN</a></li>
-            <li><a href="@Url.Action("List", "Home", new { categoryname = "xahoi" })">XÃ HỘI</a></li>
-            <li><a href="@Url.Action("List", "Home", new { categoryname = "thegioi" })">THẾ GIỚI</a></li>
-            <li><a href="@Url.Action("List", "Home", new { categoryname = "giaoduc" })">GIÁO DỤC</a></li>
-            <li><a href="@Url.Action("List", "Home", new { categoryname = "giaitri" })">GIẢI TRÍ</a></li>
-            <li><a href="@Url.Action("List", "Home", new { categoryname = "nhipsongtre" })">NHỊP SỐNG TRẺ</a></li>
-        </ul>
-        <div class="header__search">
-            <form method="get" action="@Url.Action("Search", "Home")">
-                <input type="text" id="txtSearch" name="txtSearch" placeholder="Tìm kiếm">
-                <i class="fa fa-search header--search"></i>
-            </form>
+        <div class="header__logo">
+            <a href="/"></a>
         </div>
+        <form name="search" method="get" id="searchbox" class="znewsSearch" action="@Url.Action("Search", "Home")">
+            <input type="text" name="txtSearch" placeholder="Nhập nội dung cần tìm..." id="txtSearch">
+            <button type="submit" id="search_button">Tìm kiếm</button>
+        </form>
     </div>
 </header>

@@ -1,0 +1,19 @@
+﻿@{
+    <script src="@Url.Content("~/Scripts/app/home/CategoryController.js")"></script>
+}
+<nav class="categories" ng-controller="Category">
+    <ul>
+        <li class="parent current homepage"><a href="/" class="fa fa-home"></a></li>
+        <li ng-repeat="category in categories" class="parent current {{category.CategoryName}}">
+            <a href="#">{{category.CategoryDisplayName}}</a>
+            <div class="subcate">
+                <ul>
+                    <li ng-repeat="child in category.ChildCategory">
+                        <a href="#">{{child.CategoryDisplayName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+

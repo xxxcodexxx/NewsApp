@@ -1,8 +1,20 @@
 ﻿@{
     <script src="@Url.Content("~/Scripts/app/home/CategoryController.js")"></script>
 }
-<nav class="nav" ng-controller="Category">
-    <ul ng-repeat="category in categories">
-        <li><a href="#">{{category.CategoryDisplayName}}</a></li>
-    </ul>
-</nav>
+<section ng-controller="CategoryAndChild" class="category {{category.CategoryName}}">
+    <header>
+        <hgroup>
+            <h2><a title="{{category.CategoryDisplayName}}" class="{{category.CategoryName}}" href="#">{{category.CategoryDisplayName}}</a></h2>
+        </hgroup>
+        <p ng-repeat="cate in category.ChildCategory"><a href="#">{{cate.CategoryDisplayName}}</a></p>
+    </header>
+    <article class="featured">
+        <header>
+            <p class="title"><a href="/Home/Detail/{{article.NewsId}}" title="{{article.Title}}">{{article.Title}}</a></p>
+        </header>
+        <div class="cover">
+            <a href="/Home/Detail/{{article.NewsId}}"><img src="{{article.Image}}" /></a>
+        </div>
+        <p class="summary">{{article.Description}}</p>
+    </article>
+</section>

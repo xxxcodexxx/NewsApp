@@ -14,7 +14,12 @@
 <body ng-app="app">
     @Html.Partial("_Header")
     <div class="containerr">
-        <div class="">
+        <header class="top-header">
+            <div class="site-header">
+                @Html.Partial("_Category")
+            </div>
+        </header>
+        <div id="homepage">
             @RenderBody()
         </div>
         @Html.Partial("_Footer")

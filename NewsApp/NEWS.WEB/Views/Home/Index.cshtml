@@ -3,18 +3,18 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="">
-    <section class="section">
-        @Html.Partial("_TopNewestPartial")
-    </section>
-    <aside class="aside">
-        <div class="aside__title">
-            <p>Đọc nhiều nhất</p>
-        </div>
-        @Html.Partial("_TopViewPartial")
-    </aside>
-    <section class="section-news">
-        @Html.Partial("_CategoryPartial")
-        @Html.Partial("_TopNewestByCategoryPartial")
-    </section>
+<div class="news-hot"></div>
+@Html.Partial("_TopNewestPartial")
+<section class="sidebar">
+    <div class="aside__title">
+        <p>Xem nhiều nhất</p>
+    </div>
+    @Html.Partial("_TopViewPartial")
+</section>
+<div class="advBillboard"></div>
+<div class="content-wrap">
+    <div class="content-wrap">
+            @Html.Partial("_CategoryPartial")
+            @Html.Partial("_TopNewestByCategoryPartial")
+    </div>
 </div>

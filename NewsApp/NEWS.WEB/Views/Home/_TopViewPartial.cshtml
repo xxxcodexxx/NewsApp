@@ -1,12 +1,20 @@
 ﻿@{
     <script src="@Url.Content("~/Scripts/app/home/TopViewController.js")"></script>
 }
-<div ng-controller="TopView">
-    <div class="aside__hotnews" ng-repeat="it in item">
-        <a href="/Home/Detail/{{it.NewsId}}">
+<div class="topview" ng-controller="TopView">
+    <article ng-repeat="it in item">
+        <div class="cover">
             <img src="{{it.Image}}">
-            <p>{{it.Title}}</p>
-        </a>
-    </div>
+        </div>
+        <header>
+            <p class="title">
+                <a title="{{it.Title}}" href="/Home/Detail/{{it.NewsId}}">
+                    {{it.Title}}
+                </a>
+            </p>
+            <p class="summary">{{it.Description}}</p>
+        </header>
+
+    </article>
     <br />
 </div>

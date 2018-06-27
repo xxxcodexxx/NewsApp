@@ -1,43 +1,41 @@
-﻿@{ 
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model NEWS.WEB.Models.News
-    <style>
-        image{
-            max-width:100%;
-            height:auto;
-        }
-    </style>
+<style>
+    image {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
 <link href="~/Style/detail.css" rel="stylesheet" />
-<div class="containerr">
-    @if(Model != null)
-    {
+@if (Model != null)
+{
+    <article class="the-article">
         <section class="main">
-        <header class="header-main">
-            <div class="header-main__title">
-                <h1>@Model.Title</h1>
-                <span>@Model.CreatedTime</span>
+            <header class="the-article-header">
+                <h1 class="the-article-title cms-title">@Model.Title</h1>
+                <span class="the-article-meta">@Model.CreatedTime</span>
+            </header>
+            <p class="the-article-summary cms-desc">
+                @Model.Description
+            </p>
+            <div class="the-article-body cms-body">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
             </div>
-            <div class="header-main__description">
-                <p>
-                    @Model.Description
-                </p>
-            </div>
-            <div class="header-main__boder"></div>
-        </header>
-        <div class="content">
-            @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
-        </div>
+        </section>
+
+        <div class="header-main__boder"></div>
         <div class="comment">
             <div class="comment__editor">
-                <textarea placeholder="Bạn nghĩ gì về tin này?"></textarea>
+                <textarea placeholder="Bạn nghĩ gì về tin này?"></ textarea >
                 <input class="btn btn-primary" type="button" name="" value="Gửi bình luận">
+
             </div>
         </div>
-    </section>
-    }
-    else
-    {
-        <h3>Không có dữ liệu</h3>
-    }
-</div>
+    </article>
+}
+else
+{
+    <h3>Không có dữ liệu</h3>
+}

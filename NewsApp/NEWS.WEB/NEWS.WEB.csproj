@@ -251,6 +251,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\TopNewestViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -7477,6 +7478,7 @@
     <Content Include="Views\Home\_TopNewestByCategoryPartial.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Home\_CategoryPartial.cshtml" />
+    <Content Include="Views\Shared\_Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\user\" />
