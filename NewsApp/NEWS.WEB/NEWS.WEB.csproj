@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201806271113197_Addfield.Designer.cs">
       <DependentUpon>201806271113197_Addfield.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806271257382_DefaultData.cs" />
+    <Compile Include="Migrations\201806271257382_DefaultData.Designer.cs">
+      <DependentUpon>201806271257382_DefaultData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,6 +238,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommonAction.cs" />
+    <Compile Include="Models\CommonRoles.cs" />
     <Compile Include="Models\CommonStatus.cs" />
     <Compile Include="Models\CommonDisplay.cs" />
     <Compile Include="Models\DBContext.cs" />
@@ -6822,6 +6827,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\AppController.js" />
+    <Content Include="Scripts\app\home\CategoryController.js" />
     <Content Include="Scripts\app\home\TopNewestController.js" />
     <Content Include="Scripts\app\home\TopNewestByCategoryController.js" />
     <Content Include="Scripts\app\home\TopViewController.js" />
@@ -7471,6 +7477,7 @@
     <Content Include="Views\Home\_TopViewPartial.cshtml" />
     <Content Include="Views\Home\_TopNewestByCategoryPartial.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Home\_CategoryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\user\" />
@@ -7538,6 +7545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806271113197_Addfield.resx">
       <DependentUpon>201806271113197_Addfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806271257382_DefaultData.resx">
+      <DependentUpon>201806271257382_DefaultData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
