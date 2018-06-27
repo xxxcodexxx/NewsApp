@@ -12,7 +12,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(db.Roles.ToList().Where(w => w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(db.Roles.ToList());
         }
 
         [HttpPost]
