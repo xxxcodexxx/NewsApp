@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from '../../../Service/admin.service';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
-import { IPermission } from '../../../Models/permission';
+import { IRole } from '../../../Models/role';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
 import { BsModalComponent } from 'ng2-bs3-modal';
 import { DBOperation } from '../../../Shared/enum';
+
 
 
 @Component({
@@ -13,49 +14,49 @@ import { DBOperation } from '../../../Shared/enum';
 })
 export class PermissionComponent implements OnInit {
 
-    permissions: IPermission[];
-    permission: IPermission;
+    roles: IRole[];
+    role: IRole;
     msg: string;
     indLoading: boolean = false;
     @ViewChild('modal') modal: BsModalComponent;
     dbops: DBOperation;
-    permissionFrm: FormGroup;
+    roleFrm: FormGroup;
     modalTitle: string;
     modalBtnTitle: string;
 
     constructor(private fb: FormBuilder, private _adminService: AdminService) { }
 
     ngOnInit(): void {
-        this.permissionFrm = this.fb.group({
+        this.roleFrm = this.fb.group({
             Id: [''],
-            PermissionName: [''],
+            RoleName: [''],
             Status: [''],
         });
 
-        this.LoadPermissions();
+        this.LoadRoles();
     }
-    LoadPermissions() {
+    LoadRoles() {
         this.indLoading = true;
         this._adminService.get(Global.BASE_PERMISSION_ENDPOINT)
-            .subscribe(res => { this.permissions = res, this.indLoading = false; },
+            .subscribe(res => { this.roles = res, this.indLoading = false; },
             error => this.msg = <any>error);
     }
-    addPermissions() {
+    addRoles() {
         this.dbops = DBOperation.create;
         this.SetControlsState(true);
-        this.modalTitle = "Add New Permission";
+        this.modalTitle = "Add Role";
         this.modalBtnTitle = "Add";
-        this.permissionFrm.reset();
+        this.roleFrm.reset();
         this.modal.open();
     }
 
-    editPermissions(id: number) {
+    editRoles(id: number) {
         this.dbops = DBOperation.update;
         this.SetControlsState(true);
-        this.modalTitle = "Edit Permission";
+        this.modalTitle = "Edit Role";
         this.modalBtnTitle = "Update";
-        this.permission = this.permissions.filter(x => x.PermissionId == id)[0];
-        this.permissionFrm.setValue(this.permission);
+        this.role = this.roles.filter(x => x.RoleID == id)[0];
+        this.roleFrm.setValue(this.role);
         this.modal.open();
     }
 
@@ -64,8 +65,8 @@ export class PermissionComponent implements OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
-        this.permission = this.permissions.filter(x => x.PermissionId == id)[0];
-        this.permissionFrm.setValue(this.permission);
+        this.role = this.roles.filter(x => x.RoleID == id)[0];
+        this.roleFrm.setValue(this.role);
         this.modal.open();
     }
 
@@ -82,7 +83,7 @@ export class PermissionComponent implements OnInit {
                             setTimeout(() => {
                                 this.msg = null;
                             }, 2000);
-                            this.LoadPermissions();
+                            this.LoadRoles();
                         }
                         else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!";
@@ -107,7 +108,7 @@ export class PermissionComponent implements OnInit {
                             setTimeout(() => {
                                 this.msg = null;
                             }, 2000);
-                            this.LoadPermissions();
+                            this.LoadRoles();
                         }
                         else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!";
@@ -132,7 +133,7 @@ export class PermissionComponent implements OnInit {
                             setTimeout(() => {
                                 this.msg = null;
                             }, 2000);
-                            this.LoadPermissions();
+                            this.LoadRoles();
                         }
                         else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!";
@@ -152,7 +153,7 @@ export class PermissionComponent implements OnInit {
         }
     }
     SetControlsState(isEnable: boolean) {
-        isEnable ? this.permissionFrm.enable() : this.permissionFrm.disable();
+        isEnable ? this.roleFrm.enable() : this.roleFrm.disable();
     }
 
 }

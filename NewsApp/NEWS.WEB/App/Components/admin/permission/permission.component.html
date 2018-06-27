@@ -1,31 +1,31 @@
 ﻿
 <section class="content-header">
     <h1>
-       Permissions
+       Role
     </h1>
 </section>
 <section class="content">
     <div class="box box-default">
         <div class='table-responsive'>
-            <div style="padding:10px"><button class="btn btn-primary" (click)="addPermissions()">Add</button></div>
+            <div style="padding:10px"><button class="btn btn-primary" (click)="addRoles()">Add</button></div>
             <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
-            <div *ngIf='permissions && permissions.length==0' class="alert alert-info" role="alert">No record found!</div>
+            <div *ngIf='roles && roles.length==0' class="alert alert-info" role="alert">No record found!</div>
 
-            <table class='table table-striped' *ngIf='permissions && permissions.length'>
+            <table class='table table-striped' *ngIf='roles && roles.length'>
                 <thead>
                     <tr>
-                        <th>Permission Name</th>
+                        <th>Role Name</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let permission of permissions">
-                        <td>{{permission.PermissionName}}</td>
-                        <td>{{permission.Status}}</td>
+                    <tr *ngFor="let role of roles">
+                        <td>{{role.RoleName}}</td>
+                        <td>{{role.Status}}</td>
                         <td>
-                            <button title="Edit" class="btn btn-primary" (click)="editPermissions(permission.Id)">Edit</button>
-                            <button title="Delete" class="btn btn-danger" (click)="deletePermissions(permission.Id)">Delete</button>
+                            <button title="Edit" class="btn btn-primary" (click)="editPermissions(role.Id)">Edit</button>
+                            <button title="Delete" class="btn btn-danger" (click)="deletePermissions(role.Id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -44,7 +44,7 @@
       
 
         <bs-modal #modal>
-            <form novalidate (ngSubmit)="onSubmit(permissionFrm)" [formGroup]="permissionFrm">
+            <form novalidate (ngSubmit)="onSubmit(roleFrm)" [formGroup]="roleFrm">
                 <bs-modal-header [showDismiss]="true">
                     <h4 class="modal-title">{{modalTitle}}</h4>
                 </bs-modal-header>
@@ -52,8 +52,8 @@
 
                     <div class="form-group">
                         <div>
-                            <span>PermissionName </span>
-                            <input type="text" class="form-control" placeholder="PermissionName" formControlName="PermissionName">
+                            <span>Role Name </span>
+                            <input type="text" class="form-control" placeholder="RoleName" formControlName="RoleName">
                         </div>
                         <div>
                             <span>Status</span>
@@ -65,7 +65,7 @@
                 <bs-modal-footer>
                     <div>
                         <a class="btn btn-default" (click)="modal.close()">Cancel</a>
-                        <button type="submit" [disabled]="permissionFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+                        <button type="submit" [disabled]="roleFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
                     </div>
                 </bs-modal-footer>
             </form>
