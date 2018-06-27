@@ -14,10 +14,17 @@ namespace NEWS.WEB.Controllers
             var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy);
             return View(news.ToList());
         }
+
+        public JsonResult LoadCategories()
+        {
+            var obj = db.Categories.ToList();
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult List(string categoryname)
         {
             var category = db.Categories.FirstOrDefault(f => f.CategoryName == categoryname && f.Status == (int?)CommonStatus.Acitivy);
-            if(category != null)
+            if (category != null)
             {
                 var categoryid = category.CategoryId;
                 var list = db.News.Where(w => w.CategoryId == categoryid && w.Status == (int?)CommonStatus.Acitivy);
@@ -64,7 +71,7 @@ namespace NEWS.WEB.Controllers
         public JsonResult TopNewestByCategoryPartial(string categoryname)
         {
             var cate = db.Categories.FirstOrDefault(f => f.CategoryName == categoryname && f.Status == (int?)CommonStatus.Acitivy);
-            if(cate != null)
+            if (cate != null)
             {
                 var categoryid = cate.CategoryId;
                 var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && w.CategoryId == categoryid).OrderByDescending(o => o.CategoryId).Skip(1).Take(4);
