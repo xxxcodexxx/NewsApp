@@ -37,9 +37,9 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(User item)
+        public HttpResponseMessage Delete(int id)
         {
-            var obj = db.Users.FirstOrDefault(u => u.ID == item.ID);
+            var obj = db.Users.FirstOrDefault(u => u.ID == id);
             obj.Status = (int)CommonStatus.Deleted;
             return ToJson(db.SaveChanges());
         }

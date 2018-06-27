@@ -13,7 +13,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(db.Comments.ToList());
+            return ToJson(db.Comments.Where(w=>w.Status == (int?)CommonStatus.Acitivy).ToList());
         }
 
         [HttpPost]
@@ -39,8 +39,8 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var obj = db.Comments.Where(c => c.NewsId == id).FirstOrDefault();
-            db.Comments.Remove(obj);
+            var obj = db.Comments.FirstOrDefault(c => c.NewsId == id);
+            obj.Status = (int?)CommonStatus.Deleted;
             return ToJson(db.SaveChanges());
 
         }

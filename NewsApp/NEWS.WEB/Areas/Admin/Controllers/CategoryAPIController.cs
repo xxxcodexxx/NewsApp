@@ -34,9 +34,9 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(Category item)
+        public HttpResponseMessage Delete(int id)
         {
-            var obj = db.Categories.FirstOrDefault(u => u.CategoryId == item.CategoryId);
+            var obj = db.Categories.FirstOrDefault(u => u.CategoryId == id);
             obj.Status = (int?)CommonStatus.Deleted;
             return ToJson(db.SaveChanges());
         }
