@@ -7,7 +7,6 @@ namespace NEWS.WEB.Models
     {
         public int CommentId { get; set; }
         public string Content { get; set; }
-        public string Poster { get; set; }
         public Nullable<System.DateTime> PostedTime { get; set; }
         public Nullable<int> ParentId { get; set; }
         public Nullable<int> Status { get; set; }

@@ -3,9 +3,12 @@ namespace NEWS.WEB.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     public partial class Category
     {
+        [Key]
         public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
@@ -16,5 +19,7 @@ namespace NEWS.WEB.Models
         public Nullable<int> Status { get; set; }
 
         public string CategoryDisplayName { get; set; }
+
+        public int OrderBy { get; set; }
     }
 }

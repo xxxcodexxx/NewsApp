@@ -1,4 +1,5 @@
 ﻿using NEWS.WEB.Models;
+using NEWS.WEB.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,34 @@ namespace NEWS.WEB.Controllers
             return View(news.ToList());
         }
 
+        public JsonResult LoadCategoryAndChild(int categoryId)
+        {
+            object obj;
+            var cate = db.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
+            if (cate != null)
+            {
+                var article1 = db.News.Where(n => n.CategoryId == cate.CategoryId).OrderBy(n=>n.CreatedTime).Skip(0).Take(1);
+                CategoryViewModel cateVM = new CategoryViewModel(cate.CategoryId, cate.CategoryName, cate.ParentId, cate.Status, cate.CategoryDisplayName, cate.OrderBy);
+                if (cateVM.ChildCategory != null) { 
+                }
+                obj = new {cateVM, article1 };
+                return Json(obj, JsonRequestBehavior.AllowGet );
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult LoadCategories()
         {
-            var obj = db.Categories.ToList();
-            return Json(obj, JsonRequestBehavior.AllowGet);
+            var obj = db.Categories.Where(c=>c.ParentId == 0).OrderBy(c => c.OrderBy).ToList();
+            List<CategoryViewModel> lsCate = new List<CategoryViewModel>();
+            foreach (var item in obj)
+            {
+                lsCate.Add(new CategoryViewModel(item.CategoryId, item.CategoryName, item.ParentId, item.Status, item.CategoryDisplayName, item.OrderBy));
+            }
+            return Json(lsCate, JsonRequestBehavior.AllowGet);
         }
+        
+
 
         public ActionResult List(string categoryname)
         {
@@ -50,7 +74,7 @@ namespace NEWS.WEB.Controllers
         }
         public JsonResult TopViewPartial()
         {
-            var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.ViewCount).Take(3).ToList();
+            var news = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.ViewCount).Take(2).ToList();
             return Json(news, JsonRequestBehavior.AllowGet);
         }
 

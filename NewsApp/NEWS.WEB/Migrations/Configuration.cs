@@ -10,6 +10,7 @@ namespace NEWS.WEB.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "NEWS.WEB.Models.DBContext";
         }
 
