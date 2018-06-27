@@ -7,34 +7,36 @@ namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class PermissionAPIController : BaseAPIController
     {
-        DBContext context = new DBContext();
+        DBContext db = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(context.Roles.ToList().Where(w => w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(db.Roles.ToList().Where(w => w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody]Role item)
         {
             item.Status = (int)Models.CommonStatus.Acitivy;
-            return ToJson(context.Roles.Add(item));
+            db.Roles.Add(item);
+            return ToJson(db.SaveChanges());
         }
 
         [HttpPut]
         public HttpResponseMessage Update([FromBody]Role item)
         {
-            var obj = context.Roles.Where(c => c.RoleId == item.RoleId).FirstOrDefault();
-            return ToJson(context.SaveChanges());
+            var obj = db.Roles.FirstOrDefault(c => c.RoleId == item.RoleId);
+            obj = item;
+            return ToJson(db.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var obj = context.Roles.Where(c => c.RoleId == id).FirstOrDefault();
-            context.Roles.Remove(obj);
-            return ToJson(context.SaveChanges());
+            var obj = db.Roles.FirstOrDefault(c => c.RoleId == id);
+            obj.Status = (int)CommonStatus.Deleted;
+            return ToJson(db.SaveChanges());
         }
         
     }

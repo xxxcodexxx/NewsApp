@@ -7,33 +7,36 @@ namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class CommentAPIController : BaseAPIController
     {
-        DBContext context = new DBContext();
+        DBContext db = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(context.Comments.ToList());
+            return ToJson(db.Comments.ToList());
         }
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody]Models.Comment item)
         {
-            return ToJson(context.Comments.Add(item));
+            item.Status = (int?)CommonStatus.Acitivy;
+            db.Comments.Add(item);
+            return ToJson(db.SaveChanges());
         }
 
         [HttpPut]
         public HttpResponseMessage Update([FromBody]Models.Comment item)
         {
-            var obj = context.Comments.Where(c => c.NewsId == item.NewsId).FirstOrDefault();
-            return ToJson(context.SaveChanges());
+            var obj = db.Comments.FirstOrDefault(c => c.NewsId == item.NewsId);
+            obj = item;
+            return ToJson(db.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var obj = context.Comments.Where(c => c.NewsId == id).FirstOrDefault();
-            context.Comments.Remove(obj);
-            return ToJson(context.SaveChanges());
+            var obj = db.Comments.Where(c => c.NewsId == id).FirstOrDefault();
+            db.Comments.Remove(obj);
+            return ToJson(db.SaveChanges());
 
         }
     }

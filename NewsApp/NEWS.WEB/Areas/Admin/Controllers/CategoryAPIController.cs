@@ -7,32 +7,36 @@ namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class CategoryAPIController : BaseAPIController
     {
-        DBContext context = new DBContext();
+        DBContext db = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(context.Categories.ToList());
+            return ToJson(db.Categories.ToList());
         }
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody]Category item)
         {
-            return ToJson(context.Categories.Add(item));
+            item.Status = (int?)CommonStatus.Acitivy;
+            db.Categories.Add(item);
+            return ToJson(db.SaveChanges());
         }
 
         [HttpPut]
         public HttpResponseMessage Update([FromBody]Category item)
         {
-            var obj = context.Categories.Where(c => c.CategoryId == item.CategoryId);
-            return ToJson(context.SaveChanges());
+            var obj = db.Categories.FirstOrDefault(u => u.CategoryId == item.CategoryId);
+            obj = item;
+            return ToJson(db.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(Category item)
         {
-            context.Categories.Remove(item);
-            return ToJson(context.SaveChanges());
+            var obj = db.Categories.FirstOrDefault(u => u.CategoryId == item.CategoryId);
+            obj.Status = (int?)CommonStatus.Deleted;
+            return ToJson(db.SaveChanges());
         }
     }
 }

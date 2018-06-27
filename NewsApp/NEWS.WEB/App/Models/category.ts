@@ -3,5 +3,6 @@
     CategoryName: string,
     ParentId: number,
     Status: number,
-    ParentName : string
+    ParentName: string
+    CategoryDisplayName: string,
 }

@@ -7,32 +7,36 @@ namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class AccountAPIController : BaseAPIController
     {
-        DBContext context = new DBContext();
+        DBContext db = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(context.Users.ToList());
+            return ToJson(db.Users.ToList());
         }
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody]User item)
         {
-            return ToJson(context.Users.Add(item));
+            item.Status = (int)CommonStatus.Acitivy;
+            db.Users.Add(item);
+            return ToJson(db.SaveChanges());
         }
 
         [HttpPut]
         public HttpResponseMessage Update([FromBody]User item)
         {
-            var obj = context.Users.Where(u => u.ID == item.ID);
-            return ToJson(context.SaveChanges());
+            var obj = db.Users.FirstOrDefault(u => u.ID == item.ID);
+            obj = item;
+            return ToJson(db.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(User item)
         {
-            context.Users.Remove(item);
-            return ToJson(context.SaveChanges());
+            var obj = db.Users.FirstOrDefault(u => u.ID == item.ID);
+            obj.Status = (int)CommonStatus.Deleted;
+            return ToJson(db.SaveChanges());
         }
 
     }

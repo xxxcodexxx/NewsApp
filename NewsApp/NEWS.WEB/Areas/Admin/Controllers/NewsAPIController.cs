@@ -8,12 +8,12 @@ namespace NEWS.WEB.Areas.Admin.Controllers
 {
     public class NewsAPIController : BaseAPIController
     {
-        DBContext context = new DBContext();
+        DBContext db = new DBContext();
 
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(context.News.ToList().Where(w=>w.Status == (int)Models.CommonStatus.Acitivy));
+            return ToJson(db.News.ToList().Where(w => w.Status == (int)Models.CommonStatus.Acitivy));
         }
 
         [HttpPost]
@@ -22,23 +22,25 @@ namespace NEWS.WEB.Areas.Admin.Controllers
             item.Status = (int)Models.CommonStatus.Acitivy;
             item.CreatedTime = DateTime.Now;
             item.ViewCount = 0;
-            return ToJson(context.News.Add(item));
+            db.News.Add(item);
+            return ToJson(db.SaveChanges());
         }
 
         [HttpPut]
         public HttpResponseMessage Update([FromBody]Models.News item)
         {
-            var obj = context.News.Where(c => c.NewsId == item.NewsId).FirstOrDefault();
-            return ToJson(context.SaveChanges());
+            var obj = db.News.FirstOrDefault(c => c.NewsId == item.NewsId);
+            obj = item;
+            return ToJson(db.SaveChanges());
         }
 
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            var obj = context.News.Where(c => c.NewsId == id).FirstOrDefault();
-            context.News.Remove(obj);
-            return ToJson(context.SaveChanges());
+            var obj = db.News.FirstOrDefault(c => c.NewsId == id);
+            obj.Status = (int)CommonStatus.Deleted;
+            return ToJson(db.SaveChanges());
         }
-        
+
     }
 }

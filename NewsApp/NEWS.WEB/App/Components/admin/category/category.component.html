@@ -15,6 +15,7 @@
                     <tr>
                         <th>Category Name</th>
                         <th>Category Parent</th>
+                        <th>CategoryDisplayName</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -22,6 +23,7 @@
                     <tr *ngFor="let category of categories">
                         <td>{{category.CategoryName}}</td>
                         <td>{{category.ParentName}}</td>
+                        <td>{{category.CategoryDisplayName}}</td>
                         <td>
                             <button title="Edit" class="btn btn-primary" (click)="editCategory(category.CategoryId)">Edit</button>
                             <button title="Delete" class="btn btn-danger" (click)="deleteCategory(category.CategoryId)">Delete</button>
@@ -68,6 +70,10 @@
                         <option *ngFor="let item of categories" [value]="item.CategoryId">{{item.CategoryName}}</option>
                     </select>
                 </div>
+            </div>
+            <div class="form-group">
+                <label class="">Category Display Name</label>
+                <input type="text" class="form-control" placeholder="Enter category name" formControlName="CategoryDisplayName" id="CategoryDisplayName">
             </div>
         </bs-modal-body>
         <bs-modal-footer>

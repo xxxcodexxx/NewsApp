@@ -33,7 +33,8 @@ export class CategoryComponent implements OnInit {
             CategoryName: ['', Validators.required],
             ParentId: [''],
             Status: [''],
-            ParentName: ['']
+            ParentName: [''],
+            CategoryDisplayName: ['']
         });
 
         this.LoadCategories();
