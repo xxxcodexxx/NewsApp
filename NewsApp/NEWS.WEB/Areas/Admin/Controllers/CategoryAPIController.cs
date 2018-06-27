@@ -19,6 +19,10 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Post([FromBody]Category item)
         {
             item.Status = (int?)CommonStatus.Acitivy;
+            if(item.ParentId == null)
+            {
+                item.ParentId = 0;
+            }
             db.Categories.Add(item);
             return ToJson(db.SaveChanges());
         }
