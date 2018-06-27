@@ -15,14 +15,12 @@
                 <thead>
                     <tr>
                         <th>Role Name</th>
-                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let role of roles">
                         <td>{{role.RoleName}}</td>
-                        <td>{{role.Status}}</td>
                         <td>
                             <button title="Edit" class="btn btn-primary" (click)="editRoles(role.RoleId)">Edit</button>
                             <button title="Delete" class="btn btn-danger" (click)="deleteRoles(role.RoleId)">Delete</button>
@@ -55,10 +53,6 @@
                             <span>Role Name </span>
                             <input type="text" class="form-control" placeholder="RoleName" formControlName="RoleName">
                         </div>
-                        <!--<div>
-                            <span>Status</span>
-                            <input type="text" class="form-control" placeholder="Status" formControlName="Status">
-                        </div>-->
 
                     </div>
                 </bs-modal-body>
