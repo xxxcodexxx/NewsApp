@@ -18,7 +18,6 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>PermissionId</th>
-                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -30,7 +29,6 @@
                         <td>{{account.Email}}</td>
                         <td>{{account.Phone}}</td>
                         <td>{{account.PermissionId}}</td>
-                        <td>{{account.Status}}</td>
                         <td>
                             <button title="Edit" class="btn btn-primary" (click)="editAccounts(account.UserName)">Edit</button>
                             <button title="Delete" class="btn btn-danger" (click)="deleteAccounts(account.UserName)">Delete</button>
