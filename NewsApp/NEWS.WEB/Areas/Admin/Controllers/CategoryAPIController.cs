@@ -30,6 +30,10 @@ namespace NEWS.WEB.Areas.Admin.Controllers
             obj.CategoryDisplayName = item.CategoryDisplayName;
             obj.CategoryName = item.CategoryName;
             obj.ParentId = item.ParentId;
+            if(obj.ParentId == null)
+            {
+                obj.ParentId = 0;
+            }
             return ToJson(db.SaveChanges());
         }
 
