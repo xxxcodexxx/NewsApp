@@ -1,5 +1,5 @@
 ﻿import { NgModule } from '@angular/core';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,7 +37,7 @@ import { FeedbackModule } from './Components/admin/feedback/feedback.module';
         FeedbackModule
     ],
     declarations: [AppComponent, HomeComponent],
-    providers: [{ provide: APP_BASE_HREF, useValue: '/admin' }, AdminService],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/admin' }, AdminService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
     bootstrap: [AppComponent]
 
 })

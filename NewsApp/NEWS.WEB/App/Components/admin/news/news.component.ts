@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from '../../../Service/admin.service';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { Http, RequestOptions, Headers, Response } from '@angular/http';  
 import { INews } from '../../../Models/new';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
@@ -24,8 +25,9 @@ export class NewsComponent implements OnInit {
     newFrm: FormGroup;
     modalTitle: string;
     modalBtnTitle: string;
+    private isUploadBtn: boolean = true;  
 
-    constructor(private fb: FormBuilder, private _adminService: AdminService) { }
+    constructor(private fb: FormBuilder, private _adminService: AdminService, private http: Http) { }
 
     ngOnInit(): void {
         this.newFrm = this.fb.group({
@@ -187,4 +189,26 @@ export class NewsComponent implements OnInit {
     SetControlsState(isEnable: boolean) {
         isEnable ? this.newFrm.enable() : this.newFrm.disable();
     }
+
+    fileChange(event :any) {
+        let fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            let file: File = fileList[0];
+            let formData: FormData = new FormData();
+            formData.append('uploadFile', file, file.name);
+            let headers = new Headers()
+            //headers.append('Content-Type', 'json');  
+            //headers.append('Accept', 'application/json');  
+            let options = new RequestOptions({ headers: headers });
+            let apiUrl1 = "/api/UploadFileApi";
+            this.http.post(apiUrl1, formData, options)
+                .map(res => res.json())
+                .catch(error => Observable.throw(error))
+                .subscribe(
+                data => console.log('success'),
+                error => console.log(error)
+                )
+        }
+        window.location.reload();
+    }  
 }
