@@ -14,16 +14,7 @@
         @Html.Partial("_TopViewPartial")
     </aside>
     <section class="section-news">
-        <nav class="nav">
-            <ul>
-                <li class="active"><a href="">Văn hóa</a></li>
-                <li><a href="">Xã hội</a></li>
-                <li><a href="">Thể thao</a></li>
-                <li><a href="">Chính trị</a></li>
-                <li><a href="">Giáo dục</a></li>
-                <li><a href="">Giải trí</a></li>
-            </ul>
-        </nav>
+        @Html.Partial("_CategoryPartial")
         @Html.Partial("_TopNewestByCategoryPartial")
     </section>
 </div>

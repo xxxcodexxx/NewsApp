@@ -1,0 +1,8 @@
+﻿@{
+    <script src="@Url.Content("~/Scripts/app/home/CategoryController.js")"></script>
+}
+<nav class="nav" ng-controller="Category">
+    <ul ng-repeat="category in categories">
+        <li><a href="#">{{category.CategoryDisplayName}}</a></li>
+    </ul>
+</nav>
