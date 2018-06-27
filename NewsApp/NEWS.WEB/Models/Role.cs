@@ -8,6 +8,12 @@ namespace NEWS.WEB.Models
         public int RoleId { get; set; }
         public string RoleName { get; set; }
         public int Status { get; set; }
-    
+
+        public Role(int roleId,string roleName, int status)
+        {
+            RoleId = roleId;
+            RoleName = roleName;
+            Status = status;
+        }
     }
 }
