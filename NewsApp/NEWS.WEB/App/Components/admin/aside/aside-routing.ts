@@ -15,9 +15,8 @@ import { FeedbackComponent } from '../feedback/feedback.component';
             { path: 'category', component: CategoryComponent },
             { path: 'news', component: NewsComponent },
             { path: 'account', component: AccountComponent },
-            { path: 'permission', component: PermissionComponent },
+            { path: 'role', component: PermissionComponent },
             { path: 'comment', component: CommentComponent },
-            { path: 'feedback', component: FeedbackComponent },
 
         ])
     ],
