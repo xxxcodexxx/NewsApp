@@ -204,14 +204,17 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountAPIController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsAPIController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\LoginViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -219,6 +222,10 @@
     <Compile Include="Migrations\201806230901041_InitialCreate.cs" />
     <Compile Include="Migrations\201806230901041_InitialCreate.Designer.cs">
       <DependentUpon>201806230901041_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806271113197_Addfield.cs" />
+    <Compile Include="Migrations\201806271113197_Addfield.Designer.cs">
+      <DependentUpon>201806271113197_Addfield.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -230,6 +237,7 @@
     <Compile Include="Models\CommonStatus.cs" />
     <Compile Include="Models\CommonDisplay.cs" />
     <Compile Include="Models\DBContext.cs" />
+    <Compile Include="Models\Encryption.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\News.cs" />
@@ -284,34 +292,14 @@
     <Content Include="Content\adminLTE\img\user6-128x128.jpg" />
     <Content Include="Content\adminLTE\img\user7-128x128.jpg" />
     <Content Include="Content\adminLTE\img\user8-128x128.jpg" />
-    <Content Include="Content\adminLTE\skins\skin-black-light.css" />
-    <Content Include="Content\adminLTE\skins\skin-black-light.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-black.css" />
-    <Content Include="Content\adminLTE\skins\skin-black.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-blue-light.css" />
-    <Content Include="Content\adminLTE\skins\skin-blue-light.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-blue.css" />
-    <Content Include="Content\adminLTE\skins\skin-blue.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-green-light.css" />
-    <Content Include="Content\adminLTE\skins\skin-green-light.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-green.css" />
-    <Content Include="Content\adminLTE\skins\skin-green.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-purple-light.css" />
-    <Content Include="Content\adminLTE\skins\skin-purple-light.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-purple.css" />
-    <Content Include="Content\adminLTE\skins\skin-purple.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-red-light.css" />
-    <Content Include="Content\adminLTE\skins\skin-red-light.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-red.css" />
-    <Content Include="Content\adminLTE\skins\skin-red.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-yellow-light.css" />
-    <Content Include="Content\adminLTE\skins\skin-yellow-light.min.css" />
-    <Content Include="Content\adminLTE\skins\skin-yellow.css" />
-    <Content Include="Content\adminLTE\skins\skin-yellow.min.css" />
     <Content Include="Content\adminLTE\skins\_all-skins.css" />
     <Content Include="Content\adminLTE\skins\_all-skins.min.css" />
+    <Content Include="Content\blue.css" />
+    <Content Include="Content\blue.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\plugins\icheck.min.js" />
+    <Content Include="Content\SiteLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -6830,6 +6818,13 @@
     <Content Include="Scripts\adminLTE\js\demo.js" />
     <Content Include="Scripts\adminLTE\js\pages\dashboard.js" />
     <Content Include="Scripts\adminLTE\js\pages\dashboard2.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\AppController.js" />
+    <Content Include="Scripts\app\home\TopNewestController.js" />
+    <Content Include="Scripts\app\home\TopNewestByCategoryController.js" />
+    <Content Include="Scripts\app\home\TopViewController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -7432,6 +7427,9 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -7465,11 +7463,14 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\_Login.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_TopNewestPartial.cshtml" />
     <Content Include="Views\Home\_TopViewPartial.cshtml" />
     <Content Include="Views\Home\_TopNewestByCategoryPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\user\" />
@@ -7534,6 +7535,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806230901041_InitialCreate.resx">
       <DependentUpon>201806230901041_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806271113197_Addfield.resx">
+      <DependentUpon>201806271113197_Addfield.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
