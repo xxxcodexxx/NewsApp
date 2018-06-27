@@ -60,7 +60,7 @@ export class PermissionComponent implements OnInit {
         this.modal.open();
     }
 
-    deletePermissions(id: number) {
+    deleteRoles(id: number) {
         this.dbops = DBOperation.delete;
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
