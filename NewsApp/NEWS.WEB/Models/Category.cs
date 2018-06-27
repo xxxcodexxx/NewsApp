@@ -6,12 +6,6 @@ namespace NEWS.WEB.Models
 
     public partial class Category
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
-        {
-            this.News = new HashSet<News>();
-        }
-    
         public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
@@ -20,8 +14,7 @@ namespace NEWS.WEB.Models
         public Nullable<int> ParentId { get; set; }
 
         public Nullable<int> Status { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<News> News { get; set; }
+
+        public string CategoryDisplayName { get; set; }
     }
 }

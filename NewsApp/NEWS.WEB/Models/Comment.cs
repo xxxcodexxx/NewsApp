@@ -13,8 +13,5 @@ namespace NEWS.WEB.Models
         public Nullable<int> Status { get; set; }
         public int UserID { get; set; }
         public int NewsId { get; set; }
-    
-        public virtual User User { get; set; }
-        public virtual News News { get; set; }
     }
 }
