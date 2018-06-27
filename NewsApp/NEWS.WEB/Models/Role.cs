@@ -2,7 +2,7 @@ namespace NEWS.WEB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+     
     public partial class Role
     {
         public int RoleId { get; set; }
@@ -14,6 +14,9 @@ namespace NEWS.WEB.Models
             RoleId = roleId;
             RoleName = roleName;
             Status = status;
+        }
+        public Role()
+        {
         }
     }
 }
