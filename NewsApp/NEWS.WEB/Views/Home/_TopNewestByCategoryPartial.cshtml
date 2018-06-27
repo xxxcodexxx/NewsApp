@@ -1,7 +1,7 @@
 ﻿@model NEWS.WEB.ViewModels.TopNewestViewModels
 @if (Model != null)
 {
-    @if (Model.newsItem != null)
+    if (Model.newsItem != null)
     {
         <article class="article-main">
             <a href="@Url.Action("Detail", "Home", new { id = Model.newsItem.NewsId })">
