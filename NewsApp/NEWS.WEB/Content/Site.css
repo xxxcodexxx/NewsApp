@@ -9,8 +9,13 @@ body {
 }
 
 .containerr {
-    margin: 0px auto;
-    width: 1300px !important;
+    width: 980px;
+    margin: 0 0 0 -490px;
+    float: left;
+    left: 50%;
+    position: relative;
+    z-index: 1;
+    clear: both;
 }
 
 
