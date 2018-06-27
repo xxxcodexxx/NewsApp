@@ -26,12 +26,13 @@ export class AccountComponent implements OnInit {
 
     ngOnInit(): void {
         this.accountFrm = this.fb.group({
+            ID: [''],
             UserName: [''],
             Password: [''],
             FullName: [''],
             Email: [''],
             Phone: [''],
-            PermissionId: [''],
+            RoleId: [''],
             Status: [''],
         });
 

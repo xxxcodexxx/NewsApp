@@ -17,7 +17,7 @@
                         <th>FullName</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>PermissionId</th>
+                        <th>RoleId</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,7 +28,7 @@
                         <td>{{account.FullName}}</td>
                         <td>{{account.Email}}</td>
                         <td>{{account.Phone}}</td>
-                        <td>{{account.PermissionId}}</td>
+                        <td>{{account.RoleId}}</td>
                         <td>
                             <button title="Edit" class="btn btn-primary" (click)="editAccounts(account.UserName)">Edit</button>
                             <button title="Delete" class="btn btn-danger" (click)="deleteAccounts(account.UserName)">Delete</button>
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group">
                 <label>Permission</label>
-                <select class="form-control select2" style="width: 100%;" formControlName="PermissionId">
+                <select class="form-control select2" style="width: 100%;" formControlName="RoleId">
                     <option value="" selected hidden>Choose this permission</option>
                     <option value="0">Admin</option>
                     <option value="1">Staff</option>
