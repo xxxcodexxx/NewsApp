@@ -10,7 +10,7 @@
             <div style="padding:10px"><button class="btn btn-primary" (click)="addNew()">Add</button></div>
             <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
             <div *ngIf='news && news.length==0' class="alert alert-info" role="alert">No record found!</div>
-            <div class="box-body">
+            
                 <table class='table table-hover' *ngIf='news && news.length'>
                     <thead>
                         <tr>
@@ -38,7 +38,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+           
         </div>
 
     </div>
@@ -54,62 +54,58 @@
 
 
 <bs-modal #modal>
-      
-            <bs-modal-header [showDismiss]="true">
-                <h4 class="modal-title">{{modalTitle}}</h4>
-            </bs-modal-header>
-            <bs-modal-body>
-                <form novalidate (ngSubmit)="onSubmit(newFrm)" [formGroup]="newFrm">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" placeholder="Title" formControlName="Title" id="Title" required>
-                        <div *ngIf="newFrm.controls['Title'].invalid && (newFrm.controls['Title'].dirty || newFrm.controls['Title'].touched)"
-                             class="alert alert-danger">
-                            <div *ngIf="newFrm.controls['Title'].errors.required">
-                                Title is required.
-                            </div>
-                        </div>
+    <form novalidate (ngSubmit)="onSubmit(newFrm)" [formGroup]="newFrm">
+        <bs-modal-header [showDismiss]="true">
+            <h4 class="modal-title">{{modalTitle}}</h4>
+        </bs-modal-header>
+        <bs-modal-body>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" placeholder="Title" formControlName="Title" id="Title" required>
+                <div *ngIf="newFrm.controls['Title'].invalid && (newFrm.controls['Title'].dirty || newFrm.controls['Title'].touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="newFrm.controls['Title'].errors.required">
+                        Title is required.
                     </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control" placeholder="Description" formControlName="Description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Content</label>
-                        <ckeditor formControlName="Description" debounce="500">
-                            <p>Hello <strong>world</strong></p>
-                        </ckeditor>
-
-                    </div>
-                    <div class="form-group">
-                        <label>Image</label>
-                        <input type="text" class="form-control" placeholder="Image" formControlName="Image">
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label><br />
-                        <select class="form-control select2" style="width: 100%;" formControlName="CategoryId">
-                            <option value="null" selected="selected" hidden>Choose this parent</option>
-                            <option *ngFor="let item of category" [value]="item.CategoryId">{{item.CategoryName}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Author</label>
-                        <input type="text" class="form-control" placeholder="Author" formControlName="Author">
-                    </div>
-                    <div class="form-group">
-                        <label>Tags</label>
-                        <input type="text" class="form-control" placeholder="Tags" formControlName="Tags">
-                    </div>
-                </form>
-            </bs-modal-body>
-            <bs-modal-footer>
-                <div>
-                    <a class="btn btn-default" (click)="modal.close()">Cancel</a>
-                    <button type="submit" [disabled]="newFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
                 </div>
-            </bs-modal-footer>
-     
-        
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" placeholder="Description" formControlName="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <ckeditor formControlName="Content" debounce="500">
+                </ckeditor>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="text" class="form-control" placeholder="Image" formControlName="Image">
+            </div>
+            <div class="form-group">
+                <label>Category</label><br />
+                <select class="form-control select2" style="width: 100%;" formControlName="CategoryId">
+                    <option value="null" selected="selected" hidden>Choose this parent</option>
+                    <option *ngFor="let item of category" [value]="item.CategoryId">{{item.CategoryName}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Author</label>
+                <input type="text" class="form-control" placeholder="Author" formControlName="Author">
+            </div>
+            <div class="form-group">
+                <label>Tags</label>
+                <input type="text" class="form-control" placeholder="Tags" formControlName="Tags">
+            </div>
+
+        </bs-modal-body>
+        <bs-modal-footer>
+            <div>
+                <a class="btn btn-default" (click)="modal.close()">Cancel</a>
+                <button type="submit" [disabled]="newFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+            </div>
+        </bs-modal-footer>
+    </form>
 </bs-modal>
 
 
