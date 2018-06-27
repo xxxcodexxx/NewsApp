@@ -1,24 +1,20 @@
-﻿@model NEWS.WEB.ViewModels.TopNewestViewModels
-@if (Model != null)
-{
-    if (Model.newsItem != null)
-    {
-        <article class="article-main">
-            <a href="@Url.Action("Detail", "Home", new { id = Model.newsItem.NewsId })">
-                <img src="@Model.newsItem.Image">
-                @Model.newsItem.Title
-            </a>
-            <header class="article-main__header">
-                <p>@Model.newsItem.Description</p>
-            </header>
-        </article>
+@{
+    <script src="@Url.Content("~/Scripts/app/home/TopNewestByCategoryController.js")"></script>
+}
+<div ng-controller="TopNewestByCategory">
+    <article class="article-main">
+        <a href="/Home/Detail/{{newsItem.NewsId}}">
+            <img src="{{newsItem.Image}}">
+            {{newsItem.Title}}
+        </a>
+        <header class="article-main__header">
+            <p>{{newsItem.Description}}</p>
+        </header>
+    </article>
     }
     <div class="newslist">
-        @foreach (var item in Model.listnewsItem)
-        {
-            <article class="newslist__element">
-                <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">@item.Title</a>
-            </article>
-        }
+        <article class="newslist__element" ng-repeat="item in listnewsItem">
+            <a href="/Home/Detail/{{item.NewsId }}">{{item.Title}}</a>
+        </article>
     </div>
-}
+</div>

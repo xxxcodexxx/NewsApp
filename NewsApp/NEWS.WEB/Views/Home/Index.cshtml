@@ -1,20 +1,17 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="">
     <section class="section">
-        @{
-            Html.RenderAction("_TopNewestPartial", "Home");
-        }
+        @Html.Partial("_TopNewestPartial")
     </section>
     <aside class="aside">
         <div class="aside__title">
             <p>Đọc nhiều nhất</p>
         </div>
-        @{
-            Html.RenderAction("_TopViewPartial", "Home");
-        }
+        @Html.Partial("_TopViewPartial")
     </aside>
     <section class="section-news">
         <nav class="nav">
@@ -27,34 +24,6 @@
                 <li><a href="">Giải trí</a></li>
             </ul>
         </nav>
-        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home", new { categoryname = "vanhoa" });}
-    </section>
-
-    <section class="section-news">
-        <nav class="nav">
-            <ul>
-                <li class="active"><a href="">Văn hóa</a></li>
-                <li><a href="">Xã hội</a></li>
-                <li><a href="">Thể thao</a></li>
-                <li><a href="">Chính trị</a></li>
-                <li><a href="">Giáo dục</a></li>
-                <li><a href="">Giải trí</a></li>
-            </ul>
-        </nav>
-        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home", new { categoryname = "vanhoa" });}
-    </section>
-
-    <section class="section-news">
-        <nav class="nav">
-            <ul>
-                <li class="active"><a href="">Văn hóa</a></li>
-                <li><a href="">Xã hội</a></li>
-                <li><a href="">Thể thao</a></li>
-                <li><a href="">Chính trị</a></li>
-                <li><a href="">Giáo dục</a></li>
-                <li><a href="">Giải trí</a></li>
-            </ul>
-        </nav>
-        @{Html.RenderAction("_TopNewestByCategoryPartial", "Home", new { categoryname = "vanhoa" });}
+        @Html.Partial("_TopNewestByCategoryPartial")
     </section>
 </div>

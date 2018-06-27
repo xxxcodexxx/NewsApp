@@ -3,21 +3,17 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Angular/js")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/AdminLTE")
+    @Styles.Render("~/SiteLogin/css")
+    @Scripts.Render("~/SiteLogin/js")
     @RenderSection("scripts", required: false)
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<body ng-app="app">
-    @Html.Partial("_Header")
+<body>
     <div class="containerr">
         <div class="">
             @RenderBody()
         </div>
-        @Html.Partial("_Footer")
     </div>
 
 </body>

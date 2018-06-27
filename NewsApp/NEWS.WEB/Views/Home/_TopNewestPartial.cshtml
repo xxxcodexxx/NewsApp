@@ -1,28 +1,20 @@
-﻿
-@model NEWS.WEB.ViewModels.TopNewestViewModels
-@if (Model != null)
-{
-    if (Model.newsItem != null)
-    {
-        <article class="article__hotnews">
-            <a href="@Url.Action("Detail", "Home", new { id = @Model.newsItem.NewsId })">
-                <img src="@Model.newsItem.Image">
-                <h4 class="article__hotnews--bold">@Model.newsItem.Title</h4>
-            </a>
-            <p class="article__hotnews--size">@Model.newsItem.Description</p>
-        </article>
-    }
-
-    foreach (var item in Model.listnewsItem)
-    {
-        <div class="aside__hotnews">
-            <a href="@Url.Action("Detail", "Home", new { id = item.NewsId })">
-
-                <img src="@item.Image">
-                <p> @item.Title</p>
-            </a>
-        </div>
-        <br />
-    }
-
+@{
+    <script src="@Url.Content("~/Scripts/app/home/TopNewestController.js")"></script>
 }
+
+<div ng-controller="TopNewest">
+    <article class="article__hotnews">
+        <a href="/Home/Detail/{{newsItem.NewsId}}">
+            <img src="{{newsItem.Image}}">
+            <h4 class="article__hotnews--bold">{{newsItem.Title}}</h4>
+        </a>
+        <p class="article__hotnews--size">{{newsItem.Description}}</p>
+    </article>
+    <div class="aside__hotnews" ng-repeat="newest in Newests">
+        <a href="/Home/Detail/{{newest.NewsId}}">
+            <img src="{{newest.Image}}">
+            <p> {{newest.Title}}</p>
+        </a>
+    </div>
+    <br />
+</div>
