@@ -30,7 +30,14 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]Models.News item)
         {
             var obj = db.News.FirstOrDefault(c => c.NewsId == item.NewsId);
-            obj = item;
+            obj.Author = item.Author;
+            obj.Content = item.Content;
+            obj.Description = item.Description;
+            obj.Image = item.Image;
+            obj.ModifiedTime = DateTime.Now;
+            obj.CategoryId = item.CategoryId;
+            obj.Tags = item.Tags;
+            obj.Title = item.Title;
             return ToJson(db.SaveChanges());
         }
 

@@ -12,7 +12,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(db.Categories.ToList());
+            return ToJson(db.Categories.Where(w=>w.Status == (int?)CommonStatus.Acitivy).ToList());
         }
 
         [HttpPost]
@@ -27,7 +27,9 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]Category item)
         {
             var obj = db.Categories.FirstOrDefault(u => u.CategoryId == item.CategoryId);
-            obj = item;
+            obj.CategoryDisplayName = item.CategoryDisplayName;
+            obj.CategoryName = item.CategoryName;
+            obj.ParentId = item.ParentId;
             return ToJson(db.SaveChanges());
         }
 

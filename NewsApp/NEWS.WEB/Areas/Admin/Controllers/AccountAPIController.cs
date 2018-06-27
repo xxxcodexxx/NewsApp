@@ -12,7 +12,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return ToJson(db.Users.ToList());
+            return ToJson(db.Users.Where(w=>w.Status == (int)CommonStatus.Acitivy).ToList());
         }
 
         [HttpPost]
@@ -27,7 +27,12 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]User item)
         {
             var obj = db.Users.FirstOrDefault(u => u.ID == item.ID);
-            obj = item;
+            obj.Password = item.Password;
+            obj.Phone = item.Phone;
+            obj.Email = item.Email;
+            obj.FullName = item.FullName;
+            obj.RoleId = item.RoleId;
+            obj.UserName = item.UserName;
             return ToJson(db.SaveChanges());
         }
 

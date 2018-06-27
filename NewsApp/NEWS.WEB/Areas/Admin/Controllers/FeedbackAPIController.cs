@@ -30,7 +30,10 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]Models.Feedback item)
         {
             var obj = db.Feedbacks.FirstOrDefault(c => c.FeedbackId == item.FeedbackId);
-            obj = item;
+            obj.Content = item.Content;
+            obj.Email = item.Email;
+            obj.FullName = item.FullName;
+            obj.SendedTime = item.SendedTime;
             return ToJson(db.SaveChanges());
         }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using NEWS.WEB.Models;
+using System;
 
 namespace NEWS.WEB.Areas.Admin.Controllers
 {
@@ -19,6 +20,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Post([FromBody]Models.Comment item)
         {
             item.Status = (int?)CommonStatus.Acitivy;
+            item.PostedTime = DateTime.Now;
             db.Comments.Add(item);
             return ToJson(db.SaveChanges());
         }
@@ -27,7 +29,10 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]Models.Comment item)
         {
             var obj = db.Comments.FirstOrDefault(c => c.NewsId == item.NewsId);
-            obj = item;
+            obj.Content = item.Content;
+            obj.NewsId = item.NewsId;
+            obj.ParentId = item.ParentId;
+            obj.PostedTime = DateTime.Now;
             return ToJson(db.SaveChanges());
         }
 
