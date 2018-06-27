@@ -27,7 +27,7 @@ namespace NEWS.WEB.Areas.Admin.Controllers
         public HttpResponseMessage Update([FromBody]Role item)
         {
             var obj = db.Roles.FirstOrDefault(c => c.RoleId == item.RoleId);
-            obj = item;
+            obj.RoleName = item.RoleName;
             return ToJson(db.SaveChanges());
         }
 
