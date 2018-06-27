@@ -27,7 +27,7 @@ namespace NEWS.WEB.Controllers
             if (category != null)
             {
                 var categoryid = category.CategoryId;
-                var list = db.News.Where(w => w.CategoryId == categoryid && w.Status == (int?)CommonStatus.Acitivy);
+                var list = db.News.Where(w => w.CategoryId == categoryid && w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o=>o.NewsId);
                 return View(list.ToList());
             }
             return View();
@@ -45,7 +45,7 @@ namespace NEWS.WEB.Controllers
         }
         public ActionResult Search(string txtSearch = "")
         {
-            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && (w.Description.Contains(txtSearch) || w.Content.Contains(txtSearch) || w.Title.Contains(txtSearch) || w.Tags.Contains(txtSearch)));
+            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy && (w.Description.Contains(txtSearch) || w.Content.Contains(txtSearch) || w.Title.Contains(txtSearch) || w.Tags.Contains(txtSearch))).OrderByDescending(o => o.NewsId);
             return View(item);
         }
         public JsonResult TopViewPartial()
@@ -58,8 +58,8 @@ namespace NEWS.WEB.Controllers
         public JsonResult TopNewestPartial()
         {
             object newest = null;
-            var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.CategoryId).Skip(1).Take(9).ToList();
-            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.CategoryId).FirstOrDefault();
+            var listnews = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.NewsId).Skip(1).Take(9).ToList();
+            var item = db.News.Where(w => w.Status == (int?)CommonStatus.Acitivy).OrderByDescending(o => o.NewsId).FirstOrDefault();
             ViewModels.TopNewestViewModels viewmodel = new ViewModels.TopNewestViewModels();
             viewmodel.listnewsItem = listnews.ToList();
             viewmodel.newsItem = item;

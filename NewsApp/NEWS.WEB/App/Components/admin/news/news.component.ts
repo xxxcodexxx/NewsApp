@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from '../../../Service/admin.service';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
-import { Http, RequestOptions, Headers, Response } from '@angular/http';  
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { INews } from '../../../Models/new';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../../../Shared/global';
@@ -25,8 +25,10 @@ export class NewsComponent implements OnInit {
     newFrm: FormGroup;
     modalTitle: string;
     modalBtnTitle: string;
-    private isUploadBtn: boolean = true;  
-
+    private isUploadBtn: boolean = true;
+    static file: File;
+    static fileName: string;
+    static apiUrl1: string;
     constructor(private fb: FormBuilder, private _adminService: AdminService, private http: Http) { }
 
     ngOnInit(): void {
@@ -36,16 +38,16 @@ export class NewsComponent implements OnInit {
             Description: [''],
             Content: [''],
             Image: [''],
-            Status:[''],
+            Status: [''],
             CategoryId: [''],
-            CreatedTime:[''],
+            CreatedTime: [''],
             ModifiedTime: [''],
             CreateBy: [''],
             ModifiedBy: [''],
             Author: [''],
-            ViewCount:[''],
+            ViewCount: [''],
             Tags: [''],
-            CategoryName:['']
+            CategoryName: ['']
         });
         this.loadCategory();
         this.LoadNews();
@@ -53,7 +55,7 @@ export class NewsComponent implements OnInit {
     LoadNews() {
         this.indLoading = true;
         this._adminService.get(Global.BASE_NEWS_ENDPOINT)
-            .subscribe(res => { this.news = res, this.indLoading = false, this.LoadParentCategory(this.news)},
+            .subscribe(res => { this.news = res, this.indLoading = false, this.LoadParentCategory(this.news) },
             error => this.msg = <any>error);
     }
     addNew() {
@@ -66,7 +68,7 @@ export class NewsComponent implements OnInit {
     }
     loadCategory() {
         this._adminService.get(Global.BASE_CATEGORY_ENDPOINT)
-            .subscribe(res => { this.category = res},
+            .subscribe(res => { this.category = res },
             error => this.msg = <any>error);
     }
 
@@ -109,6 +111,8 @@ export class NewsComponent implements OnInit {
 
         switch (this.dbops) {
             case DBOperation.create:
+                formData.value.Image = "/SaveImages/"+ formData.value.Title + "_" + NewsComponent.file.name;
+                NewsComponent.fileName = formData.value.Title + "_" + NewsComponent.file.name;
                 this._adminService.post(Global.BASE_NEWS_ENDPOINT, formData.value).subscribe(
                     data => {
                         if (data == 1) //Success
@@ -117,6 +121,17 @@ export class NewsComponent implements OnInit {
                             setTimeout(() => {
                                 this.msg = null;
                             }, 2000);
+                            let headers = new Headers()
+                            let options = new RequestOptions({ headers: headers });
+                            let formDataa: FormData = new FormData();
+                            formDataa.append('uploadFile', NewsComponent.file, NewsComponent.fileName);
+                            this.http.post(NewsComponent.apiUrl1, formDataa, options)
+                                .map(res => res.json())
+                                .catch(error => Observable.throw(error))
+                                .subscribe(
+                                data => console.log('success'),
+                                error => this.msg = "There is some issue in saving images, please contact to system administrator!",
+                                )
                             this.LoadNews();
                         }
                         else {
@@ -125,7 +140,6 @@ export class NewsComponent implements OnInit {
                                 this.msg = null;
                             }, 2000);
                         }
-
                         this.modal.dismiss();
                     },
                     error => {
@@ -190,25 +204,11 @@ export class NewsComponent implements OnInit {
         isEnable ? this.newFrm.enable() : this.newFrm.disable();
     }
 
-    fileChange(event :any) {
+    fileChange(event: any) {
         let fileList: FileList = event.target.files;
         if (fileList.length > 0) {
-            let file: File = fileList[0];
-            let formData: FormData = new FormData();
-            formData.append('uploadFile', file, file.name);
-            let headers = new Headers()
-            //headers.append('Content-Type', 'json');  
-            //headers.append('Accept', 'application/json');  
-            let options = new RequestOptions({ headers: headers });
-            let apiUrl1 = "/api/UploadFileApi";
-            this.http.post(apiUrl1, formData, options)
-                .map(res => res.json())
-                .catch(error => Observable.throw(error))
-                .subscribe(
-                data => console.log('success'),
-                error => console.log(error)
-                )
+            NewsComponent.file = fileList[0];
+            NewsComponent.apiUrl1 = "/api/UploadFileApi";
         }
-        window.location.reload();
-    }  
+    }
 }
