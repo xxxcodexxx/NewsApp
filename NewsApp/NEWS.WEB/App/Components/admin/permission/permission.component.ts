@@ -28,7 +28,7 @@ export class PermissionComponent implements OnInit {
 
     ngOnInit(): void {
         this.roleFrm = this.fb.group({
-            Id: [''],
+            RoleId: [''],
             RoleName: [''],
             Status: [''],
         });
@@ -55,7 +55,7 @@ export class PermissionComponent implements OnInit {
         this.SetControlsState(true);
         this.modalTitle = "Edit Role";
         this.modalBtnTitle = "Update";
-        this.role = this.roles.filter(x => x.RoleID == id)[0];
+        this.role = this.roles.filter(x => x.RoleId == id)[0];
         this.roleFrm.setValue(this.role);
         this.modal.open();
     }
@@ -65,7 +65,7 @@ export class PermissionComponent implements OnInit {
         this.SetControlsState(false);
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
-        this.role = this.roles.filter(x => x.RoleID == id)[0];
+        this.role = this.roles.filter(x => x.RoleId == id)[0];
         this.roleFrm.setValue(this.role);
         this.modal.open();
     }

@@ -204,14 +204,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountAPIController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryAPIController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsAPIController.cs" />
-    <Compile Include="Areas\Admin\ViewModels\LoginViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -7483,6 +7481,7 @@
     <Folder Include="App\Components\user\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -7530,6 +7529,7 @@
     <TypeScriptCompile Include="App\Models\feedback.ts" />
     <TypeScriptCompile Include="App\Models\new.ts" />
     <TypeScriptCompile Include="App\Models\permission.ts" />
+    <TypeScriptCompile Include="App\Models\role.ts" />
     <TypeScriptCompile Include="App\Service\admin.service.ts" />
     <TypeScriptCompile Include="App\Shared\commondisplay.ts" />
     <TypeScriptCompile Include="App\Shared\enum.ts" />
