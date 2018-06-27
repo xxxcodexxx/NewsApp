@@ -33,6 +33,8 @@ export class CommentComponent implements  OnInit {
             PostedTime: [''],
             ParentId: [''],
             Status: [''],
+            NewsId: [''],
+            UserID:[''],
         });
 
         this.LoadComments();

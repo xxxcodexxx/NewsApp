@@ -4,5 +4,7 @@
     Poster: string,
     PostedTime: Date,
     ParentId: number,
-    Status:number,
+    Status: number,
+    NewsId: number,
+    UserID: number,
 }

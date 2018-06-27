@@ -9,7 +9,6 @@
         <div class='table-responsive'>
             <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../../../Content/adminLTE/img/loading.gif" width="32" height="32" /> Loading...</div>
             <div *ngIf='comments && comments.length==0' class="alert alert-info" role="alert">No record found!</div>
-
             <table class='table table-hover' *ngIf='comments && comments.length' style="vertical-align:central">
                 <thead>
                     <tr>
@@ -17,20 +16,24 @@
                         <th>Poster</th>
                         <th>PostedTime</th>
                         <th>ParentId</th>
+                        <th>NewsId</th>
+                        <th>UserID</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let comment of comments" >
+                    <tr *ngFor="let comment of comments">
                         <td>{{comment.Content}}</td>
                         <td>{{comment.Poster}}</td>
-                        <td>{{comment.PostedTime}}</td>
+                        <td>{{comment.PostedTime | date:'dd-MM-yyyy'}}</td>
                         <td>{{comment.ParentId}}</td>
+                        <td>{{comment.NewsId}}</td>
+                        <td>{{comment.UserID}}</td>
                         <td *ngIf="comment.Status==0; else elseBlock">
                             <span class="label label-success">Replied</span>
                         </td>
-                        <ng-template #elseBlock><td ><span class="label label-warning " >Pending</span></td></ng-template>
+                        <ng-template #elseBlock><td><span class="label label-warning ">Pending</span></td></ng-template>
                         <td>
                             <button title="Edit" class="btn btn-primary" (click)="detailComments(comment.CommentId)">Detail</button>
                         </td>
@@ -69,7 +72,15 @@
                             <span>Status</span>
                             <input type="text" class="form-control" placeholder="Status" formControlName="Status">
                         </div>
+                        <div>
+                            <span>NewsId</span>
+                            <input type="text" class="form-control" placeholder="NewsId" formControlName="NewsId" disabled>
+                        </div>
 
+                        <div>
+                            <span>UserID</span>
+                            <input type="text" class="form-control" placeholder="UserID" formControlName="UserID" disabled>
+                        </div>
                     </div>
                 </bs-modal-body>
                 <bs-modal-footer>
