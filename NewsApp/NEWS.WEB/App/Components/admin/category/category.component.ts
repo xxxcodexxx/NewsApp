@@ -84,6 +84,8 @@ export class CategoryComponent implements OnInit {
         this.modalTitle = "Confirm to Delete?";
         this.modalBtnTitle = "Delete";
         this.category = this.categories.filter(x => x.CategoryId == id)[0];
+        if (this.category.ParentId == 0)
+            this.category.ParentId = null;
         this.categoryFrm.setValue(this.category);
         this.modal.open();
     }
