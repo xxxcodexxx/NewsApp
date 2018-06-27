@@ -1,0 +1,21 @@
+﻿.has-feedback {
+    position: relative;
+}
+.form-control-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+}
+.login-logo a, .register-logo a {
+    color: #444 !important;
+}
+a:hover, a:focus{
+    text-decoration:none;
+}
